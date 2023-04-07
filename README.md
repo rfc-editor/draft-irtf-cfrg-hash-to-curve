@@ -1,66 +1,66 @@
-# Hashing to Elliptic Curves
+# AUTH48 for RFC-to-be 9380 (draft-irtf-cfrg-hash-to-curve-16)
+This repository is for managing document updates for RFC-to-be 9345 during AUTH48. 
 
-This is the working area for the individual Internet-Draft, "Hashing to Elliptic Curves".
+Please see the [License](https://github.com/rfc-editor/draft-irtf-cfrg-hash-to-curve/blob/master/LICENSE.md). The [IETF Note Well](https://github.com/rfc-editor/draft-irtf-cfrg-hash-to-curve/blob/master/note-well.md) applies.
 
-* [Editor's Copy](https://cfrg.github.io/draft-irtf-cfrg-hash-to-curve/#go.draft-irtf-cfrg-hash-to-curve.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-irtf-cfrg-hash-to-curve)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-hash-to-curve)
-* [Compare Editor's Copy to Individual Draft](https://cfrg.github.io/draft-irtf-cfrg-hash-to-curve/#go.draft-irtf-cfrg-hash-to-curve.diff)
+GitHub features that will be used:
+* Issue tracking
+* Pull requests
+* @mentions
 
-## Reference Implementations
+Authors, AD, WG chairs, and document shepherd, please ensure that your GitHub notification settings are set such that you can participate promptly in discussions of issues and pull requests. For more information, please see [Configuring notifications](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications).
 
-The purpose of these implementations is for generating test vectors and enabling cross compatibility with other implementations.
+This document is being edited in kramdown-rfc markdown.  Once the content is stable, the markdown will be converted to RFCXML and formatted as an RFC.  Your final approval means you approve both the content and format.
 
-These implementations are for reference only. They MUST NOT be used in production systems.
+## Issue Tracking
+The initial version of draft-irtf-cfrg-hash-to-curve.md is the same as what was approved for publication. 
 
- - [Sage](https://github.com/cfrg/draft-irtf-cfrg-hash-to-curve/tree/master/poc)
- - [Go](https://github.com/armfazh/h2c-go-ref): 
-     [v05](https://github.com/armfazh/h2c-go-ref/tree/v5.0.0), 
-     [v06](https://github.com/armfazh/h2c-go-ref/tree/v6.0.0), 
-     [v07](https://github.com/armfazh/h2c-go-ref/tree/v7.0.0), 
-     [v08](https://github.com/armfazh/h2c-go-ref/tree/v8.0.0),
-     **[v12](https://github.com/armfazh/h2c-go-ref/tree/v12.0.0)**.
- - [Rust](https://github.com/armfazh/h2c-rust-ref):
-     [v05](https://github.com/armfazh/h2c-rust-ref/tree/v5.0.0),
-     [v06](https://github.com/armfazh/h2c-rust-ref/tree/v6.0.0),
-     [v07](https://github.com/armfazh/h2c-rust-ref/tree/v7.0.0),
-     [v08](https://github.com/armfazh/h2c-rust-ref/tree/v8.0.0),
-     **[v12](https://github.com/armfazh/h2c-rust-ref/tree/v12.0.0)**.
-- [hacspec (Rust)](https://github.com/hacspec/hacspec/tree/master/examples/bls12-381-hash): BLS12-381, v13.
+The current version of draft-irtf-cfrg-hash-to-curve.md has been edited minimally for correctness. See PRs [#X](https://github.com/rfc-editor/draft-irtf-cfrg-hash-to-curve/pull/X) and [#X](https://github.com/rfc-editor/draft-irtf-cfrg-hash-to-curve/pull/X).
 
+The RFC Production Center's additional suggested updates have been added as PRs.  Open-ended questions and FYIs have been added as issues.  Please approve the PRs or propose alternate updates.  For the issues, provide your answers in the comments or add PRs to address them.  Use the issue labels to indicate their status:
+* rfced - initial label of RFC Editor questions and FYIs (keep this label if the issue is still active).
+* question - a follow-up question has been added to the issue discussion. Use @mention to identify the participant who should answer. 
+* AD approval required - the resolution of the issue requires the AD to review and approve the change.
+* rfced-ready - the RFC Editor can update the document and/or close the issue based on the issue discussion.
 
-## Other Implementations
+Feel free to add new issues and PRs for new edits and questions. 
 
-This is a (likely incomplete) list of other libraries that have implemented hash-to-curve per the standard.
+The RPC Editor will close an issue when it has been addressed either by accepting a pull request or simply closing the issue if no changes are needed. 
 
- - [libsodium](https://github.com/jedisct1/libsodium)
- - [MIRACL Core](https://github.com/miracl/core)
- - [pairing-plus](https://github.com/algorand/pairing-plus)
- - [RELIC](https://github.com/relic-toolkit/relic)
- - [Apache Milagro Crypto Library - Rust](https://github.com/apache/incubator-milagro-crypto-rust)
- - [Zig's standard library](https://ziglang.org)
- - [CIRCL](https://github.com/cloudflare/circl/)
+## Pull Requests
+If you would like to submit changes, please create a pull request and identify one or more issues that the pull request closes in the comments. 
 
-If you know of another library that supports a compliant hash-to-curve implementation and would like us to list it here, please open a PR.
+If the RPC editor creates the PR, the editor expects feedback from the reviewer before merging the PR. 
 
+Once the content of the .md file is stable and an XML file has been created, the following files will also be provided:
+* [https://www.rfc-editor.org/authors/rfc9380.html](https://www.rfc-editor.org/authors/rfc9380.html)
+* [https://www.rfc-editor.org/authors/rfc9380.pdf](https://www.rfc-editor.org/authors/rfc9380.pdf)
+* [https://www.rfc-editor.org/authors/rfc9380.txt](https://www.rfc-editor.org/authors/rfc9380.txt)
+* [https://www.rfc-editor.org/authors/rfc9380.xml](https://www.rfc-editor.org/authors/rfc9380.xml)
+   
+To create your own output files, use the [tools webservice](https://author-tools.ietf.org/) and select one of the output options.
 
-## Contributing
+## Viewing Diffs
+Diffs via GitHub:
+* [All editing updates made before AUTH48 was initiated](https://github.com/rfc-editor/draft-irtf-cfrg-hash-to-curve/compare/TBD)
+* [https://www.rfc-editor.org/authors/rfc9380-diff.html](https://www.rfc-editor.org/authors/rfc9380-diff.html) (all changes since the document entered the RFC Editor Queue)
+* [https://www.rfc-editor.org/authors/rfc9345-rfcdiff.html](https://www.rfc-editor.org/authors/rfc9380-rfcdiff.html) (side-by-side view of all changes since the document entered the RFC Editor Queue)
 
-See the
-[guidelines for contributions](https://github.com/cfrg/draft-irtf-cfrg-hash-to-curve/blob/master/CONTRIBUTING.md).
+More information on using GitHub to view diffs can be found here: [Comparing commits](https://docs.github.com/en/github/committing-changes-to-your-project/viewing-and-comparing-commits/comparing-commits).
 
-Contributions can be made by creating pull requests.
-The GitHub interface supports creating pull requests using the Edit (✏) button.
+Note that we will use GitHub diff functionality throughout this process.  Please view the diffs associated with the various PRs.
 
+## Approving the Document 
+This document is being edited in kramdown-rfc markdown.  Once the content is stable, the markdown will be converted to RFCXML and formatted as an RFC.  Your final approval means you approve both the content and format.
 
-## Command Line Usage
+To approve your RFC for publication, **please reply to the AUTH48 email** stating that you approve this RFC for publication.  Please use **REPLY ALL**, as all the parties CC’ed on the message need to see your approval.
 
-Formatted text and HTML versions of the draft can be built using `make`.
+The details of the AUTH48 status of the document are here: [https://www.rfc-editor.org/auth48/rfc9380](https://www.rfc-editor.org/auth48/rfc9380)
 
-```sh
-$ make
-```
+## About This Repo
+Note that this repo is available only during AUTH48. Before the RFC publication announcement is sent, this repo will be archived. 
 
-Command line usage requires that you have the necessary software installed.  See
-[the instructions](https://github.com/martinthomson/i-d-template/blob/main/doc/SETUP.md).
+## Contacting the RFC Editor
+For any questions or concerns, please contact rfc-editor@rfc-editor.org. 
+Note that push events will send notification messages to rfc-editor@rfc-editor.org. 
 
