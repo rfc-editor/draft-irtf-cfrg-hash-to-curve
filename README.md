@@ -1,5 +1,5 @@
 # AUTH48 for RFC-to-be 9380 (draft-irtf-cfrg-hash-to-curve-16)
-This repository is for managing document updates for RFC-to-be 9345 during AUTH48. 
+This repository is for managing document updates for RFC-to-be 9380 during AUTH48. 
 
 Please see the [License](https://github.com/rfc-editor/draft-irtf-cfrg-hash-to-curve/blob/master/LICENSE.md). The [IETF Note Well](https://github.com/rfc-editor/draft-irtf-cfrg-hash-to-curve/blob/master/note-well.md) applies.
 
@@ -44,7 +44,7 @@ To create your own output files, use the [tools webservice](https://author-tools
 Diffs via GitHub:
 * [All editing updates made before AUTH48 was initiated](https://github.com/rfc-editor/draft-irtf-cfrg-hash-to-curve/compare/TBD)
 * [https://www.rfc-editor.org/authors/rfc9380-diff.html](https://www.rfc-editor.org/authors/rfc9380-diff.html) (all changes since the document entered the RFC Editor Queue)
-* [https://www.rfc-editor.org/authors/rfc9345-rfcdiff.html](https://www.rfc-editor.org/authors/rfc9380-rfcdiff.html) (side-by-side view of all changes since the document entered the RFC Editor Queue)
+* [https://www.rfc-editor.org/authors/rfc9380-rfcdiff.html](https://www.rfc-editor.org/authors/rfc9380-rfcdiff.html) (side-by-side view of all changes since the document entered the RFC Editor Queue)
 
 More information on using GitHub to view diffs can be found here: [Comparing commits](https://docs.github.com/en/github/committing-changes-to-your-project/viewing-and-comparing-commits/comparing-commits).
 
