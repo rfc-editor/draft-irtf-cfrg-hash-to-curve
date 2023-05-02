@@ -2860,8 +2860,8 @@ Suite ID fields MUST be chosen as follows:
   as defined in {{mappings}}. These are defined as follows:
 
     - "SVDW" for or Shallue and van de Woestijne ({{svdw}}).
-    - "SSWU" for Simplified SWU (Sections {{<simple-swu}}, {{<simple-swu-AB0}}).
-    - "ELL2" for Elligator 2 (Sections {{<elligator2}}, {{<ell2edwards}}).
+    - "SSWU" for Simplified SWU (Sections {{<simple-swu}} and {{<simple-swu-AB0}}).
+    - "ELL2" for Elligator 2 (Sections {{<elligator2}} and {{<ell2edwards}}).
 
 - ENC\_VAR: a string indicating the encoding type and other information.
   The first two characters of this string indicate whether the suite
@@ -2873,7 +2873,7 @@ Suite ID fields MUST be chosen as follows:
     - ENC\_VAR MUST NOT begin with any other string.
 
     ENC\_VAR MAY also be used to encode other information used to identify
-    variants -- for example, a version number.
+    variants, for example, a version number.
     The RECOMMENDED way to do so is to add one or more subfields separated
     by colons.
     For example, "RO:V02" is an appropriate ENC\_VAR value for the second
@@ -2916,7 +2916,7 @@ to detect and "fix" the identity element.
 When the hash\_to\_curve function ({{roadmap}}) is instantiated with a
 hash\_to\_field function that is indifferentiable from a random oracle
 ({{hashtofield}}), the resulting function is indifferentiable from a random
-oracle ({{MRH04}}, {{BCIMRT10}}, {{FFSTV13}}, {{LBB19}}, {{H20}}).
+oracle ({{MRH04}} {{BCIMRT10}} {{FFSTV13}} {{LBB19}} {{H20}}).
 In many cases such a function can be safely used in cryptographic protocols
 whose security analysis assumes a random oracle that outputs uniformly random
 points on an elliptic curve.
@@ -2970,10 +2970,10 @@ Specifically:
   derive bounds on the Shallue-van de Woestijne mapping ({{svdw}}).
 
 - Fouque and Tibouchi {{FT10}} and Tibouchi {{T14}} derive bounds for the
-  Simplified SWU mapping (Sections {{<simple-swu}}, {{<simple-swu-AB0}}).
+  Simplified SWU mapping (Sections {{<simple-swu}} and {{<simple-swu-AB0}}).
 
 - Bernstein et al. {{BHKL13}} derive bounds for the Elligator 2 mapping
-  (Sections {{<elligator2}}, {{<ell2edwards}}).
+  (Sections {{<elligator2}} and {{<ell2edwards}}).
 
 Indifferentiability of encode\_to\_curve follows from an argument similar
 to the one given by Brier et al. {{BCIMRT10}}; we briefly sketch.
