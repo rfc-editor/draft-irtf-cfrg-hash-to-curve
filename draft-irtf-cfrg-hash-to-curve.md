@@ -19,6 +19,8 @@ author:
     org: Cloudflare, Inc.
     street: 101 Townsend St
     city: San Francisco
+    region: CA
+    code: 94107
     country: United States of America
     email: armfazh@cloudflare.com
  -
@@ -26,7 +28,9 @@ author:
     name: Sam Scott
     org: Cornell Tech
     street: 2 West Loop Rd
-    city: New York, New York 10044
+    city: New York
+    region: New York 
+    code: 10044
     country: United States of America
     email: sam.scott@cornell.edu
  -
@@ -48,6 +52,8 @@ author:
     org: Cloudflare, Inc.
     street: 101 Townsend St
     city: San Francisco
+    region: CA
+    code: 94107
     country: United States of America
     email: caw@heapingbits.net
 
