@@ -1336,7 +1336,7 @@ encoding for each oracle being simulated.
 In the above example, "RO1" and "RO2" have the same length and thus
 satisfy this requirement when used as prefixes.
 The algorithms specified in this document take a different approach to ensuring
-injectivity; see Sections {{hashtofield-expand}} and {{security-considerations-domain-separation-expmsg-var}}
+injectivity; see Sections {{<hashtofield-expand}} and {{<security-considerations-domain-separation-expmsg-var}}
 for more details.
 
 # Encoding byte strings to elliptic curves {#roadmap}
@@ -1660,7 +1660,7 @@ This document defines two variants of expand\_message: one appropriate
 for hash functions like SHA-2 {{FIPS180-4}} or SHA-3 {{FIPS202}}, and another
 appropriate for extendable-output functions such as SHAKE128 {{FIPS202}}.
 Security considerations for each expand\_message variant are discussed
-below (Sections {{hashtofield-expand-xmd}} amd {{hashtofield-expand-xof}}).
+below (Sections {{<hashtofield-expand-xmd}} amd {{<hashtofield-expand-xof}}).
 
 Implementors MUST NOT use rejection sampling to generate a uniformly random
 element of F, to ensure that the hash\_to\_field function is amenable to
@@ -2860,8 +2860,8 @@ Suite ID fields MUST be chosen as follows:
   as defined in {{mappings}}. These are defined as follows:
 
     - "SVDW" for or Shallue and van de Woestijne ({{svdw}}).
-    - "SSWU" for Simplified SWU (Sections {{simple-swu}}, {{simple-swu-AB0}}).
-    - "ELL2" for Elligator 2 (Sections {{elligator2}}, {{ell2edwards}}).
+    - "SSWU" for Simplified SWU (Sections {{<simple-swu}}, {{<simple-swu-AB0}}).
+    - "ELL2" for Elligator 2 (Sections {{<elligator2}}, {{<ell2edwards}}).
 
 - ENC\_VAR: a string indicating the encoding type and other information.
   The first two characters of this string indicate whether the suite
