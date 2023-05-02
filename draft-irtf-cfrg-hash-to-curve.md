@@ -52,16 +52,17 @@ author:
     email: caw@heapingbits.net
 
 normative:
-  EID4730:
+  Err4730:
     target: https://www.rfc-editor.org/errata/eid4730
-    title: "RFC 7748, Errata ID 4730"
+    title: RFC Errata, Erratum ID 4730, RFC 7748
     date: July, 2016
-    author:
-      -
-        ins: A. Langley
-        name: Adam Langley
 
 informative:
+BLS-Signatures: I-D.irtf-cfrg-bls-signature
+ristretto255-and-decaf448: I-D.irtf-cfrg-ristretto255-decaf448
+OPRFs: I-D.irtf-cfrg-voprf
+VRFs: I-D.irtf-cfrg-vrf
+
   BLS12-381:
     target: https://electriccoin.co/blog/new-snark-curve/
     title: "BLS12-381: New zk-SNARK Elliptic Curve Construction"
@@ -103,21 +104,27 @@ informative:
       -
         org: Standards for Efficient Cryptography Group (SECG)
   FIPS180-4:
-    title: "Secure Hash Standard (SHS)"
+    title: "FIPS Publication 180-4: Secure Hash Standard (SHS)"
+    seriesinfo:
+        DOI: 10.6028/NIST.FIPS.180-4
     target: https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf
     date: Aug, 2015
     author:
       -
         org: National Institute of Standards and Technology (NIST)
   FIPS186-4:
-    title: "FIPS Publication 186-4: Digital Signature Standard"
+    title: "FIPS Publication 186-4: Digital Signature Standard (DSS)"
+    seriesinfo:
+      DOI: 10.6028/NIST.FIPS.186-4
     target: https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf
     date: Jul, 2013
     author:
       -
         org: National Institute of Standards and Technology (NIST)
   FIPS202:
-    title: "SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions"
+    title: "FIPS Publication 202: SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions"
+    seriesinfo:
+      DOI: 10.6028/NIST.FIPS.202
     target: https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf
     date: Aug, 2015
     author:
@@ -130,10 +137,10 @@ informative:
         "pages": 181-197
         DOI: 10.1007/978-3-540-78967-3_11
     target: https://doi.org/10.1007/978-3-540-78967-3_11
-    date: 2008
+    date: April 2008
     author:
       -
-        ins: G. Bertoni,
+        ins: G. Bertoni
         name: Guido Bertoni
         org: STMicroelectronics
       -
@@ -155,7 +162,7 @@ informative:
         "pages": 430-448
         DOI: 10.1007/11535218_26
     target: https://doi.org/10.1007/11535218_26
-    date: 2005
+    date: August 2005
     author:
       -
         ins: J-S. Coron
@@ -197,20 +204,20 @@ informative:
         "pages": 303-316
         DOI: 10.1007/978-3-642-03356-8_18
     target: https://doi.org/10.1007/978-3-642-03356-8_18
-    date: 2009
+    date: August 2009
     author:
       -
         ins: T. Icart
         name: Thomas Icart
         org: Sagem Securite and Universite du Luxembourg
   BBJLP08:
-    title: Twisted Edwards curves
+    title: Twisted Edwards Curves
     seriesinfo:
         "In": AFRICACRYPT 2008
         "pages": 389-405
         DOI: 10.1007/978-3-540-68164-9_26
     target: https://doi.org/10.1007/978-3-540-68164-9_26
-    date: 2008
+    date: June 2008
     author:
       -
         ins: D. J. Bernstein
@@ -239,14 +246,14 @@ informative:
         "pages": 266-281
         DOI: 10.1016/j.jsc.2011.11.003
     target: https://doi.org/10.1016/j.jsc.2011.11.003
-    date: 2012
+    date: March 2012
     author:
       -
-        ins: J. Couveignes
+        ins: J-M. Couveignes
         name: Jean-Marc Couveignes
         org: Universite Bordeaux
       -
-        ins: J. Kammerer
+        ins: J-G. Kammerer
         name: Jean-Gabriel Kammerer
         org: Universite de Rennes
   VR20:
@@ -254,7 +261,7 @@ informative:
     seriesinfo:
         "In": IEEE Symposium on Security & Privacy (SP)
     target: https://eprint.iacr.org/2019/383
-    date: 2020
+    date: May 2020
     author:
       -
         ins: M. Vanhoef
@@ -265,13 +272,13 @@ informative:
         name: Eyal Ronen
         org: Tel Aviv University and KU Leuven
   F11:
-    title: Hashing into Hessian curves
+    title: Hashing into Hessian Curves
     seriesinfo:
         "In": AFRICACRYPT 2011
         "pages": 278-289
         DOI: 10.1007/978-3-642-21969-6_17
     target: https://doi.org/10.1007/978-3-642-21969-6_17
-    date: 2011
+    date: July 2011
     author:
       -
         ins: R. R. Farashahi
@@ -299,13 +306,13 @@ informative:
         name: J. Felipe Voloch
         org: University of Texas
   FT10:
-    title: Estimating the size of the image of deterministic hash functions to elliptic curves.
+    title: Estimating the Size of the Image of Deterministic Hash Functions to Elliptic Curves
     seriesinfo:
         "In": Progress in Cryptology - LATINCRYPT 2010
         "pages": 81-91
         DOI: 10.1007/978-3-642-14712-8_5
     target: https://doi.org/10.1007/978-3-642-14712-8_5
-    date: 2010
+    date: August 2010
     author:
       -
         ins: P-A. Fouque
@@ -319,10 +326,10 @@ informative:
     title: Indifferentiable Hashing to Barreto-Naehrig Curves
     seriesinfo:
         "In": Progress in Cryptology - LATINCRYPT 2012
-        "pages": 1-7
+        "pages": 1-17
         DOI: 10.1007/978-3-642-33481-8_1
     target: https://doi.org/10.1007/978-3-642-33481-8_1
-    date: 2012
+    date: October 2012
     author:
       -
         ins: P-A. Fouque
@@ -333,13 +340,13 @@ informative:
         name: Mehdi Tibouchi
         org: NTT Secure Platform Laboratories
   FJT13:
-    title: Injective encodings to elliptic curves
+    title: Injective Encodings to Elliptic Curves
     seriesinfo:
         "In": ACISP 2013
         "pages": 203-218
         DOI: 10.1007/978-3-642-39059-3_14
     target: https://doi.org/10.1007/978-3-642-39059-3_14
-    date: 2013
+    date: July 2013
     author:
       -
         ins: P-A. Fouque
@@ -354,16 +361,16 @@ informative:
         name: Mehdi Tibouchi
         org: NTT Secure Platform Laboratories
   KLR10:
-    title: Encoding points on hyperelliptic curves over finite fields in deterministic polynomial time
+    title: Encoding Points on Hyperelliptic Curves over Finite Fields in Deterministic Polynomial Time
     seriesinfo:
-        "In": PAIRING 2010
+        "In": Pairing-Based Cryptography - Pairing 2010
         "pages": 278-297
         DOI: 10.1007/978-3-642-17455-1_18
     target: https://doi.org/10.1007/978-3-642-17455-1_18
-    date: 2010
+    date: December 2010
     author:
       -
-        ins: J. Kammerer
+        ins: J-G. Kammerer
         name: Jean-Gabriel Kammerer
         org: Universite de Rennes
       -
@@ -388,8 +395,8 @@ informative:
         name: Gora Adj
         org: ISFA, Universite Claude Bernard Lyon 1, Villeurbanne, France
      -
-        ins: F. Rodriguez-Henriquez
-        name: Francisco Rodriguez-Henriquez
+        ins: F. Rodríguez-Henríquez
+        name: Francisco Rodríguez-Henríquez
         org: CINVESTAV-IPN, San Pedro Zacatenco, Mexico City, Mexico.
   BN05:
     title: Pairing-Friendly Elliptic Curves of Prime Order
@@ -401,7 +408,7 @@ informative:
     date: 2006
     author:
       -
-        ins: P. Barreto
+        ins: P.S.L.M. Barreto
         name: Paulo S. L. M. Barreto
         org: Escola Politecnica, Universidade de Sao Paulo, Sao Paulo, Brazil
       -
@@ -409,20 +416,20 @@ informative:
         name: Michael Naehrig
         org: Lehrstuhl fur Theoretische Informationstechnik, Rheinisch-Westfalische Technische Hochschule Aachen, Aachen, Germany
   AFQTZ14:
-    title: Binary Elligator squared
+    title: Binary Elligator Squared
     seriesinfo:
         "In": Selected Areas in Cryptography - SAC 2014
         "pages": 20-37
         DOI: 10.1007/978-3-319-13051-4_2
     target: https://doi.org/10.1007/978-3-319-13051-4_2
-    date: 2014
+    date: August 2014
     author:
       -
         ins: D. F. Aranha
         name: Diego F. Aranha
         org: Institute of Computing, University of Campinas
       -
-        ins: P. A. Fouque
+        ins: P-A. Fouque
         name: Pierre-Alain Fouque
         org: Universite de Rennes 1 and Institut Universitaire de France
       -
@@ -438,13 +445,13 @@ informative:
         name: Jean-Christophe Zapalowicz
         org: INRIA
   T14:
-    title: "Elligator squared: Uniform points on elliptic curves of prime order as uniform random strings"
+    title: "Elligator Squared: Uniform Points on Elliptic Curves of Prime Order as Uniform Random Strings"
     seriesinfo:
         "In": Financial Cryptography and Data Security - FC 2014
         "pages": 139-156
         DOI: 10.1007/978-3-662-45472-5_10
     target: https://doi.org/10.1007/978-3-662-45472-5_10
-    date: 2014
+    date: March 2014
     author:
       -
         ins: M. Tibouchi
@@ -457,7 +464,7 @@ informative:
         "pages": 161-177
         DOI: 10.1007/s10623-016-0288-2
     target: https://doi.org/10.1007/s10623-016-0288-2
-    date: 2017
+    date: January 2017
     author:
       -
         ins: M. Tibouchi
@@ -468,7 +475,7 @@ informative:
         name: Taechan Kim
         org: NTT Secure Platform Laboratories
   BF01:
-    title: Identity-based encryption from the Weil pairing
+    title: Identity-Based Encryption from the Weil Pairing
     seriesinfo:
         "In": Advances in Cryptology - CRYPTO 2001
         "pages": 213-229
@@ -485,7 +492,7 @@ informative:
         name: Matthew Franklin
         org: UC Davis
   BLS01:
-    title: Short signatures from the Weil pairing
+    title: Short Signatures from the Weil Pairing
     seriesinfo:
         "In": Journal of Cryptology, vol 17
         "pages": 297-319
@@ -512,10 +519,10 @@ informative:
         "pages": 257-267
         DOI: 10.1007/3-540-36413-7_19
     target: https://doi.org/10.1007/3-540-36413-7_19
-    date: 2003
+    date: September 2002
     author:
       -
-        ins: P. Barreto
+        ins: P.S.L.M. Barreto
         name: Paulo S. L. M. Barreto
         org: Universidade de Sao Paulo, Brazil
       -
@@ -533,7 +540,7 @@ informative:
         "pages": 72-84
         DOI: 10.1109/RISP.1992.213269
     target: https://doi.org/10.1109/RISP.1992.213269
-    date: 1992
+    date: May 1992
     author:
       -
         ins: S. M. Bellovin
@@ -544,7 +551,7 @@ informative:
         name: Michael Merritt
         org: AT&T Bell Laboratories
   BMP00:
-    title: Provably secure password-authenticated key exchange using Diffie-Hellman
+    title: Provably Secure Password-Authenticated Key Exchange Using Diffie-Hellman
     seriesinfo:
         "In": Advances in Cryptology - EUROCRYPT 2000
         "pages": 156-171
@@ -557,7 +564,7 @@ informative:
         name: Victor Boyko
         org: MIT Laboratory for Computer Science
       -
-        ins: P. D. MacKenzie
+        ins: P. MacKenzie
         name: Philip D. MacKenzie
         org: Bell Laboratories, Lucent Technologies
       -
@@ -571,16 +578,18 @@ informative:
         "pages": 5-26
         DOI: 10.1145/242896.242897
     target: https://doi.org/10.1145/242896.242897
-    date: 1996
+    date: October 1996
     author:
       -
         ins: D. P. Jablon
         name: David P. Jablon
         org: Integrity Sciences, Inc. Westboro, MA.
   hash2curve-repo:
-    title: Hashing to Elliptic Curves - GitHub repository
+    title: Hashing to Elliptic Curves
+    seriesinfo:
+      "commit": 664b135
     target: https://github.com/cfrg/draft-irtf-cfrg-hash-to-curve
-    date: 2019
+    date: June 2022
   jubjub-fq:
     title: zkcrypto/jubjub - fq.rs
     target: https://github.com/zkcrypto/jubjub/blob/master/src/fq.rs
@@ -588,7 +597,7 @@ informative:
   L13:
     title: Implementing Elligator for Curve25519
     target: https://www.imperialviolet.org/2013/12/25/elligator.html
-    date: 2013
+    date: December 2013
     author:
       -
         ins: A. Langley
@@ -600,7 +609,7 @@ informative:
         "pages": 102-113
         DOI: 10.1007/978-3-642-03298-1_8
     target: https://doi.org/10.1007/978-3-642-03298-1_8
-    date: 2009
+    date: August 2009
     author:
       -
         ins: M. Scott
@@ -623,17 +632,17 @@ informative:
         name: Ezekiel J. Kachisa
         org: School of Computing Dublin City University, Ballymun. Dublin, Ireland.
   FKR11:
-    title: Fast Hashing to G2 on Pairing-Friendly Curves
+    title: Faster Hashing to G2
     seriesinfo:
         "In": Selected Areas in Cryptography
         "pages": 412-430
         DOI: 10.1007/978-3-642-28496-0_25
     target: https://doi.org/10.1007/978-3-642-28496-0_25
-    date: 2011
+    date: August 2011
     author:
       -
-       ins: L. Fuentes-Castaneda
-       name: Laura Fuentes-Castaneda
+       ins: L. Fuentes-Castañeda
+       name: Laura Fuentes-Castañeda
        org: Computer Science Department, CINVESTAV-IPN. Mexico
       -
         ins: E. Knapp
@@ -684,12 +693,13 @@ informative:
         name: Tanja Lange
         org: Department of Mathematics and Computer Science, Technische Universiteit Eindhoven, The Netherlands
   BLMP19:
-    title: "Quantum circuits for the CSIDH: optimizing quantum evaluation of isogenies"
+    title: "Quantum Circuits for the CSIDH: Optimizing Quantum Evaluation of Isogenies"
     seriesinfo:
         "In": Advances in Cryptology - EUROCRYPT 2019
+        "pages":  409-441
         DOI: 10.1007/978-3-030-17656-3
-    target: https://doi.org/10.1007/978-3-030-17656-3
-    date: 2019
+    target: https://doi.org/10.1007/978-3-030-17656-3_15
+    date: May 2019
     author:
       -
         ins: D. J. Bernstein
@@ -708,9 +718,9 @@ informative:
         name: Lorenz Panny
         org: Department of Mathematics and Computer Science, Technische Universiteit Eindhoven, The Netherlands
   SS04:
-    title: On equations y^2 = x^n + k in a finite field.
+    title: On equations y^2 = x^n + k in a finite field
     seriesinfo:
-        "In": Bulletin Polish Acad. Sci. Math. vol 52, no 3
+        "In": Bulletin Polish Acad. Sci. Math. vol 52 no 3
         "pages": 223-226
         DOI: 10.4064/ba52-3-1
     target: https://doi.org/10.4064/ba52-3-1
@@ -721,8 +731,8 @@ informative:
         name: Andrzej Schinzel
         org: Department of Mathemetics, University of Warsaw
       -
-        ins: M. Skalba
-        name: Mariusz Skalba
+        ins: M. Skałba
+        name: Mariusz Skałba
         org: Department of Mathematics, University of Warsaw
   S05:
     title: Points on elliptic curves over finite fields
@@ -734,34 +744,34 @@ informative:
     date: 2005
     author:
       -
-        ins: M. Skalba
-        name: Mariusz Skalba
+        ins: M. Skałba
+        name: Mariusz Skałba
         org: Department of Mathematics, University of Warsaw
   SW06:
-    title: Construction of rational points on elliptic curves over finite fields
+    title: Construction of Rational Points on Elliptic Curves over Finite Fields	
     seriesinfo:
-        "In": Algorithmic Number Theory. ANTS 2006.
+        "In": Algorithmic Number Theory - ANTS 2006
         "pages": 510-524
         DOI: 10.1007/11792086_36
     target: https://doi.org/10.1007/11792086_36
-    date: 2006
+    date: July 2006
     author:
       -
         ins: A. Shallue
         name: Andrew Shallue
         org: Mathematics Department, University of Wisconsin-Madison. Madison, USA.
       -
-        ins: C. van de Woestijne
+        ins: C.E. van de Woestijne
         name: Christiaan van de Woestijne
         org: Mathematisch Instituut, Universiteit Leiden. Leiden, The Netherlands.
   U07:
-    title: Rational points on certain hyperelliptic curves over finite fields
+    title: Rational Points on Certain Hyperelliptic Curves over Finite Fields
     seriesinfo:
-        "In": Bulletin Polish Acad. Sci. Math. vol 55, no 2
+        "In": Bulletin Polish Acad. Sci. Math. vol 55 no 2
         "pages": 97-104
         DOI: 10.4064/ba55-2-1
     target: https://doi.org/10.4064/ba55-2-1
-    date: 2007
+    date: July 2007
     author:
       -
         ins: M. Ulas
@@ -774,7 +784,7 @@ informative:
         "pages": 237-254
         DOI: 10.1007/978-3-642-14623-7_13
     target: https://doi.org/10.1007/978-3-642-14623-7_13
-    date: 2010
+    date: August 2010
     author:
       -
         ins: E. Brier
@@ -803,8 +813,7 @@ informative:
   W08:
     title: "Elliptic curves: Number theory and cryptography"
     seriesinfo:
-        edition: 2nd
-        publisher: Chapman and Hall / CRC
+        publisher: Chapman and Hall / CRC, 2nd edition
         ISBN: 9781420071467
     target: https://www.crcpress.com/9781420071467
     date: 2008
@@ -817,6 +826,7 @@ informative:
     seriesinfo:
         publisher: Springer-Verlag
         ISBN: 9783642081422
+        DOI: 10.1007/978-3-662-02945-9
     target: https://doi.org/10.1007/978-3-662-02945-9
     date: 1993
     author:
@@ -858,7 +868,7 @@ informative:
         publisher: CRC Press
         ISBN: 9780849385230
     target: http://cacr.uwaterloo.ca/hac/
-    date: 1996
+    date: October 1996
     author:
       -
         ins: A. J. Menezes
@@ -872,9 +882,7 @@ informative:
   WB19:
     title: Fast and simple constant-time hashing to the BLS12-381 elliptic curve
     seriesinfo:
-        "In": IACR Trans. CHES
-        "volume": 2019
-        "issue": 4
+        "In": IACR Transactions on Cryptographic Hardware and Embedded Systems, vol 2019 issue 4
         DOI: 10.13154/tches.v2019.i4.154-179
         "ePrint": 2019/403
     target: https://eprint.iacr.org/2019/403
@@ -902,7 +910,7 @@ informative:
         name: Reza R. Farashahi
         org: Macquarie Universit
       -
-        ins: P. A. Fouque
+        ins: P-A. Fouque
         name: Pierre-Alain Fouque
         org: Ecole normale superieure
       -
@@ -918,7 +926,7 @@ informative:
         name: J. Felipe Voloch
         org: University of Texas
   MRH04:
-    title: "Indifferentiability, impossibility results on reductions, and applications to the random oracle methodology"
+    title: "Indifferentiability, Impossibility Results on Reductions, and Applications to the Random Oracle Methodology"
     seriesinfo:
       "In": "TCC 2004: Theory of Cryptography"
       "pages": 21-39
@@ -941,7 +949,7 @@ informative:
   MRV99:
     title: Verifiable Random Functions
     seriesinfo:
-      "In": Symposium on the Foundations of Computer Science
+      "In": Symposium on Foundations of Computer Science
       DOI:  10.1109/SFFCS.1999.814584
     target: https://doi.org/10.1109/SFFCS.1999.814584
     date: October, 1999
@@ -961,7 +969,7 @@ informative:
   NR97:
     title: "Number-theoretic constructions of efficient pseudo-random functions"
     seriesinfo:
-      "In": Symposium on the Foundations of Computer Science
+      "In": Symposium on Foundations of Computer Science
       DOI: 10.1109/SFCS.1997.646134
     target: https://doi.org/10.1109/SFCS.1997.646134
     date: October, 1997
@@ -994,7 +1002,7 @@ informative:
     target: https://www.sagemath.org
     date: 2019
   LBB19:
-    title: A Mechanised Proof of the WireGuard Virtual Private Network Protocol
+    title: A Mechanised Cryptographic Proof of the WireGuard Virtual Private Network Protocol
     seriesinfo:
         "In": INRIA Research Report No. 9269
     target: https://hal.inria.fr/hal-02100345/
@@ -1013,7 +1021,7 @@ informative:
         name: Karthikeyan Bhargavan
         org: INRIA Paris
   RCB16:
-    title: "Complete addition formulas for prime order elliptic curves"
+    title: "Complete Addition Formulas for Prime Order Elliptic Curves"
     seriesinfo:
       "In": Advances in Cryptology - EUROCRYPT 2016
       "pages": 403-428
@@ -1080,7 +1088,7 @@ informative:
   MT98:
     title: "Mersenne twister: A 623-dimensionally equidistributed uniform pseudo-random number generator"
     seriesinfo:
-      "In": ACM Transactions on Modeling and Computer Simulation (TOMACS), Volume 8, Issue 1
+      "In": ACM Transactions on Modeling and Computer Simulation (TOMACS), vol 8 issue 1
       "pages": 3-30
       DOI: 10.1145/272991.272995
     date: January, 1998
@@ -1123,9 +1131,9 @@ as hashing to an elliptic curve, where the hashing procedure provides collision
 resistance and does not reveal the discrete logarithm of the output point.
 Prominent examples of cryptosystems that hash to elliptic curves include
 password-authenticated key exchanges {{BM92}} {{J96}} {{BMP00}} {{p1363.2}}, Identity-Based
-Encryption {{BF01}}, Boneh-Lynn-Shacham signatures {{BLS01}} {{?I-D.irtf-cfrg-bls-signature}},
-Verifiable Random Functions {{MRV99}} {{?I-D.irtf-cfrg-vrf}}, and Oblivious Pseudorandom
-Functions {{NR97}} {{?I-D.irtf-cfrg-voprf}}.
+Encryption {{BF01}}, Boneh-Lynn-Shacham signatures {{BLS01}} {{?BLS-Signatures}},
+Verifiable Random Functions {{MRV99}} {{?VRFs}}, and Oblivious Pseudorandom
+Functions {{NR97}} {{?OPRFs}}.
 
 Unfortunately for implementors, the precise hash function that is suitable
 for a given protocol implemented using a given elliptic curve is often unclear
@@ -1886,7 +1894,7 @@ For security, H MUST meet the following criteria:
 - H MUST be an XOF that has been proved indifferentiable from a random oracle
 under a reasonable cryptographic assumption.
 
-The SHAKE {{FIPS202}} XOF family is a typical and RECOMMENDED choice.
+The SHAKE XOF family {{FIPS202}} is a typical and RECOMMENDED choice.
 As an example, for 128-bit security, SHAKE128 would be an appropriate choice.
 
 The following procedure implements expand\_message\_xof.
@@ -2093,8 +2101,8 @@ the other mappings in this document.)
 
 The parameterization given below is for Weierstrass curves;
 its derivation is detailed in {{W19}}.
-This parameterization also works for Montgomery ({{montgomery}}) and
-twisted Edwards ({{twisted-edwards}}) curves via the rational maps
+This parameterization also works for Montgomery curves ({{montgomery}}) and
+twisted Edwards curves ({{twisted-edwards}}) via the rational maps
 given in {{appx-rational-map}}:
 first evaluate the Shallue-van de Woestijne mapping to an equivalent Weierstrass
 curve, then map that point to the target Montgomery or twisted Edwards curve
@@ -2107,7 +2115,7 @@ Constants:
 - A and B, the parameter of the Weierstrass curve.
 
 - Z, a non-zero element of F meeting the below criteria.
-  {{svdw-z-code}} gives a Sage {{SAGE}} script that outputs the RECOMMENDED Z.
+  {{svdw-z-code}} gives a Sage script {{SAGE}} that outputs the RECOMMENDED Z.
   1. g(Z) != 0 in F.
   2. -(3 * Z^2 + 4 * A) / (4 * g(Z)) != 0 in F.
   3. -(3 * Z^2 + 4 * A) / (4 * g(Z)) is square in F.
@@ -2159,7 +2167,7 @@ Constants:
 - A and B, the parameters of the Weierstrass curve.
 
 - Z, an element of F meeting the below criteria.
-  {{sswu-z-code}} gives a Sage {{SAGE}} script that outputs the RECOMMENDED Z.
+  {{sswu-z-code}} gives a Sage script {{SAGE}} that outputs the RECOMMENDED Z.
   The criteria are:
   1. Z is non-square in F,
   2. Z != -1 in F,
@@ -2202,7 +2210,7 @@ Weierstrass curves having A == 0 or B == 0, which the mapping of
 (The case A == B == 0 is excluded because y^2 = x^3 is not an elliptic curve.)
 
 This method applies to curves like secp256k1 {{SEC2}} and to pairing-friendly
-curves in the Barreto-Lynn-Scott {{BLS03}}, Barreto-Naehrig {{BN05}}, and other families.
+curves in the Barreto-Lynn-Scott family {{BLS03}}, Barreto-Naehrig family {{BN05}}, and other families.
 
 This method requires finding another elliptic curve E' given by the equation
 
@@ -2274,7 +2282,7 @@ Constants:
 - J and K, the parameters of the elliptic curve.
 
 - Z, a non-square element of F.
-  {{elligator-z-code}} gives a Sage {{SAGE}} script that outputs the RECOMMENDED Z.
+  {{elligator-z-code}} gives a Sage script {{SAGE}} that outputs the RECOMMENDED Z.
 
 Sign of t: this mapping fixes the sign of t as specified in {{BHKL13}}.
 No additional adjustment is required.
@@ -2342,7 +2350,7 @@ with existing software.
     In this case, the sign MUST be fixed such that applying the rational map
     to the twisted Edwards curve's base point yields the Montgomery curve's
     base point with correct sign.
-    (For edwards25519, see {{!RFC7748}} and {{EID4730}}.)
+    (For edwards25519, see {{!RFC7748}} and {{Err4730}}.)
 
     When defining new twisted Edwards curves, a Montgomery equivalent and rational
     map SHOULD also be specified, and the sign of the rational map SHOULD be stated
@@ -2605,7 +2613,7 @@ to P-521 is given in {{straightline-sswu}}.
 
 This section defines ciphersuites for curve25519 and edwards25519 {{!RFC7748}}.
 Note that these ciphersuites MUST NOT be used when hashing to ristretto255
-{{?I-D.irtf-cfrg-ristretto255-decaf448}}.
+{{?ristretto255-and-decaf448}}.
 See {{appx-ristretto255}} for information on how to hash to that group.
 
 curve25519\_XMD:SHA-512\_ELL2\_RO\_ is defined as follows:
@@ -2647,7 +2655,7 @@ Optimized example implementations of the above mappings are given in
 
 This section defines ciphersuites for curve448 and edwards448 {{!RFC7748}}.
 Note that these ciphersuites MUST NOT be used when hashing to decaf448
-{{I-D.irtf-cfrg-ristretto255-decaf448}}.
+{{ristretto255-and-decaf448}}.
 See {{appx-decaf448}} for information on how to hash to that group.
 
 curve448\_XOF:SHAKE256\_ELL2\_RO\_ is defined as follows:
@@ -2931,7 +2939,7 @@ who learns the output of the hash function (or potentially any intermediate valu
 e.g., the output of hash\_to\_field) may be able to carry out a dictionary attack.
 To mitigate such attacks, it is recommended to first execute a more costly key
 derivation function (e.g., PBKDF2 {{?RFC2898}}, scrypt {{?RFC7914}}, or Argon2
-{{?I-D.irtf-cfrg-argon2}}) on the password, then hash the output of that
+{{?RFC9106}}) on the password, then hash the output of that
 function to the target elliptic curve.
 For collision resistance, the hash underlying the key derivation function
 should be chosen according to the guidelines listed in {{hashtofield-expand-xmd}}.
@@ -3313,15 +3321,15 @@ This document does not deal with this complementary problem.
 
 # Hashing to ristretto255 {#appx-ristretto255}
 
-ristretto255 {{I-D.irtf-cfrg-ristretto255-decaf448}} provides a prime-order
+ristretto255 {{ristretto255-and-decaf448}} provides a prime-order
 group based on Curve25519 {{!RFC7748}}.
 This section describes hash\_to\_ristretto255, which implements a random-oracle
 encoding to this group that has a uniform output distribution ({{term-rom}})
 and the same security properties and interface as the hash\_to\_curve function
 ({{roadmap}}).
 
-The ristretto255 API defines a one-way map ({{I-D.irtf-cfrg-ristretto255-decaf448}},
-Section 4.3.4); this section refers to that map as ristretto255\_map.
+The ristretto255 API defines a one-way map ({{ristretto255-and-decaf448,
+Section 4.3.4}}); this section refers to that map as ristretto255\_map.
 
 The hash\_to\_ristretto255 function MUST be instantiated with an expand\_message
 function that conforms to the requirements given in {{hashtofield-expand}}.
@@ -3366,15 +3374,15 @@ REQUIRED identifier is:
 
 # Hashing to decaf448 {#appx-decaf448}
 
-Similar to ristretto255, decaf448 {{I-D.irtf-cfrg-ristretto255-decaf448}} provides
+Similar to ristretto255, decaf448 {{ristretto255-and-decaf448}} provides
 a prime-order group based on Curve448 {{!RFC7748}}.
 This section describes hash\_to\_decaf448, which implements a random-oracle
 encoding to this group that has a uniform output distribution ({{term-rom}})
 and the same security properties and interface as the hash\_to\_curve function
 ({{roadmap}}).
 
-The decaf448 API defines a one-way map ({{I-D.irtf-cfrg-ristretto255-decaf448}},
-Section 5.3.4); this section refers to that map as decaf448\_map.
+The decaf448 API defines a one-way map ({{ristretto255-and-decaf448,
+Section 5.3.4}}); this section refers to that map as decaf448\_map.
 
 The hash\_to\_decaf448 function MUST be instantiated with an expand\_message
 function that conforms to the requirements given in {{hashtofield-expand}}.
@@ -3431,8 +3439,8 @@ Given a Montgomery curve, {{appx-rational-map-mont}} shows
 how to derive a corresponding Weierstrass curve and how to map from that
 curve to the Montgomery curve.
 This mapping can be used to hash to Montgomery or twisted Edwards curves
-via the Shallue-van de Woestijne ({{svdw}}) or Simplified SWU ({{simple-swu}})
-method, as follows:
+via the Shallue-van de Woestijne method ({{svdw}}) or Simplified SWU method ({{simple-swu}}),
+as follows:
 
 - For Montgomery curves, first map to the Weierstrass curve, then convert
 to Montgomery coordinates via the mapping.
@@ -3552,7 +3560,7 @@ The inverse map, from the point (x, y) to the point (s, t), is given by
 - t = y * K
 
 This mapping can be used to apply the Shallue-van de Woestijne
-({{svdw}}) or Simplified SWU ({{simple-swu}}) method to
+method ({{svdw}}) or Simplified SWU method ({{simple-swu}}) to
 Montgomery curves.
 
 # Isogeny maps for suites {#appx-iso}
@@ -3565,7 +3573,7 @@ Wahby and Boneh ({{WB19}}, Section 4.3) show how to evaluate these maps
 in a projective coordinate system ({{projective-coords}}), which avoids
 modular inversions.
 
-Refer to the draft repository {{hash2curve-repo}} for a Sage {{SAGE}} script
+Refer to {{hash2curve-repo}} for a Sage {{SAGE}} script
 that constructs these isogenies.
 
 ## 3-isogeny map for secp256k1 {#appx-iso-secp256k1}
@@ -4026,7 +4034,7 @@ Steps:
 
 This section gives sample implementations optimized for some of the
 elliptic curves listed in {{suites}}.
-Sample Sage {{SAGE}} code for each algorithm can also be found in the
+Sample Sage code {{SAGE}} for each algorithm can also be found in the
 draft repository {{hash2curve-repo}}.
 
 ## Interface and projective coordinate systems {#projective-coords}
@@ -4148,7 +4156,7 @@ is defined in {{map-to-curve25519}}.
 
 Note that the sign of the constant c1 below is chosen as specified
 in {{rational-map}}, i.e., applying the rational map to the edwards25519
-base point yields the curve25519 base point (see erratum {{EID4730}}).
+base point yields the curve25519 base point (see erratum {{Err4730}}).
 
 ~~~ pseudocode
 map_to_curve_elligator2_edwards25519(u)
@@ -4510,7 +4518,7 @@ Steps:
 
 # Scripts for parameter generation {#paramgen}
 
-This section gives Sage {{SAGE}} scripts used to generate parameters for the mappings of {{mappings}}.
+This section gives Sage scripts {{SAGE}} used to generate parameters for the mappings of {{mappings}}.
 
 ## Finding Z for the Shallue-van de Woestijne map {#svdw-z-code}
 
