@@ -21,6 +21,8 @@ author:
     org: Cloudflare, Inc.
     street: 101 Townsend St
     city: San Francisco
+    region: CA
+    code: 94107
     country: United States of America
     email: armfazh@cloudflare.com
  -
@@ -28,7 +30,9 @@ author:
     name: Sam Scott
     org: Cornell Tech
     street: 2 West Loop Rd
-    city: New York, New York 10044
+    city: New York
+    region: New York 
+    code: 10044
     country: United States of America
     email: sam.scott@cornell.edu
  -
@@ -50,6 +54,8 @@ author:
     org: Cloudflare, Inc.
     street: 101 Townsend St
     city: San Francisco
+    region: CA
+    code: 94107
     country: United States of America
     email: caw@heapingbits.net
 
@@ -4557,7 +4563,7 @@ The below function outputs an appropriate Z for the Simplified SWU map ({{simple
 # - F, a field object, e.g., F = GF(2^521 - 1)
 # - A and B, the coefficients of the curve y^2 = x^3 + A * x + B
 def find_z_sswu(F, A, B):
-    R.<xx> = F[]                       # Polynomial ring over F
+    R.&lt;xx&gt; = F[]                       # Polynomial ring over F
     g = xx^3 + F(A) * xx + F(B)        # y^2 = g(x) = x^3 + A * x + B
     ctr = F.gen()
     while True:
