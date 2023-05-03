@@ -1162,7 +1162,7 @@ This document represents the consensus of the Crypto Forum Research Group (CFRG)
 
 # Background {#background}
 
-## Elliptic curves {#bg-curves}
+## Elliptic Curves {#bg-curves}
 
 The following is a brief definition of elliptic curves, with an emphasis on
 important parameters and their relation to hashing to curves.
@@ -1220,7 +1220,7 @@ The table below summarizes quantities relevant to hashing to curves:
 | G | A prime-order subgroup of the points on E. | Destination group to which byte strings are encoded. |
 | r | Order of G. | r is a prime factor of n (usually, the largest such factor). |
 | h | Cofactor, h >= 1. | An integer satisfying n = h * r. |
-{: #definition-table title="Summary of symbols and their definitions."}
+{: #definition-table title="Summary of Symbols and Their Definitions"}
 
 ## Terminology
 
@@ -1275,7 +1275,7 @@ encodings do not leak information through side channels.
 {{VR20}} is one example of this type of leakage leading to a security vulnerability.
 See {{security-considerations-constant}} for further discussion.
 
-### Random oracle encodings {#term-rom}
+### Random Oracle Encodings {#term-rom}
 
 A random-oracle encoding satisfies a strong property: it can be proved
 indifferentiable from a random oracle {{MRH04}} under a suitable assumption.
@@ -1302,7 +1302,7 @@ In contrast, this document is concerned with encodings from arbitrary strings
 to elliptic curve points.
 This document does not cover serialization or deserialization.
 
-### Domain separation {#term-domain-separation}
+### Domain Separation {#term-domain-separation}
 
 Cryptographic protocols proven secure in the random oracle model are often analyzed
 under the assumption that the random oracle only answers queries associated
@@ -1337,7 +1337,7 @@ The algorithms specified in this document take a different approach to ensuring
 injectivity; see {{hashtofield-expand}} and {{security-considerations-domain-separation-expmsg-var}}
 for more details.
 
-# Encoding byte strings to elliptic curves {#roadmap}
+# Encoding Byte Strings to Elliptic Curves {#roadmap}
 
 This section presents a general framework and interface for encoding byte strings
 to points on an elliptic curve. The constructions in this section rely on three
@@ -1436,7 +1436,7 @@ different distributions:
 Each hash-to-curve suite in {{suites}} instantiates one of these encoding
 functions for a specifc elliptic curve.
 
-## Domain separation requirements {#domain-separation}
+## Domain Separation Requirements {#domain-separation}
 
 All uses of the encoding functions defined in this document MUST include
 domain separation ({{term-domain-separation}}) to avoid interfering with
@@ -1494,7 +1494,7 @@ without null termination, which is the RECOMMENDED format. Other encodings
 can be used, but in all cases the encoding as a sequence of bytes MUST be
 specified unambiguously.
 
-# Utility functions {#utility}
+# Utility Functions {#utility}
 
 Algorithms in this document use the utility functions described below,
 plus standard arithmetic operations (addition, multiplication, modular
@@ -1582,7 +1582,7 @@ material {{MOV96}} {{CFADLNV05}}.
     are ASCII literals, but strxor is defined for arbitrary byte strings).
     In this document, strxor is only applied to inputs of equal length.
 
-## The sgn0 function {#sgn0-function}
+## The sgn0 Function {#sgn0-function}
 
 This section defines a generic sgn0 implementation that applies to any field F = GF(p^m).
 It also gives simplified implementations for the cases F = GF(p) and F = GF(p^2).
@@ -1645,7 +1645,7 @@ Steps:
 5. return s
 ~~~
 
-# Hashing to a finite field {#hashtofield}
+# Hashing to a Finite Field {#hashtofield}
 
 The hash\_to\_field function hashes a byte string msg of arbitrary length into
 one or more elements of a field F.
@@ -1705,7 +1705,7 @@ corresponding curve.
 See {{security-considerations-targets}} for more details, and
 {{new-suite}} for guidelines on choosing k for a given curve.
 
-## Efficiency considerations in extension fields {#hashtofield-exteff}
+## Efficiency Considerations in Extension Fields {#hashtofield-exteff}
 
 The hash\_to\_field function described in this section is inefficient for certain
 extension fields. Specifically, when hashing to an element of the extension
@@ -1727,7 +1727,7 @@ For example, Pornin {{P20}} describes a method for hashing to GF(9767^19) that m
 these requirements while using fewer output bits from expand\_message than
 hash\_to\_field would for that field.
 
-## hash\_to\_field implementation {#hashtofield-impl}
+## hash\_to\_field Implementation {#hashtofield-impl}
 
 The following procedure implements hash\_to\_field.
 
@@ -1915,7 +1915,7 @@ Steps:
 5. return uniform_bytes
 ~~~
 
-### Using DSTs longer than 255 bytes {#hashtofield-expand-dst}
+### Using DSTs Longer Than 255 Bytes {#hashtofield-expand-dst}
 
 The expand\_message variants defined in this section accept domain separation
 tags of at most 255 bytes.
@@ -1939,7 +1939,7 @@ Here, a\_very\_long\_DST is the DST whose length is greater than 255 bytes,
 "H2C-OVERSIZE-DST-" is a 17-byte ASCII string literal, and
 k is the target security level in bits.
 
-### Defining other expand\_message variants {#hashtofield-expand-other}
+### Defining Other expand\_message Variants {#hashtofield-expand-other}
 
 When defining a new expand\_message variant, the most important consideration
 is that hash\_to\_field models expand\_message as a random oracle.
@@ -1978,7 +1978,7 @@ of H. Adding DST as a suffix is the RECOMMENDED approach.
 In addition, each expand\_message variant MUST specify a unique EXP\_TAG
 that identifies that variant in a Suite ID. See {{suiteIDformat}} for more information.
 
-# Deterministic mappings {#mappings}
+# Deterministic Mappings {#mappings}
 
 The mappings in this section are suitable for implementing either nonuniform
 or uniform encodings using the constructions in {{roadmap}}.
@@ -1989,7 +1989,7 @@ Note that mappings in this section are not interchangeable: different mappings
 will almost certainly output different points when evaluated on the same input.
 
 
-## Choosing a mapping function {#choosing-mapping}
+## Choosing a Mapping Function {#choosing-mapping}
 
 This section gives brief guidelines on choosing a mapping function
 for a given elliptic curve.
@@ -2048,7 +2048,7 @@ As a rough guide, the following conventions are used in pseudocode:
 - c1, c2, ...: constant values, which can be computed in advance.
 
 
-## Sign of the resulting point {#point-sign}
+## Sign of the Resulting Point {#point-sign}
 
 In general, elliptic curves have equations of the form y^2 = g(x).
 The mappings in this section first identify an x such that
@@ -2063,7 +2063,7 @@ Two main reasons support this approach: first, this covers elliptic curves
 over any field in a uniform way, and second, it gives implementors leeway
 in optimizing square-root implementations.
 
-## Exceptional cases {#map-exceptions}
+## Exceptional Cases {#map-exceptions}
 
 Mappings may have exceptional cases, i.e., inputs u
 on which the mapping is undefined. These cases must be handled
@@ -2074,7 +2074,7 @@ how to handle them in constant time. Note that all implementations SHOULD use
 inv0 ({{utility}}) to compute multiplicative inverses, to avoid exceptional
 cases that result from attempting to compute the inverse of 0.
 
-## Mappings for Weierstrass curves {#weierstrass}
+## Mappings for Weierstrass Curves {#weierstrass}
 
 The mappings in this section apply to a target curve E defined by the equation
 
@@ -2084,7 +2084,7 @@ The mappings in this section apply to a target curve E defined by the equation
 
 where 4 * A^3 + 27 * B^2 != 0.
 
-### Shallue-van de Woestijne method {#svdw}
+### Shallue-van de Woestijne Method {#svdw}
 
 Shallue and van de Woestijne {{SW06}} describe a mapping that applies to
 essentially any elliptic curve.
@@ -2145,7 +2145,7 @@ Operations:
 {{straightline-svdw}} gives an example straight-line implementation of this
 mapping.
 
-### Simplified Shallue-van de Woestijne-Ulas method {#simple-swu}
+### Simplified Shallue-van de Woestijne-Ulas Method {#simple-swu}
 
 The function map\_to\_curve\_simple\_swu(u) implements a simplification
 of the Shallue-van de Woestijne-Ulas mapping {{U07}} described by Brier et
@@ -2253,7 +2253,7 @@ Operations:
 
 See {{hash2curve-repo}} or {{WB19}} Section 4.3 for details on implementing the isogeny map.
 
-## Mappings for Montgomery curves {#montgomery}
+## Mappings for Montgomery Curves {#montgomery}
 
 The mapping defined in this section applies to a target curve M defined by the equation
 
@@ -2261,7 +2261,7 @@ The mapping defined in this section applies to a target curve M defined by the e
     K * t^2 = s^3 + J * s^2 + s
 ~~~
 
-### Elligator 2 method {#elligator2}
+### Elligator 2 Method {#elligator2}
 
 Bernstein, Hamburg, Krasnova, and Lange give a mapping that applies to any
 curve with a point of order 2 {{BHKL13}}, which they call Elligator 2.
@@ -2303,7 +2303,7 @@ mapping.
 {{ell2-opt}} gives optimized straight-line procedures that apply to specific
 classes of curves and base fields.
 
-## Mappings for twisted Edwards curves {#twisted-edwards}
+## Mappings for Twisted Edwards Curves {#twisted-edwards}
 
 Twisted Edwards curves (a class of curves that includes Edwards curves)
 are given by the equation
@@ -2324,7 +2324,7 @@ This method of hashing to a twisted Edwards curve thus requires identifying a
 corresponding Montgomery curve and rational map.
 We describe how to identify such a curve and map immediately below.
 
-### Rational maps from Montgomery to twisted Edwards curves {#rational-map}
+### Rational Maps from Montgomery to Twisted Edwards Curves {#rational-map}
 
 There are two ways to select a Montgomery curve and rational map
 for use when hashing to a given twisted Edwards curve.
@@ -2352,7 +2352,7 @@ with existing software.
 Montgomery form or rational map, the map given in {{appx-rational-map}}
 SHOULD be used.
 
-### Elligator 2 method {#ell2edwards}
+### Elligator 2 Method {#ell2edwards}
 
 Preconditions: A twisted Edwards curve E and an equivalent Montgomery
 curve M meeting the requirements in {{rational-map}}.
@@ -2387,7 +2387,7 @@ Output: (v, w), a point on E.
 3. return (v, w)
 ~~~
 
-# Clearing the cofactor {#cofactor-clearing}
+# Clearing the Cofactor {#cofactor-clearing}
 
 The mappings of {{mappings}} always output a point on the elliptic curve,
 i.e., a point in a group of order h * r ({{bg-curves}}). Obtaining a point in G
@@ -2437,7 +2437,7 @@ by the equivalent h\_eff; these two methods give the same result.
 Note that in this case scalar multiplication by the cofactor h does not
 generally give the same result as the fast method, and MUST NOT be used.
 
-# Suites for hashing {#suites}
+# Suites for Hashing {#suites}
 
 This section lists recommended suites for hashing to standard elliptic curves.
 
@@ -2501,7 +2501,7 @@ uniform encoding for security.
 | BLS12-381 G2 | BLS12381G2\_XMD:SHA-256\_SSWU\_RO\_ BLS12381G2\_XMD:SHA-256\_SSWU\_NU\_ | {{suites-bls12381}} |
 {: #suite-table title="Suites for hashing to elliptic curves."}
 
-## Implementing a hash-to-curve suite {#suites-howto}
+## Implementing a Hash-to-Curve Suite {#suites-howto}
 
 A hash-to-curve suite requires the following functions.
 Note that some of these require utility functions from {{utility}}.
@@ -2781,7 +2781,7 @@ Budroni and Pintore ({{BP17}}, Section 4.1), and summarized in {{clear-cofactor-
 An optimized example implementation of the Simplified SWU mapping
 to the curve E' isogenous to BLS12-381 G2 is given in {{straightline-sswu}}.
 
-## Defining a new hash-to-curve suite {#new-suite}
+## Defining a New Hash-to-Curve Suite {#new-suite}
 
 For elliptic curves not listed elsewhere in {{suites}}, a new hash-to-curve
 suite can be defined by:
@@ -2809,7 +2809,7 @@ suite can be defined by:
 
 8. Construct a Suite ID following the guidelines in {{suiteIDformat}}.
 
-## Suite ID naming conventions {#suiteIDformat}
+## Suite ID Naming Conventions {#suiteIDformat}
 
 Suite IDs MUST be constructed as follows:
 
@@ -2878,16 +2878,16 @@ Suite ID fields MUST be chosen as follows:
     version of a uniform encoding suite, while "RO:V02:FOO01:BAR17" might be
     used to indicate a variant of that suite.
 
-# IANA considerations
+# IANA Considerations
 
 This document has no IANA actions.
 
-# Security considerations {#security-considerations}
+# Security Considerations {#security-considerations}
 
 This section contains additional security considerations about the hash-to-curve mechanisms
 described in this document.
 
-## Properties of encodings {#security-considerations-props}
+## Properties of Encodings {#security-considerations-props}
 
 Each encoding type ({{roadmap}}) accepts an arbitrary byte string and maps
 it to a point on the curve sampled from a distribution that depends on the
@@ -2924,7 +2924,7 @@ by indifferentiable functionalities.
 This limitation should be considered when analyzing the security of protocols
 relying on the hash\_to\_curve function.
 
-## Hashing passwords {#security-considerations-passwords}
+## Hashing Passwords {#security-considerations-passwords}
 
 When hashing passwords using any function described in this document, an adversary
 who learns the output of the hash function (or potentially any intermediate value,
@@ -2936,7 +2936,7 @@ function to the target elliptic curve.
 For collision resistance, the hash underlying the key derivation function
 should be chosen according to the guidelines listed in {{hashtofield-expand-xmd}}.
 
-## Constant-time requirements {#security-considerations-constant}
+## Constant-Time Requirements {#security-considerations-constant}
 
 Constant-time implementations of all functions in this document are STRONGLY
 RECOMMENDED for all uses, to avoid leaking information via side channels.
@@ -2951,7 +2951,7 @@ channels (e.g., power or electromagnetic side channels) may be pertinent.
 Defending against such leakage is outside the scope of this document, because
 the nature of the leakage and the appropriate defense depend on the application.
 
-## encode\_to\_curve: output distribution and indifferentiability {#security-considerations-encode}
+## encode\_to\_curve: Output Distribution and Indifferentiability {#security-considerations-encode}
 
 The encode\_to\_curve function ({{roadmap}}) returns points sampled from a
 distribution that is statistically far from uniform.
@@ -2996,7 +2996,7 @@ By hypothesis, Hc() samples from the distribution induced by map\_to\_curve
 on a uniformly random input element of F, so this value is uniformly random
 and induces the correct point P when passed through map\_to\_curve.
 
-## hash\_to\_field security {#security-considerations-hash-to-field}
+## hash\_to\_field Security {#security-considerations-hash-to-field}
 
 The hash\_to\_field function defined in {{hashtofield}} is indifferentiable
 from a random oracle {{MRH04}} when expand\_message ({{hashtofield-expand}})
@@ -3017,7 +3017,7 @@ one member of this equivalence class at random and outputs the byte string
 returned by I2OSP.
 (Notice that this is essentially the inverse of the hash\_to\_field procedure.)
 
-## expand\_message\_xmd security {#security-considerations-expand-xmd}
+## expand\_message\_xmd Security {#security-considerations-expand-xmd}
 
 The expand\_message\_xmd function defined in {{hashtofield-expand-xmd}} is
 indifferentiable from a random oracle {{MRH04}} when one of the following holds:
@@ -3055,7 +3055,7 @@ function meeting one of the above criteria.
 Applications that use expand\_message\_xmd outside of hash\_to\_field should
 ensure domain separation by picking a distinct value for DST.
 
-## Domain separation for expand\_message variants {#security-considerations-domain-separation-expmsg-var}
+## Domain Separation for expand\_message Variants {#security-considerations-domain-separation-expmsg-var}
 
 As discussed in {{term-domain-separation}}, the purpose of domain separation
 is to ensure that security analyses of cryptographic protocols that query
@@ -3195,7 +3195,7 @@ These methods can be used to instantiate multiple domain separated functions
     HKDF-Expand step is domain separated by the same argument as for
     HMAC-H with a high-entropy secret key (since PRK is exactly that).
 
-## Target security levels {#security-considerations-targets}
+## Target Security Levels {#security-considerations-targets}
 
 Each ciphersuite specifies a target security level (in bits) for the underlying
 curve. This parameter ensures the corresponding hash\_to\_field instantiation is
@@ -3222,7 +3222,7 @@ Filippo Valsorda, and Mathy Vanhoef for helpful reviews and feedback.
 --- back
 
 
-# Related work {#related}
+# Related Work {#related}
 
 The problem of mapping arbitrary bit strings to elliptic curve points
 has been the subject of both practical and theoretical research.
@@ -3416,7 +3416,7 @@ REQUIRED identifier is:
 
     decaf448_XOF:SHAKE256_D448MAP_RO_
 
-# Rational maps {#appx-rational-map}
+# Rational Maps {#appx-rational-map}
 
 This section gives rational maps that can be used when hashing to
 twisted Edwards or Montgomery curves.
@@ -3444,7 +3444,7 @@ to the target twisted Edwards curve.
 Map to this Weierstrass curve, then convert to Edwards coordinates
 via the mapping.
 
-## Generic Montgomery to twisted Edwards map {#appx-rational-map-edw}
+## Generic Montgomery to Twisted Edwards Map {#appx-rational-map-edw}
 
 This section gives a generic birational map between twisted Edwards
 and Montgomery curves.
@@ -3525,7 +3525,7 @@ When the goal is to map into the prime-order subgroup of the Montgomery
 curve, it suffices to return the identity point on the Montgomery curve
 in the exceptional cases.
 
-## Weierstrass to Montgomery map {#appx-rational-map-mont}
+## Weierstrass to Montgomery Map {#appx-rational-map-mont}
 
 The rational map from the point (s, t) on the Montgomery curve
 
@@ -3555,7 +3555,7 @@ This mapping can be used to apply the Shallue-van de Woestijne
 ({{svdw}}) or Simplified SWU ({{simple-swu}}) method to
 Montgomery curves.
 
-# Isogeny maps for suites {#appx-iso}
+# Isogeny Maps for Suites {#appx-iso}
 
 This section specifies the isogeny maps for the secp256k1 and BLS12-381
 suites listed in {{suites}}.
@@ -3568,7 +3568,7 @@ modular inversions.
 Refer to the draft repository {{hash2curve-repo}} for a Sage {{SAGE}} script
 that constructs these isogenies.
 
-## 3-isogeny map for secp256k1 {#appx-iso-secp256k1}
+## 3-Isogeny Map for secp256k1 {#appx-iso-secp256k1}
 
 This section specifies the isogeny map for the secp256k1 suite listed in {{suites-secp256k1}}.
 
@@ -3607,7 +3607,7 @@ The constants used to compute y\_den are as follows:
 - k\_(4,1) = 0x7a06534bb8bdb49fd5e9e6632722c2989467c1bfc8e8d978dfb425d2685c2573
 - k\_(4,2) = 0x6484aa716545ca2cf3a70c3fa8fe337e0a3d21162f0d6299a7bf8192bfd2a76f
 
-## 11-isogeny map for BLS12-381 G1 {#appx-iso-bls12381-g1}
+## 11-Isogeny Map for BLS12-381 G1 {#appx-iso-bls12381-g1}
 
 The 11-isogeny map from (x', y') on E' to (x, y) on E is given by the following rational functions:
 
@@ -3684,7 +3684,7 @@ The constants used to compute y\_den are as follows:
 - k\_(4,13) = 0x2660400eb2e4f3b628bdd0d53cd76f2bf565b94e72927c1cb748df27942480e420517bd8714cc80d1fadc1326ed06f7
 - k\_(4,14) = 0xe0fa1d816ddc03e6b24255e0d7819c171c40f65e273b853324efcd6356caa205ca2f570f13497804415473a1d634b8f
 
-## 3-isogeny map for BLS12-381 G2 {#appx-iso-bls12381-g2}
+## 3-Isogeny Map for BLS12-381 G2 {#appx-iso-bls12381-g2}
 
 The 3-isogeny map from (x', y') on E' to (x, y) on E is given by the following rational functions:
 
@@ -3722,14 +3722,14 @@ The constants used to compute y\_den are as follows:
 - k\_(4,2) = 0x12 + 0x1a0111ea397fe69a4b1ba7b6434bacd764774b84f38512bf6730d2a0f6b0f6241eabfffeb153ffffb9feffffffffaa99 * I
 
 
-# Straight-line implementations of deterministic mappings {#straightline}
+# Straight-Line Implementations of Deterministic Mappings {#straightline}
 
 This section gives straight-line implementations of the mappings of {{mappings}}.
 These implementations are generic, i.e., they are defined for any curve and field.
 {{samplecode}} gives further implementations that are optimized for specific
 classes of curves and fields.
 
-## Shallue-van de Woestijne method {#straightline-svdw}
+## Shallue-van de Woestijne Method {#straightline-svdw}
 
 This section gives a straight-line implementation of the Shallue and van
 de Woestijne method for any Weierstrass curve of the form given in
@@ -3791,7 +3791,7 @@ Steps:
 36. return (x, y)
 ~~~
 
-## Simplified SWU method {#straightline-sswu}
+## Simplified SWU Method {#straightline-sswu}
 
 This section gives a straight-line implementation of the simplified
 SWU method for any Weierstrass curve of the form given in {{weierstrass}}.
@@ -3835,7 +3835,7 @@ Steps:
 26. return (x, y)
 ~~~
 
-### sqrt_ratio subroutines {#straightline-sswu-sqrt-ratio}
+### sqrt_ratio Subroutines {#straightline-sswu-sqrt-ratio}
 
 This section defines three variants of the sqrt_ratio subroutine used by the
 above procedure.
@@ -3845,7 +3845,7 @@ for specific fields.
 The routines given in this section depend on the constant Z from the simplified SWU map.
 For correctness, sqrt_ratio and map_to_curve_simple_swu MUST use the same value for Z.
 
-#### sqrt_ratio for any field
+#### sqrt_ratio for Any Field
 
 ~~~ pseudocode
 sqrt_ratio(u, v)
@@ -3898,7 +3898,7 @@ Procedure:
 27. return (isQR, tv3)
 ~~~
 
-#### optimized sqrt_ratio for q = 3 mod 4
+#### Optimized sqrt_ratio for q = 3 mod 4
 
 ~~~ pseudocode
 sqrt_ratio_3mod4(u, v)
@@ -3931,7 +3931,7 @@ Procedure:
 11. return (isQR, y)
 ~~~
 
-#### optimized sqrt_ratio for q = 5 mod 8
+#### Optimized sqrt_ratio for q = 5 mod 8
 
 ~~~ pseudocode
 sqrt_ratio_5mod8(u, v)
@@ -3978,7 +3978,7 @@ Steps:
 24. return (isQR, y)
 ~~~
 
-## Elligator 2 method {#straightline-ell2}
+## Elligator 2 Method {#straightline-ell2}
 
 This section gives a straight-line implementation of the Elligator 2
 method for any Montgomery curve of the form given in {{montgomery}}.
@@ -4022,14 +4022,14 @@ Steps:
 22. return (s, t)
 ~~~
 
-# Curve-specific optimized sample code {#samplecode}
+# Curve-Specific Optimized Sample Code {#samplecode}
 
 This section gives sample implementations optimized for some of the
 elliptic curves listed in {{suites}}.
 Sample Sage {{SAGE}} code for each algorithm can also be found in the
 draft repository {{hash2curve-repo}}.
 
-## Interface and projective coordinate systems {#projective-coords}
+## Interface and Projective Coordinate Systems {#projective-coords}
 
 The sample code in this section uses a different interface than
 the mappings of {{mappings}}.
@@ -4279,7 +4279,7 @@ Steps:
 38. return (xEn, xEd, yEn, yEd)
 ~~~
 
-### Montgomery curves with q = 3 (mod 4) {#ell2-map-to-3mod4}
+### Montgomery Curves with q = 3 (mod 4) {#ell2-map-to-3mod4}
 
 The following is a straight-line implementation of Elligator 2
 that applies to any Montgomery curve defined over GF(q) where q = 3 (mod 4).
@@ -4334,7 +4334,7 @@ Steps:
 33. return (xn, xd, y, 1)
 ~~~
 
-###  Montgomery curves with q = 5 (mod 8) {#ell2-map-to-5mod8}
+###  Montgomery Curves with q = 5 (mod 8) {#ell2-map-to-5mod8}
 
 The following is a straight-line implementation of Elligator 2
 that applies to any Montgomery curve defined over GF(q) where q = 5 (mod 8).
@@ -4404,7 +4404,7 @@ Steps:
 45. return (xn, xd, y, 1)
 ~~~
 
-## Cofactor clearing for BLS12-381 G2 {#clear-cofactor-bls12381-g2}
+## Cofactor Clearing for BLS12-381 G2 {#clear-cofactor-bls12381-g2}
 
 The curve BLS12-381, whose parameters are defined in {{suites-bls12381-g2}},
 admits an efficiently-computable endomorphism psi that can be used to
@@ -4508,11 +4508,11 @@ Steps:
 11. return Q
 ~~~
 
-# Scripts for parameter generation {#paramgen}
+# Scripts for Parameter Generation {#paramgen}
 
 This section gives Sage {{SAGE}} scripts used to generate parameters for the mappings of {{mappings}}.
 
-## Finding Z for the Shallue-van de Woestijne map {#svdw-z-code}
+## Finding Z for the Shallue-van de Woestijne Map {#svdw-z-code}
 
 The below function outputs an appropriate Z for the Shallue and van de Woestijne map ({{svdw}}).
 
@@ -4593,7 +4593,7 @@ def find_z_ell2(F):
         ctr += 1
 ~~~
 
-# sqrt and is\_square functions {#appx-sqrt}
+# sqrt and is\_square Functions {#appx-sqrt}
 
 This section defines special-purpose sqrt functions for the three most common cases,
 q = 3 (mod 4), q = 5 (mod 8), and q = 9 (mod 16),
@@ -4673,7 +4673,7 @@ Procedure:
 11. return z
 ~~~
 
-## Constant-time Tonelli-Shanks algorithm {#sqrt-ts}
+## Constant-Time Tonelli-Shanks Algorithm {#sqrt-ts}
 
 This algorithm is a constant-time version of the classic Tonelli-Shanks algorithm
 ({{C93}}, Algorithm 1.5.1) due to Sean Bowe, Jack Grigg, and Eirik Ogilvie-Wigley {{jubjub-fq}},
@@ -4752,7 +4752,7 @@ Procedure:
 ~~~
 
 
-# Suite test vectors {#testvectors}
+# Suite Test Vectors {#testvectors}
 
 This section gives test vectors for each suite defined in {{suites}}.
 The test vectors in this section were generated using code that is
@@ -6971,7 +6971,7 @@ Q.y     = 1260d6e0987eae96af9ebe551e08de22b37791d53f4db9e0d59da7
 ~~~
 
 
-# Expand test vectors {#expand-testvectors}
+# Expand Test Vectors {#expand-testvectors}
 
 This section gives test vectors for expand_message variants specified in {{hashtofield-expand}}.
 The test vectors in this section were generated using code that is
@@ -7195,7 +7195,7 @@ uniform_bytes = 546aff5444b5b79aa6148bd81728704c32decb73a3ba76e9
 
 ~~~
 
-## expand_message_xmd(SHA-256) (long DST)
+## expand_message_xmd(SHA-256) (Long DST)
 
 ~~~
 
@@ -7831,7 +7831,7 @@ uniform_bytes = 9d763a5ce58f65c91531b4100c7266d479a5d9777ba76169
 
 ~~~
 
-## expand_message_xof(SHAKE128) (long DST)
+## expand_message_xof(SHAKE128) (Long DST)
 
 ~~~
 
