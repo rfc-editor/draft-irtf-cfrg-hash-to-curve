@@ -1666,7 +1666,7 @@ This document defines two variants of expand\_message: one appropriate
 for hash functions like SHA-2 {{FIPS180-4}} or SHA-3 {{FIPS202}}, and another
 appropriate for extendable-output functions such as SHAKE128 {{FIPS202}}.
 Security considerations for each expand\_message variant are discussed
-below (Sections {{<hashtofield-expand-xmd}} amd {{<hashtofield-expand-xof}}).
+below (Sections {{<hashtofield-expand-xmd}} and {{<hashtofield-expand-xof}}).
 
 Implementors MUST NOT use rejection sampling to generate a uniformly random
 element of F, to ensure that the hash\_to\_field function is amenable to
