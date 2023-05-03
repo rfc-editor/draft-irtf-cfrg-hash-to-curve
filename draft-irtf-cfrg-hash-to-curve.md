@@ -58,11 +58,6 @@ normative:
     date: July, 2016
 
 informative:
-BLS-Signatures: I-D.irtf-cfrg-bls-signature
-ristretto255-and-decaf448: I-D.irtf-cfrg-ristretto255-decaf448
-OPRFs: I-D.irtf-cfrg-voprf
-VRFs: I-D.irtf-cfrg-vrf
-
   BLS12-381:
     target: https://electriccoin.co/blog/new-snark-curve/
     title: "BLS12-381: New zk-SNARK Elliptic Curve Construction"
@@ -1131,9 +1126,9 @@ as hashing to an elliptic curve, where the hashing procedure provides collision
 resistance and does not reveal the discrete logarithm of the output point.
 Prominent examples of cryptosystems that hash to elliptic curves include
 password-authenticated key exchanges {{BM92}} {{J96}} {{BMP00}} {{p1363.2}}, Identity-Based
-Encryption {{BF01}}, Boneh-Lynn-Shacham signatures {{BLS01}} {{?BLS-Signatures}},
-Verifiable Random Functions {{MRV99}} {{?VRFs}}, and Oblivious Pseudorandom
-Functions {{NR97}} {{?OPRFs}}.
+Encryption {{BF01}}, Boneh-Lynn-Shacham signatures {{BLS01}} {{?I-D.irtf-cfrg-bls-signature}},
+Verifiable Random Functions {{MRV99}} {{?I-D.irtf-cfrg-vrf}}, and Oblivious Pseudorandom
+Functions {{NR97}} {{?I-D.irtf-cfrg-voprf}}.
 
 Unfortunately for implementors, the precise hash function that is suitable
 for a given protocol implemented using a given elliptic curve is often unclear
@@ -2613,7 +2608,7 @@ to P-521 is given in {{straightline-sswu}}.
 
 This section defines ciphersuites for curve25519 and edwards25519 {{!RFC7748}}.
 Note that these ciphersuites MUST NOT be used when hashing to ristretto255
-{{?ristretto255-and-decaf448}}.
+{{?I-D.irtf-cfrg-ristretto255-decaf448}}.
 See {{appx-ristretto255}} for information on how to hash to that group.
 
 curve25519\_XMD:SHA-512\_ELL2\_RO\_ is defined as follows:
@@ -2655,7 +2650,7 @@ Optimized example implementations of the above mappings are given in
 
 This section defines ciphersuites for curve448 and edwards448 {{!RFC7748}}.
 Note that these ciphersuites MUST NOT be used when hashing to decaf448
-{{ristretto255-and-decaf448}}.
+{{I-D.irtf-cfrg-ristretto255-decaf448}}.
 See {{appx-decaf448}} for information on how to hash to that group.
 
 curve448\_XOF:SHAKE256\_ELL2\_RO\_ is defined as follows:
@@ -3321,14 +3316,14 @@ This document does not deal with this complementary problem.
 
 # Hashing to ristretto255 {#appx-ristretto255}
 
-ristretto255 {{ristretto255-and-decaf448}} provides a prime-order
+ristretto255 {{I-D.irtf-cfrg-ristretto255-decaf448}} provides a prime-order
 group based on Curve25519 {{!RFC7748}}.
 This section describes hash\_to\_ristretto255, which implements a random-oracle
 encoding to this group that has a uniform output distribution ({{term-rom}})
 and the same security properties and interface as the hash\_to\_curve function
 ({{roadmap}}).
 
-The ristretto255 API defines a one-way map ({{ristretto255-and-decaf448,
+The ristretto255 API defines a one-way map ({{I-D.irtf-cfrg-ristretto255-decaf448,
 Section 4.3.4}}); this section refers to that map as ristretto255\_map.
 
 The hash\_to\_ristretto255 function MUST be instantiated with an expand\_message
@@ -3374,14 +3369,14 @@ REQUIRED identifier is:
 
 # Hashing to decaf448 {#appx-decaf448}
 
-Similar to ristretto255, decaf448 {{ristretto255-and-decaf448}} provides
+Similar to ristretto255, decaf448 {{I-D.irtf-cfrg-ristretto255-decaf448}} provides
 a prime-order group based on Curve448 {{!RFC7748}}.
 This section describes hash\_to\_decaf448, which implements a random-oracle
 encoding to this group that has a uniform output distribution ({{term-rom}})
 and the same security properties and interface as the hash\_to\_curve function
 ({{roadmap}}).
 
-The decaf448 API defines a one-way map ({{ristretto255-and-decaf448,
+The decaf448 API defines a one-way map ({{I-D.irtf-cfrg-ristretto255-decaf448,
 Section 5.3.4}}); this section refers to that map as decaf448\_map.
 
 The hash\_to\_decaf448 function MUST be instantiated with an expand\_message
