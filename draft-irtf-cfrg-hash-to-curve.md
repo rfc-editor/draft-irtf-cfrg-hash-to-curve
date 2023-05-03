@@ -1198,7 +1198,7 @@ point, which acts as the identity element for the group operation.
 On certain curves (including Weierstrass and Montgomery curves), the identity
 point cannot be represented as an (x, y) coordinate pair.
 
-For security reasons, cryptographic uses of elliptic curves generally require
+For security reasons, cryptographic applications of elliptic curves generally require
 using a (sub)group of prime order.
 Let G be such a subgroup of the curve of prime order r, where n = h * r.
 In this equation, h is an integer called the cofactor.
