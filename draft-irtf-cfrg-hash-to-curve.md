@@ -1233,12 +1233,12 @@ on an elliptic curve E defined over F.
 
 In general, the set of all points that a mapping can produce over all
 possible inputs may be only a subset of the points on an elliptic curve
-(i.e., the mapping may not be subjective).
+(i.e., the mapping may not be surjective).
 In addition, a mapping may output the same point for two or more distinct inputs
 (i.e., the mapping may not be injective).
 For example, consider a mapping from F to an elliptic curve having n points:
 if the number of elements of F is not equal to n,
-then this mapping cannot be bijective (i.e., both injective and subjective),
+then this mapping cannot be bijective (i.e., both injective and surjective),
 since the mapping is defined to be deterministic.
 
 Mappings may also be invertible, meaning that there is an efficient algorithm
