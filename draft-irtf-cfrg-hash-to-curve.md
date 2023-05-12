@@ -1,8 +1,9 @@
 ---
 title: Hashing to Elliptic Curves
 abbrev: hash-to-curve
-docname: draft-irtf-cfrg-hash-to-curve-latest
-date:
+docname: draft-irtf-cfrg-hash-to-curve-16
+submissionType: IRTF
+date: May 2023
 category: info
 workgroup: CFRG
 
@@ -10,6 +11,7 @@ ipr: trust200902
 keyword: Internet-Draft
 
 stand_alone: yes
+smart_quotes: false
 pi: [toc, sortrefs, symrefs]
 
 author:
@@ -19,6 +21,8 @@ author:
     org: Cloudflare, Inc.
     street: 101 Townsend St
     city: San Francisco
+    region: CA
+    code: 94107
     country: United States of America
     email: armfazh@cloudflare.com
  -
@@ -26,7 +30,9 @@ author:
     name: Sam Scott
     org: Cornell Tech
     street: 2 West Loop Rd
-    city: New York, New York 10044
+    city: New York
+    region: New York 
+    code: 10044
     country: United States of America
     email: sam.scott@cornell.edu
  -
@@ -48,6 +54,8 @@ author:
     org: Cloudflare, Inc.
     street: 101 Townsend St
     city: San Francisco
+    region: CA
+    code: 94107
     country: United States of America
     email: caw@heapingbits.net
 
@@ -1158,7 +1166,7 @@ This document represents the consensus of the Crypto Forum Research Group (CFRG)
 
 ## Requirements Notation
 
-{::boilerplate bcp14}
+{::boilerplate bcp14-tagged}
 
 # Background {#background}
 
@@ -1334,7 +1342,7 @@ encoding for each oracle being simulated.
 In the above example, "RO1" and "RO2" have the same length and thus
 satisfy this requirement when used as prefixes.
 The algorithms specified in this document take a different approach to ensuring
-injectivity; see {{hashtofield-expand}} and {{security-considerations-domain-separation-expmsg-var}}
+injectivity; see Sections {{<hashtofield-expand}} and {{<security-considerations-domain-separation-expmsg-var}}
 for more details.
 
 # Encoding Byte Strings to Elliptic Curves {#roadmap}
@@ -1658,7 +1666,7 @@ This document defines two variants of expand\_message: one appropriate
 for hash functions like SHA-2 {{FIPS180-4}} or SHA-3 {{FIPS202}}, and another
 appropriate for extendable-output functions such as SHAKE128 {{FIPS202}}.
 Security considerations for each expand\_message variant are discussed
-below ({{hashtofield-expand-xmd}}, {{hashtofield-expand-xof}}).
+below (Sections {{<hashtofield-expand-xmd}} and {{<hashtofield-expand-xof}}).
 
 Implementors MUST NOT use rejection sampling to generate a uniformly random
 element of F, to ensure that the hash\_to\_field function is amenable to
@@ -1896,7 +1904,7 @@ expand_message_xof(msg, DST, len_in_bytes)
 
 Parameters:
 - H(m, d), an extendable-output function that processes
-           input message m and returns d bytes.
+  input message m and returns d bytes.
 
 Input:
 - msg, a byte string.
@@ -2489,16 +2497,16 @@ uniform encoding for security.
 
 | E            | Suites | Section |
 |--------------|--------|---------|
-| NIST P-256   | P256\_XMD:SHA-256\_SSWU\_RO\_ P256\_XMD:SHA-256\_SSWU\_NU\_ | {{suites-p256}} |
-| NIST P-384   | P384\_XMD:SHA-384\_SSWU\_RO\_ P384\_XMD:SHA-384\_SSWU\_NU\_ | {{suites-p384}} |
-| NIST P-521   | P521\_XMD:SHA-512\_SSWU\_RO\_ P521\_XMD:SHA-512\_SSWU\_NU\_ | {{suites-p521}} |
-| curve25519   | curve25519\_XMD:SHA-512\_ELL2\_RO\_ curve25519\_XMD:SHA-512\_ELL2\_NU\_ | {{suites-25519}} |
-| edwards25519 | edwards25519\_XMD:SHA-512\_ELL2\_RO\_ edwards25519\_XMD:SHA-512\_ELL2\_NU\_ | {{suites-25519}} |
-| curve448     | curve448\_XOF:SHAKE256\_ELL2\_RO\_ curve448\_XOF:SHAKE256\_ELL2\_NU\_ | {{suites-448}} |
-| edwards448   | edwards448\_XOF:SHAKE256\_ELL2\_RO\_ edwards448\_XOF:SHAKE256\_ELL2\_NU\_ | {{suites-448}} |
-| secp256k1    | secp256k1\_XMD:SHA-256\_SSWU\_RO\_ secp256k1\_XMD:SHA-256\_SSWU\_NU\_ | {{suites-secp256k1}} |
-| BLS12-381 G1 | BLS12381G1\_XMD:SHA-256\_SSWU\_RO\_ BLS12381G1\_XMD:SHA-256\_SSWU\_NU\_ | {{suites-bls12381}} |
-| BLS12-381 G2 | BLS12381G2\_XMD:SHA-256\_SSWU\_RO\_ BLS12381G2\_XMD:SHA-256\_SSWU\_NU\_ | {{suites-bls12381}} |
+| NIST P-256   | P256\_XMD:SHA-256\_SSWU\_RO\_ P256\_XMD:SHA-256\_SSWU\_NU\_ | {{<suites-p256}} |
+| NIST P-384   | P384\_XMD:SHA-384\_SSWU\_RO\_ P384\_XMD:SHA-384\_SSWU\_NU\_ | {{<suites-p384}} |
+| NIST P-521   | P521\_XMD:SHA-512\_SSWU\_RO\_ P521\_XMD:SHA-512\_SSWU\_NU\_ | {{<suites-p521}} |
+| curve25519   | curve25519\_XMD:SHA-512\_ELL2\_RO\_ curve25519\_XMD:SHA-512\_ELL2\_NU\_ | {{<suites-25519}} |
+| edwards25519 | edwards25519\_XMD:SHA-512\_ELL2\_RO\_ edwards25519\_XMD:SHA-512\_ELL2\_NU\_ | {{<suites-25519}} |
+| curve448     | curve448\_XOF:SHAKE256\_ELL2\_RO\_ curve448\_XOF:SHAKE256\_ELL2\_NU\_ | {{<suites-448}} |
+| edwards448   | edwards448\_XOF:SHAKE256\_ELL2\_RO\_ edwards448\_XOF:SHAKE256\_ELL2\_NU\_ | {{<suites-448}} |
+| secp256k1    | secp256k1\_XMD:SHA-256\_SSWU\_RO\_ secp256k1\_XMD:SHA-256\_SSWU\_NU\_ | {{<suites-secp256k1}} |
+| BLS12-381 G1 | BLS12381G1\_XMD:SHA-256\_SSWU\_RO\_ BLS12381G1\_XMD:SHA-256\_SSWU\_NU\_ | {{<suites-bls12381}} |
+| BLS12-381 G2 | BLS12381G2\_XMD:SHA-256\_SSWU\_RO\_ BLS12381G2\_XMD:SHA-256\_SSWU\_NU\_ | {{<suites-bls12381}} |
 {: #suite-table title="Suites for hashing to elliptic curves."}
 
 ## Implementing a Hash-to-Curve Suite {#suites-howto}
@@ -2631,8 +2639,8 @@ except for the following parameters:
   - a = -1
   - d = 0x52036cee2b6ffe738cc740797779e89800700a4d4141d8ab75eb4dca135978a3
 - f: Twisted Edwards Elligator 2 method ({{ell2edwards}})
-- M: curve25519 defined in {{!RFC7748}}, Section 4.1
-- rational\_map: the birational map defined in {{!RFC7748}}, Section 4.1
+- M: curve25519 defined in {{!RFC7748, Section 4.1}}
+- rational\_map: the birational map defined in {{!RFC7748, Section 4.1}}
 
 curve25519\_XMD:SHA-512\_ELL2\_NU\_ is identical to curve25519\_XMD:SHA-512\_ELL2\_RO\_,
 except that the encoding type is encode\_to\_curve ({{roadmap}}).
@@ -2673,8 +2681,8 @@ except for the following parameters:
   - a = 1
   - d = -39081
 - f: Twisted Edwards Elligator 2 method ({{ell2edwards}})
-- M: curve448, defined in {{!RFC7748}}, Section 4.2
-- rational\_map: the 4-isogeny map defined in {{!RFC7748}}, Section 4.2
+- M: curve448, defined in {{!RFC7748, Section 4.2}}
+- rational\_map: the 4-isogeny map defined in {{!RFC7748, Section 4.2}}
 
 curve448\_XOF:SHAKE256\_ELL2\_NU\_ is identical to curve448\_XOF:SHAKE256\_ELL2\_RO\_,
 except that the encoding type is encode\_to\_curve ({{roadmap}}).
@@ -2858,8 +2866,8 @@ Suite ID fields MUST be chosen as follows:
   as defined in {{mappings}}. These are defined as follows:
 
     - "SVDW" for or Shallue and van de Woestijne ({{svdw}}).
-    - "SSWU" for Simplified SWU ({{simple-swu}}, {{simple-swu-AB0}}).
-    - "ELL2" for Elligator 2 ({{elligator2}}, {{ell2edwards}}).
+    - "SSWU" for Simplified SWU (Sections {{<simple-swu}} and {{<simple-swu-AB0}}).
+    - "ELL2" for Elligator 2 (Sections {{<elligator2}} and {{<ell2edwards}}).
 
 - ENC\_VAR: a string indicating the encoding type and other information.
   The first two characters of this string indicate whether the suite
@@ -2914,7 +2922,7 @@ to detect and "fix" the identity element.
 When the hash\_to\_curve function ({{roadmap}}) is instantiated with a
 hash\_to\_field function that is indifferentiable from a random oracle
 ({{hashtofield}}), the resulting function is indifferentiable from a random
-oracle ({{MRH04}}, {{BCIMRT10}}, {{FFSTV13}}, {{LBB19}}, {{H20}}).
+oracle ({{MRH04}} {{BCIMRT10}} {{FFSTV13}} {{LBB19}} {{H20}}).
 In many cases such a function can be safely used in cryptographic protocols
 whose security analysis assumes a random oracle that outputs uniformly random
 points on an elliptic curve.
@@ -2968,10 +2976,10 @@ Specifically:
   derive bounds on the Shallue-van de Woestijne mapping ({{svdw}}).
 
 - Fouque and Tibouchi {{FT10}} and Tibouchi {{T14}} derive bounds for the
-  Simplified SWU mapping ({{simple-swu}}, {{simple-swu-AB0}}).
+  Simplified SWU mapping (Sections {{<simple-swu}} and {{<simple-swu-AB0}}).
 
 - Bernstein et al. {{BHKL13}} derive bounds for the Elligator 2 mapping
-  ({{elligator2}}, {{ell2edwards}}).
+  (Sections {{<elligator2}} and {{<ell2edwards}}).
 
 Indifferentiability of encode\_to\_curve follows from an argument similar
 to the one given by Brier et al. {{BCIMRT10}}; we briefly sketch.
@@ -3320,8 +3328,8 @@ encoding to this group that has a uniform output distribution ({{term-rom}})
 and the same security properties and interface as the hash\_to\_curve function
 ({{roadmap}}).
 
-The ristretto255 API defines a one-way map ({{I-D.irtf-cfrg-ristretto255-decaf448}},
-Section 4.3.4); this section refers to that map as ristretto255\_map.
+The ristretto255 API defines a one-way map ({{I-D.irtf-cfrg-ristretto255-decaf448,
+Section 4.3.4}}); this section refers to that map as ristretto255\_map.
 
 The hash\_to\_ristretto255 function MUST be instantiated with an expand\_message
 function that conforms to the requirements given in {{hashtofield-expand}}.
@@ -3373,8 +3381,8 @@ encoding to this group that has a uniform output distribution ({{term-rom}})
 and the same security properties and interface as the hash\_to\_curve function
 ({{roadmap}}).
 
-The decaf448 API defines a one-way map ({{I-D.irtf-cfrg-ristretto255-decaf448}},
-Section 5.3.4); this section refers to that map as decaf448\_map.
+The decaf448 API defines a one-way map ({{I-D.irtf-cfrg-ristretto255-decaf448,
+Section 5.3.4}}); this section refers to that map as decaf448\_map.
 
 The hash\_to\_decaf448 function MUST be instantiated with an expand\_message
 function that conforms to the requirements given in {{hashtofield-expand}}.
