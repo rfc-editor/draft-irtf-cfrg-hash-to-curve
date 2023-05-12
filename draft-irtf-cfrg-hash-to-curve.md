@@ -2262,7 +2262,7 @@ Operations:
 3. return (x, y)
 ~~~
 
-See {{hash2curve-repo}} or Section 4.3 or {{WB19}} for details on implementing the isogeny map.
+See {{hash2curve-repo}} or Section 4.3 of {{WB19}} for details on implementing the isogeny map.
 
 ## Mappings for Montgomery Curves {#montgomery}
 
