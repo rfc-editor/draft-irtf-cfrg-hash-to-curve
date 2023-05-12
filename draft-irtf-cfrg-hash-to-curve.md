@@ -1876,7 +1876,7 @@ This is necessary for security when H is a Merkle-Damgaard hash, e.g., SHA-2
 (see {{security-considerations-expand-xmd}}).
 Hashing this additional data means that the cost of computing b\_0 is higher
 than the cost of simply computing H(msg).
-In most settings this overhead is negligible, because the cost of evaluating
+In most settings, this overhead is negligible, because the cost of evaluating
 H is much less than the other costs involved in hashing to a curve.
 
 It is possible, however, to entirely avoid this overhead by taking advantage
@@ -1884,7 +1884,7 @@ of the fact that Z\_pad depends only on H, and not on the arguments to
 expand\_message\_xmd.
 To do so, first precompute and save the internal state of H after ingesting
 Z\_pad. Then, when computing b\_0, initialize H using the saved state.
-Further details are implementation dependent, and beyond the scope of this document.
+Further details are implementation dependent and are beyond the scope of this document.
 
 ### expand\_message\_xof {#hashtofield-expand-xof}
 
@@ -1981,7 +1981,7 @@ to avoid this issue.
 cryptographic primitives inside of expand\_message are domain separated
 from invocations outside of expand\_message.
 For example, if the expand\_message variant uses a hash function H, an encoding
-of DST MUST be added either as a prefix or a suffix of the input to each invocation
+of DST MUST be added as either a prefix or a suffix of the input to each invocation
 of H. Adding DST as a suffix is the RECOMMENDED approach.
 
 - SHOULD read msg exactly once, for efficiency when msg is long.
