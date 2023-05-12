@@ -1808,7 +1808,7 @@ The expand\_message\_xmd function produces a uniformly random byte string using
 a cryptographic hash function H that outputs b bits. For security, H MUST meet
 the following requirements:
 
-- The number of bits output by H MUST be b >= 2 * k, for k the target
+- The number of bits output by H MUST be b >= 2 * k, where k is the target
 security level in bits, and b MUST be divisible by 8.
 The first requirement ensures k-bit collision resistance; the second
 ensures uniformity of expand\_message\_xmd's output.
