@@ -4563,7 +4563,7 @@ The below function outputs an appropriate Z for the Simplified SWU map ({{simple
 # - F, a field object, e.g., F = GF(2^521 - 1)
 # - A and B, the coefficients of the curve y^2 = x^3 + A * x + B
 def find_z_sswu(F, A, B):
-    R.&lt;xx&gt; = F[]                       # Polynomial ring over F
+    R.<xx> = F[]                       # Polynomial ring over F
     g = xx^3 + F(A) * xx + F(B)        # y^2 = g(x) = x^3 + A * x + B
     ctr = F.gen()
     while True:
