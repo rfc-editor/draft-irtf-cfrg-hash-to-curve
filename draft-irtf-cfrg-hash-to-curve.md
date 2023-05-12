@@ -1170,7 +1170,7 @@ For further reference on elliptic curves, consult {{CFADLNV05}} or {{W08}}.
 
 Let F be the finite field GF(q) of prime characteristic p > 3.
 (This document does not consider elliptic curves over fields of characteristic 2 or 3.)
-In most cases F is a prime field, so q = p.
+In most cases, F is a prime field, so q = p.
 Otherwise, F is an extension field, so q = p^m for an integer m > 1.
 This document writes elements of extension fields
 in a primitive element or polynomial basis, i.e., as a vector
@@ -1238,7 +1238,7 @@ In addition, a mapping may output the same point for two or more distinct inputs
 (i.e., the mapping may not be injective).
 For example, consider a mapping from F to an elliptic curve having n points:
 if the number of elements of F is not equal to n,
-then this mapping cannot be bijective (i.e., both injective and surjective)
+then this mapping cannot be bijective (i.e., both injective and surjective),
 since the mapping is defined to be deterministic.
 
 Mappings may also be invertible, meaning that there is an efficient algorithm
@@ -1292,7 +1292,7 @@ See {{security-considerations-props}} for further discussion.
 ### Serialization {#term-serialization}
 
 A procedure related to encoding is the conversion of an elliptic curve point to a bit string.
-This is called serialization, and is typically used for compactly storing or transmitting points.
+This is called serialization, and it is typically used for compactly storing or transmitting points.
 The inverse operation, deserialization, converts a bit string to an elliptic curve point.
 For example, {{SEC1}} and {{p1363a}} give standard methods for serialization and deserialization.
 
@@ -1324,7 +1324,7 @@ one might define
     RO2(x) := RO("RO2" || x)
 
 where \|\| is the concatenation operator.
-In this example, "RO1" and "RO2" are called domain separation tags;
+In this example, "RO1" and "RO2" are called domain separation tags (DSTs);
 they ensure that queries to RO1 and RO2 cannot result in identical
 queries to RO, meaning that it is safe to treat RO1 and RO2 as
 independent oracles.
