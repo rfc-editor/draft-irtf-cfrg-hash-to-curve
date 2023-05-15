@@ -2418,9 +2418,9 @@ some scalar h\_eff whose value is determined by the method and the curve.
 Examples of fast cofactor clearing methods include the following:
 
 - For certain pairing-friendly curves having subgroup G2 over an extension
-  field, Scott et al. {{SBCDK09}} describe a method for fast cofactor clearing
+  field, Scott et al.&nbsp;{{SBCDK09}} describe a method for fast cofactor clearing
   that exploits an efficiently-computable endomorphism. Fuentes-Castaneda
-  et al. {{FKR11}} propose an alternative method that is sometimes more efficient.
+  et al.&nbsp;{{FKR11}} propose an alternative method that is sometimes more efficient.
   Budroni and Pintore {{BP17}} give concrete instantiations of these methods
   for Barreto-Lynn-Scott pairing-friendly curves {{BLS03}}.
   This method is described for the specific case of BLS12-381 in
@@ -2927,7 +2927,7 @@ oracle ({{MRH04}} {{BCIMRT10}} {{FFSTV13}} {{LBB19}} {{H20}}).
 In many cases such a function can be safely used in cryptographic protocols
 whose security analysis assumes a random oracle that outputs uniformly random
 points on an elliptic curve.
-As Ristenpart et al. discuss in {{RSS11}}, however, not all security proofs
+As Ristenpart et al.&nbsp;discuss in {{RSS11}}, however, not all security proofs
 that rely on random oracles continue to hold when those oracles are replaced
 by indifferentiable functionalities.
 This limitation should be considered when analyzing the security of protocols
@@ -2979,11 +2979,11 @@ Specifically:
 - Fouque and Tibouchi {{FT10}} and Tibouchi {{T14}} derive bounds for the
   Simplified SWU mapping (Sections {{<simple-swu}} and {{<simple-swu-AB0}}).
 
-- Bernstein et al. {{BHKL13}} derive bounds for the Elligator 2 mapping
+- Bernstein et al.&nbsp;{{BHKL13}} derive bounds for the Elligator 2 mapping
   (Sections {{<elligator2}} and {{<ell2edwards}}).
 
 Indifferentiability of encode\_to\_curve follows from an argument similar
-to the one given by Brier et al. {{BCIMRT10}}; we briefly sketch.
+to the one given by Brier et al.&nbsp;{{BCIMRT10}}; we briefly sketch.
 Consider an ideal random oracle Hc() that samples from the distribution induced
 by the map\_to\_curve function called by encode\_to\_curve, and assume for
 simplicity that the target elliptic curve has cofactor 1 (a similar argument
@@ -2997,7 +2997,7 @@ the simulator just returns the value it gave in response to that query).
 The simulator then computes the possible preimages of P under map\_to\_curve,
 i.e., elements u of F such that map\_to\_curve(u) == P
 (Tibouchi {{T14}} shows that this can be done efficiently for the Shallue-van
-de Woestijne and Simplified SWU maps, and Bernstein et al. show the same for
+de Woestijne and Simplified SWU maps, and Bernstein et al.&nbsp;show the same for
 Elligator 2).
 The simulator selects one such preimage at random and returns this value
 as the simulated output of the "inner" random oracle.
@@ -3248,7 +3248,7 @@ that the resulting point has a known discrete log relationship to P.
 Thus, except in cases where this method is specified by the protocol,
 it must not be used; doing so risks catastrophic security failures.
 
-Boneh et al. {{BLS01}} describe an encoding method they call MapToGroup,
+Boneh et al.&nbsp;{{BLS01}} describe an encoding method they call MapToGroup,
 which works roughly as follows: first, use the input string to initialize a
 pseudorandom number generator, then use the generator to produce a
 value x in F.
@@ -3273,7 +3273,7 @@ Fouque and Tibouchi {{FT12}} give a parameterization of this mapping
 for Barreto-Naehrig pairing-friendly curves {{BN05}}.
 
 Ulas {{U07}} describes a simpler version of the Shallue-van de Woestijne map,
-and Brier et al. {{BCIMRT10}} give a further simplification, which the authors
+and Brier et al.&nbsp;{{BCIMRT10}} give a further simplification, which the authors
 call the "simplified SWU" map.
 That simplified map applies only to fields of characteristic p = 3 (mod 4);
 Wahby and Boneh {{WB19}} generalize to fields of any characteristic, and
@@ -3286,13 +3286,13 @@ over a field of characteristic p = 2 (mod 3) {{Icart09}}.
 Several extensions and generalizations follow this work, including
 {{FSV09}}, {{FT10}}, {{KLR10}}, {{F11}}, and {{CK11}}.
 
-Following the work of Farashahi {{F11}}, Fouque et al. {{FJT13}} describe a
+Following the work of Farashahi {{F11}}, Fouque et al.&nbsp;{{FJT13}} describe a
 mapping to curves over fields of characteristic p = 3 (mod 4) having a number of points
-divisible by 4.  Bernstein et al. {{BHKL13}} optimize this mapping and
+divisible by 4.  Bernstein et al.&nbsp;{{BHKL13}} optimize this mapping and
 describe a related mapping that they call "Elligator 2," which applies to
 any curve over a field of odd characteristic having a point of order 2.
 This includes Curve25519 and Curve448, both of which are CFRG-recommended
-curves {{!RFC7748}}. Bernstein et al. {{BLMP19}} extend the Elligator 2 map
+curves {{!RFC7748}}. Bernstein et al.&nbsp;{{BLMP19}} extend the Elligator 2 map
 to a class of supersingular curves over fields of characteristic p = 3 (mod 4).
 
 An important caveat regarding all of the above deterministic mapping
@@ -3300,24 +3300,24 @@ functions is that none of them map to the entire curve, but rather to some
 fraction of the points. This means that they cannot be used directly to
 construct a random oracle that outputs points on the curve.
 
-Brier et al. {{BCIMRT10}} give two solutions to this problem.
-The first, which Brier et al. prove applies to Icart's method,
+Brier et al.&nbsp;{{BCIMRT10}} give two solutions to this problem.
+The first, which Brier et al.&nbsp;prove applies to Icart's method,
 computes f(H0(msg)) + f(H1(msg)) for two distinct hash functions
 H0 and H1 from bit strings to F and a mapping f from F to the elliptic curve E.
 The second, which applies to essentially all deterministic mappings but
 is more costly, computes f(H0(msg)) + H2(msg) * P, for P a generator of the
 elliptic curve group and H2 a hash from bit strings to integers modulo r,
 the order of the elliptic curve group.
-Farashahi et al. {{FFSTV13}} improve the analysis of the first method,
+Farashahi et al.&nbsp;{{FFSTV13}} improve the analysis of the first method,
 showing that it applies to essentially all deterministic mappings.
 Tibouchi and Kim {{TK17}} further refine the analysis and describe additional
 optimizations.
 
 Complementary to the problem of mapping from bit strings to elliptic curve
-points, Bernstein et al. {{BHKL13}} study the problem of mapping from elliptic
+points, Bernstein et al.&nbsp;{{BHKL13}} study the problem of mapping from elliptic
 curve points to uniformly random bit strings, giving solutions for a class of
 curves including Montgomery and twisted Edwards curves.
-Tibouchi {{T14}} and Aranha et al. {{AFQTZ14}} generalize these results.
+Tibouchi {{T14}} and Aranha et al.&nbsp;{{AFQTZ14}} generalize these results.
 This document does not deal with this complementary problem.
 
 # Hashing to ristretto255 {#appx-ristretto255}
