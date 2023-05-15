@@ -2160,7 +2160,7 @@ mapping.
 
 The function map\_to\_curve\_simple\_swu(u) implements a simplification
 of the Shallue-van de Woestijne-Ulas mapping {{U07}} described by Brier et
-al. {{BCIMRT10}}, which they call the "simplified SWU" map. Wahby and Boneh
+al.&nbsp;{{BCIMRT10}}, which they call the "simplified SWU" map. Wahby and Boneh
 {{WB19}} generalize and optimize this mapping.
 
 Preconditions: A Weierstrass curve y^2 = x^3 + A * x + B where A != 0 and B != 0.
