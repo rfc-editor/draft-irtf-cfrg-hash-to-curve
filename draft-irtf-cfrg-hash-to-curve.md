@@ -3236,7 +3236,7 @@ Filippo Valsorda, and Mathy Vanhoef for helpful reviews and feedback.
 The problem of mapping arbitrary bit strings to elliptic curve points
 has been the subject of both practical and theoretical research.
 This section briefly describes the background and research results
-that underly the recommendations in this document.
+that underlie the recommendations in this document.
 This section is provided for informational purposes only.
 
 A naive but generally insecure method of mapping a string msg to
@@ -3248,7 +3248,7 @@ that the resulting point has a known discrete log relationship to P.
 Thus, except in cases where this method is specified by the protocol,
 it must not be used; doing so risks catastrophic security failures.
 
-Boneh et al. {{BLS01}} describe an encoding method they call MapToGroup,
+Boneh et al.&nbsp;{{BLS01}} describe an encoding method they call MapToGroup,
 which works roughly as follows: first, use the input string to initialize a
 pseudorandom number generator, then use the generator to produce a
 value x in F.
@@ -3276,12 +3276,12 @@ Ulas {{U07}} describes a simpler version of the Shallue-van de Woestijne map,
 and Brier et al. {{BCIMRT10}} give a further simplification, which the authors
 call the "simplified SWU" map.
 That simplified map applies only to fields of characteristic p = 3 (mod 4);
-Wahby and Boneh {{WB19}} generalize to fields of any characteristic, and
+Wahby and Boneh {{WB19}} generalize to fields of any characteristic and
 give further optimizations.
 
 Boneh and Franklin give a deterministic algorithm mapping to certain
 supersingular curves over fields of characteristic p = 2 (mod 3) {{BF01}}.
-Icart gives another deterministic algorithm which maps to any curve
+Icart gives another deterministic algorithm that maps to any curve
 over a field of characteristic p = 2 (mod 3) {{Icart09}}.
 Several extensions and generalizations follow this work, including
 {{FSV09}}, {{FT10}}, {{KLR10}}, {{F11}}, and {{CK11}}.
@@ -3314,9 +3314,9 @@ Tibouchi and Kim {{TK17}} further refine the analysis and describe additional
 optimizations.
 
 Complementary to the problem of mapping from bit strings to elliptic curve
-points, Bernstein et al. {{BHKL13}} study the problem of mapping from elliptic
+points, Bernstein et al.&nbsp;{{BHKL13}} study the problem of mapping from elliptic
 curve points to uniformly random bit strings, giving solutions for a class of
-curves including Montgomery and twisted Edwards curves.
+curves that includes Montgomery and twisted Edwards curves.
 Tibouchi {{T14}} and Aranha et al. {{AFQTZ14}} generalize these results.
 This document does not deal with this complementary problem.
 
@@ -3548,7 +3548,7 @@ to the point (x, y) on the equivalent Weierstrass curve
     y^2 = x^3 + A * x + B
 ~~~
 
-is given by:
+is given by
 
 - A = (3 - J^2) / (3 * K^2)
 - B = (2 * J^3 - 9 * J) / (27 * K^3)
@@ -4035,8 +4035,7 @@ Steps:
 
 This section gives sample implementations optimized for some of the
 elliptic curves listed in {{suites}}.
-Sample Sage code {{SAGE}} for each algorithm can also be found in the
-draft repository {{hash2curve-repo}}.
+Sample Sage code {{SAGE}} for each algorithm can also be found in {{hash2curve-repo}}.
 
 ## Interface and Projective Coordinate Systems {#projective-coords}
 
@@ -4416,7 +4415,7 @@ Steps:
 ## Cofactor Clearing for BLS12-381 G2 {#clear-cofactor-bls12381-g2}
 
 The curve BLS12-381, whose parameters are defined in {{suites-bls12381-g2}},
-admits an efficiently-computable endomorphism psi that can be used to
+admits an efficiently computable endomorphism, psi, that can be used to
 speed up cofactor clearing for G2 {{SBCDK09}} {{FKR11}} {{BP17}} (see also
 {{cofactor-clearing}}).
 This section implements the endomorphism psi and a fast cofactor clearing
@@ -4735,7 +4734,7 @@ with basis (1, I) represented as described in {{bg-curves}}, i.e.,
 an element x = (x\_1, x\_2) = x\_1 + x\_2 * I.
 
 Other optimizations of this type are possible in other extension
-fields; see, e.g., {{AR13}} for more information.
+fields; see, for example, {{AR13}} for more information.
 
 ~~~ pseudocode
 is_square(x)
