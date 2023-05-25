@@ -1157,13 +1157,14 @@ should consult {{suites}}, which lists recommended hash-to-curve suites
 and describes both how to implement an existing suite and how to specify
 a new one.
 
-This document does not cover rejection sampling methods, sometimes referred to
-as "try-and-increment" or "hunt-and-peck," because the goal is to describe
-algorithms that can plausibly be computed in constant time. Use of these rejection
-methods is NOT RECOMMENDED, because they have been a perennial cause of
-side-channel vulnerabilities. See Dragonblood {{VR20}} as one example of this
-problem in practice, and see {{related}} for a further description of
-rejection sampling methods.
+This document does not specify probabilistic rejection sampling methods, sometimes
+referred to as "try-and-increment" or "hunt-and-peck," because the
+goal is to specify algorithms that can plausibly be computed in
+constant time. Use of these probabilistic rejection methods is NOT
+RECOMMENDED, because they have been a perennial cause of side-channel
+vulnerabilities. See Dragonblood {{VR20}} as one example of this
+problem in practice, and see {{related}} for an informal description of rejection
+sampling methods and the timing side-channels they introduce.
 
 This document represents the consensus of the Crypto Forum Research Group (CFRG).
 
