@@ -2014,7 +2014,7 @@ Similarly, if the target elliptic curve is a twisted Edwards curve ({{twisted-ed
 the twisted Edwards Elligator 2 method ({{ell2edwards}}) is recommended.
 
 The remaining cases are Weierstrass curves.
-For curves supported by the Simplified SWU method ({{simple-swu}}),
+For curves supported by the Simplified Shallue-van de Woestijne-Ulas (SWU) method ({{simple-swu}}),
 that mapping is the recommended one.
 Otherwise, the Simplified SWU method for AB == 0 ({{simple-swu-AB0}})
 is recommended if the goal is best performance, while
@@ -3200,10 +3200,10 @@ These methods can be used to instantiate multiple domain separated functions
     the salt input to HKDF-Extract to DST\_key, computed as above.
     This ensures domain separation for HKDF-Extract by the same argument
     as for HMAC-H using DST\_key.
-    Moreover, assuming that the IKM input to HKDF-Extract has sufficiently
+    Moreover, assuming that the input keying material (IKM) supplied to HKDF-Extract has sufficiently
     high entropy (say, commensurate with the security parameter), the
     HKDF-Expand step is domain separated by the same argument as for
-    HMAC-H with a high-entropy secret key (since PRK is exactly that).
+    HMAC-H with a high-entropy secret key (since a pseudorandom key is exactly that).
 
 ## Target Security Levels {#security-considerations-targets}
 
