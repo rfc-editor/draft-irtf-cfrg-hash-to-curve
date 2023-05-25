@@ -1446,7 +1446,7 @@ different distributions:
   ~~~
 
 Each hash-to-curve suite in {{suites}} instantiates one of these encoding
-functions for a specifc elliptic curve.
+functions for a specific elliptic curve.
 
 ## Domain Separation Requirements {#domain-separation}
 
@@ -1457,8 +1457,8 @@ other uses of similar functionality.
 Applications that instantiate multiple, independent instances of either
 hash\_to\_curve or encode\_to\_curve MUST enforce domain separation
 between those instances.
-This requirement applies both in the case of multiple instances targeting
-the same curve and in the case of multiple instances targeting different curves.
+This requirement applies in both the case of multiple instances targeting
+the same curve and the case of multiple instances targeting different curves.
 (This is because the internal hash\_to\_field primitive ({{hashtofield}})
 requires domain separation to guarantee independent outputs.)
 
@@ -1481,8 +1481,8 @@ which is a byte string constructed according to the following requirements:
    tag MUST be different. For this purpose, it is RECOMMENDED to
    include a ciphersuite identifier in each tag.
 
-6. For applications that use multiple encodings, either to the same curve
-   or to different curves, each encoding MUST use a different tag.
+6. For applications that use multiple encodings, to either the same curve
+   or different curves, each encoding MUST use a different tag.
    For this purpose, it is RECOMMENDED to include the encoding's
    Suite ID ({{suites}}) in the domain separation tag.
    For independent encodings based on the same suite, each tag SHOULD
@@ -1524,7 +1524,7 @@ Guidance on implementing low-level operations (in constant time or otherwise)
 is beyond the scope of this document; readers should consult standard reference
 material {{MOV96}} {{CFADLNV05}}.
 
--   CMOV(a, b, c): If c is False, CMOV returns a, otherwise it returns b.
+-   CMOV(a, b, c): If c is False, CMOV returns a; otherwise, it returns b.
     For constant-time implementations, this operation must run in
     time independent of the value of c.
 
@@ -1580,15 +1580,15 @@ material {{MOV96}} {{CFADLNV05}}.
 -   a \|\| b: denotes the concatenation of byte strings a and b. For example,
     "ABC" \|\| "DEF" == "ABCDEF".
 
--   substr(str, sbegin, slen): for a byte string str, this function returns
+-   substr(str, sbegin, slen): For a byte string str, this function returns
     the slen-byte substring starting at position sbegin; positions are zero
     indexed.
     For example, substr("ABCDEFG", 2, 3) == "CDE".
 
--   len(str): for a byte string str, this function returns the length of str
+-   len(str): For a byte string str, this function returns the length of str
     in bytes. For example, len("ABC") == 3.
 
--   strxor(str1, str2): for byte strings str1 and str2, strxor(str1, str2)
+-   strxor(str1, str2): For byte strings str1 and str2, strxor(str1, str2)
     returns the bitwise XOR of the two strings.
     For example, strxor("abc", "XYZ") == "9;9" (the strings in this example
     are ASCII literals, but strxor is defined for arbitrary byte strings).
