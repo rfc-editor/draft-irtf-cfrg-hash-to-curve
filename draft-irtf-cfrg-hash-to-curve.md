@@ -2024,7 +2024,7 @@ if the goal is simplicity of implementation.
 requires implementing an isogeny map in addition to the mapping function, while
 the Shallue-van de Woestijne method does not.)
 
-The Shallue-van de Woestijne method ({{svdw}}) works with any curve,
+The Shallue-van de Woestijne method ({{svdw}}) works with any curve
 and may be used in cases where a generic mapping is required.
 Note, however, that this mapping is almost always more computationally
 expensive than the curve-specific recommendations above.
@@ -2108,7 +2108,7 @@ its derivation is detailed in {{W19}}.
 This parameterization also works for Montgomery curves ({{montgomery}}) and
 twisted Edwards curves ({{twisted-edwards}}) via the rational maps
 given in {{appx-rational-map}}:
-first evaluate the Shallue-van de Woestijne mapping to an equivalent Weierstrass
+first, evaluate the Shallue-van de Woestijne mapping to an equivalent Weierstrass
 curve, then map that point to the target Montgomery or twisted Edwards curve
 using the corresponding rational map.
 
@@ -2172,7 +2172,7 @@ Constants:
 
 - Z, an element of F meeting the below criteria.
   {{sswu-z-code}} gives a Sage script {{SAGE}} that outputs the RECOMMENDED Z.
-  The criteria are:
+  The criteria are as follows:
   1. Z is non-square in F,
   2. Z != -1 in F,
   3. the polynomial g(x) - Z is irreducible over F, and
@@ -2182,7 +2182,7 @@ Sign of y: Inputs u and -u give the same x-coordinate.
 Thus, we set sgn0(y) == sgn0(u).
 
 Exceptions: The exceptional cases are values of u such that
-Z^2 * u^4 + Z * u^2 == 0. This includes u == 0, and may include
+Z^2 * u^4 + Z * u^2 == 0. This includes u == 0 and may include
 other values depending on Z. Implementations must detect
 this case and set x1 = B / (Z * A), which guarantees that g(x1)
 is square by the condition on Z given above.
@@ -2203,8 +2203,8 @@ Operations:
 ~~~
 
 {{straightline-sswu}} gives a general and optimized straight-line implementation of
-this mapping. For more information on optimizing this mapping, see {{WB19}} Section
-4 or the example code found at {{hash2curve-repo}}.
+this mapping. For more information on optimizing this mapping, see Section 4 of {{WB19}}
+or the example code found at {{hash2curve-repo}}.
 
 ### Simplified SWU for AB == 0 {#simple-swu-AB0}
 
@@ -2233,7 +2233,7 @@ the isogeny map to that point to get a point on E.
 
 Note that iso\_map is a group homomorphism, meaning that point addition
 commutes with iso\_map.
-Thus, when using this mapping in the hash\_to\_curve construction of {{roadmap}},
+Thus, when using this mapping in the hash\_to\_curve construction discussed in {{roadmap}},
 one can effect a small optimization by first mapping u0 and u1 to E', adding
 the resulting points on E', and then applying iso\_map to the sum.
 This gives the same result while requiring only one evaluation of iso\_map.
@@ -2247,7 +2247,7 @@ Helper functions:
 - map\_to\_curve\_simple\_swu is the mapping of {{simple-swu}} to E'
 - iso\_map is the isogeny map from E' to E
 
-Sign of y: for this map, the sign is determined by map\_to\_curve\_simple\_swu.
+Sign of y: For this map, the sign is determined by map\_to\_curve\_simple\_swu.
 No further sign adjustments are necessary.
 
 Exceptions: map\_to\_curve\_simple\_swu handles its exceptional cases.
@@ -2263,7 +2263,7 @@ Operations:
 3. return (x, y)
 ~~~
 
-See {{hash2curve-repo}} or {{WB19}} Section 4.3 for details on implementing the isogeny map.
+See {{hash2curve-repo}} or Section 4.3 of {{WB19}} for details on implementing the isogeny map.
 
 ## Mappings for Montgomery Curves {#montgomery}
 
@@ -2288,7 +2288,7 @@ Constants:
 - Z, a non-square element of F.
   {{elligator-z-code}} gives a Sage script {{SAGE}} that outputs the RECOMMENDED Z.
 
-Sign of t: this mapping fixes the sign of t as specified in {{BHKL13}}.
+Sign of t: This mapping fixes the sign of t as specified in {{BHKL13}}.
 No additional adjustment is required.
 
 Exceptions: The exceptional case is Z * u^2 == -1, i.e., 1 + Z * u^2 == 0.
@@ -2375,7 +2375,7 @@ Helper functions:
 - rational\_map is a function that takes a point (s, t) on M and
   returns a point (v, w) on E, as defined in {{rational-map}}.
 
-Sign of t (and v): for this map, the sign is determined by map\_to\_curve\_elligator2.
+Sign of t (and v): For this map, the sign is determined by map\_to\_curve\_elligator2.
 No further sign adjustments are required.
 
 Exceptions: The exceptions for the Elligator 2 mapping are as given in
