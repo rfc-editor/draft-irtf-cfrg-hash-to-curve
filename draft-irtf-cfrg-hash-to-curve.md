@@ -1714,7 +1714,7 @@ L = ceil((255 + 128) / 8) = 48 bytes.
 
 Note that k is an upper bound on the security level for the
 corresponding curve.
-See {{security-considerations-targets}} for more details, and
+See {{security-considerations-targets}} for more details and
 {{new-suite}} for guidelines on choosing k for a given curve.
 
 ## Efficiency Considerations in Extension Fields {#hashtofield-exteff}
@@ -1729,11 +1729,11 @@ generate an element of GF(p^m) with bias at most 2^-k. In such cases,
 applications MAY use an alternative hash\_to\_field function, provided it
 meets the following security requirements:
 
-- The function MUST output field element(s) that are uniformly random except with bias at most 2^-k.
+- The function MUST output one or more field elements that are uniformly random except with bias at most 2^-k.
 
 - The function MUST NOT use rejection sampling.
 
-- The function SHOULD be amenable to straight line implementations.
+- The function SHOULD be amenable to straight-line implementations.
 
 For example, Pornin {{P20}} describes a method for hashing to GF(9767^19) that meets
 these requirements while using fewer output bits from expand\_message than
@@ -1797,7 +1797,7 @@ with a wide range of hash functions, including SHA-2 {{FIPS180-4}}, SHA-3
 {{FIPS202}}, BLAKE2 {{?RFC7693}}, and others.
 
 - expand\_message\_xof ({{hashtofield-expand-xof}}) is appropriate for use
-with extendable-output functions (XOFs) including functions in the SHAKE
+with extendable-output functions (XOFs), including functions in the SHAKE 
 {{FIPS202}} or BLAKE2X {{BLAKE2X}} families.
 
 These variants should suffice for the vast majority of use cases, but other
@@ -1877,7 +1877,7 @@ This is necessary for security when H is a Merkle-Damgaard hash, e.g., SHA-2
 (see {{security-considerations-expand-xmd}}).
 Hashing this additional data means that the cost of computing b\_0 is higher
 than the cost of simply computing H(msg).
-In most settings this overhead is negligible, because the cost of evaluating
+In most settings, this overhead is negligible, because the cost of evaluating
 H is much less than the other costs involved in hashing to a curve.
 
 It is possible, however, to entirely avoid this overhead by taking advantage
@@ -1885,7 +1885,7 @@ of the fact that Z\_pad depends only on H, and not on the arguments to
 expand\_message\_xmd.
 To do so, first precompute and save the internal state of H after ingesting
 Z\_pad. Then, when computing b\_0, initialize H using the saved state.
-Further details are implementation dependent, and beyond the scope of this document.
+Further details are implementation dependent and are beyond the scope of this document.
 
 ### expand\_message\_xof {#hashtofield-expand-xof}
 
