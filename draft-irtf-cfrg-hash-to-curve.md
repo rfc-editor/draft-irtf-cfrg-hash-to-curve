@@ -3846,7 +3846,7 @@ Steps:
 26. return (x, y)
 ~~~
 
-### sqrt_ratio Subroutines {#straightline-sswu-sqrt-ratio}
+### sqrt_ratio Subroutine {#straightline-sswu-sqrt-ratio}
 
 This section defines three variants of the sqrt_ratio subroutine used by the
 above procedure.
