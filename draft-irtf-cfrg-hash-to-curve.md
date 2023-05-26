@@ -2686,7 +2686,7 @@ except for the following parameters:
   - d = -39081
 - f: Twisted Edwards Elligator 2 method ({{ell2edwards}})
 - M: curve448, defined in {{!RFC7748, Section 4.2}}
-- rational\_map: the 4-isogeny map defined in {{!RFC7748, Section 4.2}}
+- rational\_map: the 4-isogeny maps defined in {{!RFC7748, Section 4.2}}
 
 curve448\_XOF:SHAKE256\_ELL2\_NU\_ is identical to curve448\_XOF:SHAKE256\_ELL2\_RO\_,
 except that the encoding type is encode\_to\_curve ({{roadmap}}).
