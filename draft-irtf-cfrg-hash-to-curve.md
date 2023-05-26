@@ -2940,7 +2940,7 @@ When hashing passwords using any function described in this document, an adversa
 who learns the output of the hash function (or potentially any intermediate value,
 e.g., the output of hash\_to\_field) may be able to carry out a dictionary attack.
 To mitigate such attacks, it is recommended to first execute a more costly key
-derivation function (e.g., PBKDF2 {{?RFC2898}}, scrypt {{?RFC7914}}, or Argon2
+derivation function (e.g., PBKDF2 {{?RFC8018}}, scrypt {{?RFC7914}}, or Argon2
 {{?RFC9106}}) on the password, then hash the output of that
 function to the target elliptic curve.
 For collision resistance, the hash underlying the key derivation function
