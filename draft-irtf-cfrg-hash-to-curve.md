@@ -3305,10 +3305,11 @@ Brier et al.&nbsp;{{BCIMRT10}} give two solutions to this problem.
 The first, which Brier et al.&nbsp;prove applies to Icart's method,
 computes f(H0(msg)) + f(H1(msg)) for two distinct hash functions
 H0 and H1 from bit strings to F and a mapping f from F to the elliptic curve E.
-The second, which applies to essentially all deterministic mappings but
-is more costly, computes f(H0(msg)) + H2(msg) * P, for P a generator of the
-elliptic curve group and H2 a hash from bit strings to integers modulo r,
-the order of the elliptic curve group.
+The second, which applies to essentially all deterministic mappings
+but is more costly, computes f(H0(msg)) + H2(msg) * P, for P (a
+generator of the elliptic curve group) and H2 (a hash from bit
+strings to integers) modulo r, where r is the order of the elliptic
+curve group.
 Farashahi et al.&nbsp;{{FFSTV13}} improve the analysis of the first method,
 showing that it applies to essentially all deterministic mappings.
 Tibouchi and Kim {{TK17}} further refine the analysis and describe additional
