@@ -2419,8 +2419,8 @@ some scalar h\_eff whose value is determined by the method and the curve.
 Examples of fast cofactor clearing methods include the following:
 
 - For certain pairing-friendly curves having subgroup G2 over an extension
-  field, Scott et al. {{SBCDK09}} describe a method for fast cofactor clearing
-  that exploits an efficiently-computable endomorphism. Fuentes-Castaneda
+  field, Scott et al.&nbsp;{{SBCDK09}} describe a method for fast cofactor clearing
+  that exploits an efficiently computable endomorphism. Fuentes-Castaneda
   et al. {{FKR11}} propose an alternative method that is sometimes more efficient.
   Budroni and Pintore {{BP17}} give concrete instantiations of these methods
   for Barreto-Lynn-Scott pairing-friendly curves {{BLS03}}.
@@ -2447,7 +2447,7 @@ When a curve admits a fast cofactor clearing method, clear\_cofactor
 MAY be evaluated either via that method or via scalar multiplication
 by the equivalent h\_eff; these two methods give the same result.
 Note that in this case scalar multiplication by the cofactor h does not
-generally give the same result as the fast method, and MUST NOT be used.
+generally give the same result as the fast method and MUST NOT be used.
 
 # Suites for Hashing {#suites}
 
@@ -2468,7 +2468,7 @@ is hash\_to\_curve; see {{roadmap}} and immediately below for more information.
 A hash-to-curve suite comprises the following parameters:
 
 - Suite ID, a short name used to refer to a given suite.
-  {{suiteIDformat}} discusses the naming conventions for suite IDs.
+  {{suiteIDformat}} discusses the naming conventions for Suite IDs.
 - encoding type, either uniform (hash\_to\_curve) or nonuniform (encode\_to\_curve).
   See {{roadmap}} for definitions of these encoding types.
 - E, the target elliptic curve over a field F.
@@ -2488,7 +2488,7 @@ In addition to the above parameters, the mapping f may require
 additional parameters Z, M, rational\_map, E', or iso\_map.
 When applicable, these MUST be specified.
 
-The below table lists suites RECOMMENDED for some elliptic curves.
+The table below lists suites RECOMMENDED for some elliptic curves.
 The corresponding parameters are given in the following subsections.
 Applications instantiating cryptographic protocols whose security analysis
 relies on a random oracle that outputs points with a uniform distribution MUST NOT use a
@@ -2643,8 +2643,8 @@ except for the following parameters:
   - a = -1
   - d = 0x52036cee2b6ffe738cc740797779e89800700a4d4141d8ab75eb4dca135978a3
 - f: Twisted Edwards Elligator 2 method ({{ell2edwards}})
-- M: curve25519 defined in {{!RFC7748, Section 4.1}}
-- rational\_map: the birational map defined in {{!RFC7748, Section 4.1}}
+- M: curve25519, defined in {{!RFC7748, Section 4.1}}
+- rational\_map: the birational maps defined in {{!RFC7748, Section 4.1}}
 
 curve25519\_XMD:SHA-512\_ELL2\_NU\_ is identical to curve25519\_XMD:SHA-512\_ELL2\_RO\_,
 except that the encoding type is encode\_to\_curve ({{roadmap}}).
@@ -2754,7 +2754,7 @@ BLS12381G1\_XMD:SHA-256\_SSWU\_NU\_ is identical to BLS12381G1\_XMD:SHA-256\_SSW
 except that the encoding type is encode\_to\_curve ({{roadmap}}).
 
 Note that the h\_eff values for these suites are chosen for compatibility
-with the fast cofactor clearing method described by Scott ({{WB19}} Section 5).
+with the fast cofactor clearing method described by Scott ({{WB19}}, Section 5).
 
 An optimized example implementation of the Simplified SWU mapping
 to the curve E' isogenous to BLS12-381 G1 is given in {{straightline-sswu}}.
@@ -2786,7 +2786,7 @@ except that the encoding type is encode\_to\_curve ({{roadmap}}).
 
 Note that the h\_eff values for these suites are chosen for compatibility
 with the fast cofactor clearing method described by
-Budroni and Pintore ({{BP17}}, Section 4.1), and summarized in {{clear-cofactor-bls12381-g2}}.
+Budroni and Pintore ({{BP17}}, Section 4.1) and are summarized in {{clear-cofactor-bls12381-g2}}.
 
 An optimized example implementation of the Simplified SWU mapping
 to the curve E' isogenous to BLS12-381 G2 is given in {{straightline-sswu}}.
@@ -2794,7 +2794,7 @@ to the curve E' isogenous to BLS12-381 G2 is given in {{straightline-sswu}}.
 ## Defining a New Hash-to-Curve Suite {#new-suite}
 
 For elliptic curves not listed elsewhere in {{suites}}, a new hash-to-curve
-suite can be defined by:
+suite can be defined by the following:
 
 1. E, F, p, and m are determined by the elliptic curve and its base field.
 
@@ -2827,7 +2827,7 @@ Suite IDs MUST be constructed as follows:
 
 The fields CURVE\_ID, HASH\_ID, MAP\_ID, and ENC\_VAR are
 ASCII-encoded strings of at most 64 characters each.
-Fields MUST contain only ASCII characters between 0x21 and 0x7E (inclusive)
+Fields MUST contain only ASCII characters between 0x21 and 0x7E (inclusive),
 except that underscore (i.e., 0x5f) is not allowed.
 
 As indicated above, each field (including the last) is followed by an underscore
@@ -2867,7 +2867,7 @@ Suite ID fields MUST be chosen as follows:
 - MAP\_ID: a human-readable representation of the map\_to\_curve function
   as defined in {{mappings}}. These are defined as follows:
 
-    - "SVDW" for or Shallue and van de Woestijne ({{svdw}}).
+    - "SVDW" for Shallue and van de Woestijne ({{svdw}}).
     - "SSWU" for Simplified SWU (Sections {{<simple-swu}} and {{<simple-swu-AB0}}).
     - "ELL2" for Elligator 2 (Sections {{<elligator2}} and {{<ell2edwards}}).
 
