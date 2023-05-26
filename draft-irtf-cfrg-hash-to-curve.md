@@ -1157,13 +1157,14 @@ should consult {{suites}}, which lists recommended hash-to-curve suites
 and describes both how to implement an existing suite and how to specify
 a new one.
 
-This document does not cover rejection sampling methods, sometimes referred to
-as "try-and-increment" or "hunt-and-peck," because the goal is to describe
-algorithms that can plausibly be computed in constant time. Use of these rejection
-methods is NOT RECOMMENDED, because they have been a perennial cause of
-side-channel vulnerabilities. See Dragonblood {{VR20}} as one example of this
-problem in practice, and see {{related}} for a further description of
-rejection sampling methods.
+This document does not specify probabilistic rejection sampling methods, sometimes
+referred to as "try-and-increment" or "hunt-and-peck," because the
+goal is to specify algorithms that can plausibly be computed in
+constant time. Use of these probabilistic rejection methods is NOT
+RECOMMENDED, because they have been a perennial cause of side-channel
+vulnerabilities. See Dragonblood {{VR20}} as one example of this
+problem in practice, and see {{related}} for an informal description of rejection
+sampling methods and the timing side-channels they introduce.
 
 This document represents the consensus of the Crypto Forum Research Group (CFRG).
 
@@ -1445,7 +1446,7 @@ different distributions:
   ~~~
 
 Each hash-to-curve suite in {{suites}} instantiates one of these encoding
-functions for a specifc elliptic curve.
+functions for a specific elliptic curve.
 
 ## Domain Separation Requirements {#domain-separation}
 
@@ -1456,8 +1457,8 @@ other uses of similar functionality.
 Applications that instantiate multiple, independent instances of either
 hash\_to\_curve or encode\_to\_curve MUST enforce domain separation
 between those instances.
-This requirement applies both in the case of multiple instances targeting
-the same curve and in the case of multiple instances targeting different curves.
+This requirement applies in both the case of multiple instances targeting
+the same curve and the case of multiple instances targeting different curves.
 (This is because the internal hash\_to\_field primitive ({{hashtofield}})
 requires domain separation to guarantee independent outputs.)
 
@@ -1480,8 +1481,8 @@ which is a byte string constructed according to the following requirements:
    tag MUST be different. For this purpose, it is RECOMMENDED to
    include a ciphersuite identifier in each tag.
 
-6. For applications that use multiple encodings, either to the same curve
-   or to different curves, each encoding MUST use a different tag.
+6. For applications that use multiple encodings, to either the same curve
+   or different curves, each encoding MUST use a different tag.
    For this purpose, it is RECOMMENDED to include the encoding's
    Suite ID ({{suites}}) in the domain separation tag.
    For independent encodings based on the same suite, each tag SHOULD
@@ -1523,7 +1524,7 @@ Guidance on implementing low-level operations (in constant time or otherwise)
 is beyond the scope of this document; readers should consult standard reference
 material {{MOV96}} {{CFADLNV05}}.
 
--   CMOV(a, b, c): If c is False, CMOV returns a, otherwise it returns b.
+-   CMOV(a, b, c): If c is False, CMOV returns a; otherwise, it returns b.
     For constant-time implementations, this operation must run in
     time independent of the value of c.
 
@@ -1579,15 +1580,15 @@ material {{MOV96}} {{CFADLNV05}}.
 -   a \|\| b: denotes the concatenation of byte strings a and b. For example,
     "ABC" \|\| "DEF" == "ABCDEF".
 
--   substr(str, sbegin, slen): for a byte string str, this function returns
+-   substr(str, sbegin, slen): For a byte string str, this function returns
     the slen-byte substring starting at position sbegin; positions are zero
     indexed.
     For example, substr("ABCDEFG", 2, 3) == "CDE".
 
--   len(str): for a byte string str, this function returns the length of str
+-   len(str): For a byte string str, this function returns the length of str
     in bytes. For example, len("ABC") == 3.
 
--   strxor(str1, str2): for byte strings str1 and str2, strxor(str1, str2)
+-   strxor(str1, str2): For byte strings str1 and str2, strxor(str1, str2)
     returns the bitwise XOR of the two strings.
     For example, strxor("abc", "XYZ") == "9;9" (the strings in this example
     are ASCII literals, but strxor is defined for arbitrary byte strings).
@@ -1713,7 +1714,7 @@ L = ceil((255 + 128) / 8) = 48 bytes.
 
 Note that k is an upper bound on the security level for the
 corresponding curve.
-See {{security-considerations-targets}} for more details, and
+See {{security-considerations-targets}} for more details and
 {{new-suite}} for guidelines on choosing k for a given curve.
 
 ## Efficiency Considerations in Extension Fields {#hashtofield-exteff}
@@ -1728,11 +1729,11 @@ generate an element of GF(p^m) with bias at most 2^-k. In such cases,
 applications MAY use an alternative hash\_to\_field function, provided it
 meets the following security requirements:
 
-- The function MUST output field element(s) that are uniformly random except with bias at most 2^-k.
+- The function MUST output one or more field elements that are uniformly random except with bias at most 2^-k.
 
 - The function MUST NOT use rejection sampling.
 
-- The function SHOULD be amenable to straight line implementations.
+- The function SHOULD be amenable to straight-line implementations.
 
 For example, Pornin {{P20}} describes a method for hashing to GF(9767^19) that meets
 these requirements while using fewer output bits from expand\_message than
@@ -1796,7 +1797,7 @@ with a wide range of hash functions, including SHA-2 {{FIPS180-4}}, SHA-3
 {{FIPS202}}, BLAKE2 {{?RFC7693}}, and others.
 
 - expand\_message\_xof ({{hashtofield-expand-xof}}) is appropriate for use
-with extendable-output functions (XOFs) including functions in the SHAKE
+with extendable-output functions (XOFs), including functions in the SHAKE 
 {{FIPS202}} or BLAKE2X {{BLAKE2X}} families.
 
 These variants should suffice for the vast majority of use cases, but other
@@ -1808,7 +1809,7 @@ The expand\_message\_xmd function produces a uniformly random byte string using
 a cryptographic hash function H that outputs b bits. For security, H MUST meet
 the following requirements:
 
-- The number of bits output by H MUST be b >= 2 * k, for k the target
+- The number of bits output by H MUST be b >= 2 * k, where k is the target
 security level in bits, and b MUST be divisible by 8.
 The first requirement ensures k-bit collision resistance; the second
 ensures uniformity of expand\_message\_xmd's output.
@@ -1876,7 +1877,7 @@ This is necessary for security when H is a Merkle-Damgaard hash, e.g., SHA-2
 (see {{security-considerations-expand-xmd}}).
 Hashing this additional data means that the cost of computing b\_0 is higher
 than the cost of simply computing H(msg).
-In most settings this overhead is negligible, because the cost of evaluating
+In most settings, this overhead is negligible, because the cost of evaluating
 H is much less than the other costs involved in hashing to a curve.
 
 It is possible, however, to entirely avoid this overhead by taking advantage
@@ -1884,7 +1885,7 @@ of the fact that Z\_pad depends only on H, and not on the arguments to
 expand\_message\_xmd.
 To do so, first precompute and save the internal state of H after ingesting
 Z\_pad. Then, when computing b\_0, initialize H using the saved state.
-Further details are implementation dependent, and beyond the scope of this document.
+Further details are implementation dependent and are beyond the scope of this document.
 
 ### expand\_message\_xof {#hashtofield-expand-xof}
 
@@ -2013,7 +2014,7 @@ Similarly, if the target elliptic curve is a twisted Edwards curve ({{twisted-ed
 the twisted Edwards Elligator 2 method ({{ell2edwards}}) is recommended.
 
 The remaining cases are Weierstrass curves.
-For curves supported by the Simplified SWU method ({{simple-swu}}),
+For curves supported by the Simplified Shallue-van de Woestijne-Ulas (SWU) method ({{simple-swu}}),
 that mapping is the recommended one.
 Otherwise, the Simplified SWU method for AB == 0 ({{simple-swu-AB0}})
 is recommended if the goal is best performance, while
@@ -2023,7 +2024,7 @@ if the goal is simplicity of implementation.
 requires implementing an isogeny map in addition to the mapping function, while
 the Shallue-van de Woestijne method does not.)
 
-The Shallue-van de Woestijne method ({{svdw}}) works with any curve,
+The Shallue-van de Woestijne method ({{svdw}}) works with any curve
 and may be used in cases where a generic mapping is required.
 Note, however, that this mapping is almost always more computationally
 expensive than the curve-specific recommendations above.
@@ -2107,7 +2108,7 @@ its derivation is detailed in {{W19}}.
 This parameterization also works for Montgomery curves ({{montgomery}}) and
 twisted Edwards curves ({{twisted-edwards}}) via the rational maps
 given in {{appx-rational-map}}:
-first evaluate the Shallue-van de Woestijne mapping to an equivalent Weierstrass
+first, evaluate the Shallue-van de Woestijne mapping to an equivalent Weierstrass
 curve, then map that point to the target Montgomery or twisted Edwards curve
 using the corresponding rational map.
 
@@ -2171,7 +2172,7 @@ Constants:
 
 - Z, an element of F meeting the below criteria.
   {{sswu-z-code}} gives a Sage script {{SAGE}} that outputs the RECOMMENDED Z.
-  The criteria are:
+  The criteria are as follows:
   1. Z is non-square in F,
   2. Z != -1 in F,
   3. the polynomial g(x) - Z is irreducible over F, and
@@ -2181,7 +2182,7 @@ Sign of y: Inputs u and -u give the same x-coordinate.
 Thus, we set sgn0(y) == sgn0(u).
 
 Exceptions: The exceptional cases are values of u such that
-Z^2 * u^4 + Z * u^2 == 0. This includes u == 0, and may include
+Z^2 * u^4 + Z * u^2 == 0. This includes u == 0 and may include
 other values depending on Z. Implementations must detect
 this case and set x1 = B / (Z * A), which guarantees that g(x1)
 is square by the condition on Z given above.
@@ -2202,8 +2203,8 @@ Operations:
 ~~~
 
 {{straightline-sswu}} gives a general and optimized straight-line implementation of
-this mapping. For more information on optimizing this mapping, see {{WB19}} Section
-4 or the example code found at {{hash2curve-repo}}.
+this mapping. For more information on optimizing this mapping, see Section 4 of {{WB19}}
+or the example code found at {{hash2curve-repo}}.
 
 ### Simplified SWU for AB == 0 {#simple-swu-AB0}
 
@@ -2232,7 +2233,7 @@ the isogeny map to that point to get a point on E.
 
 Note that iso\_map is a group homomorphism, meaning that point addition
 commutes with iso\_map.
-Thus, when using this mapping in the hash\_to\_curve construction of {{roadmap}},
+Thus, when using this mapping in the hash\_to\_curve construction discussed in {{roadmap}},
 one can effect a small optimization by first mapping u0 and u1 to E', adding
 the resulting points on E', and then applying iso\_map to the sum.
 This gives the same result while requiring only one evaluation of iso\_map.
@@ -2246,7 +2247,7 @@ Helper functions:
 - map\_to\_curve\_simple\_swu is the mapping of {{simple-swu}} to E'
 - iso\_map is the isogeny map from E' to E
 
-Sign of y: for this map, the sign is determined by map\_to\_curve\_simple\_swu.
+Sign of y: For this map, the sign is determined by map\_to\_curve\_simple\_swu.
 No further sign adjustments are necessary.
 
 Exceptions: map\_to\_curve\_simple\_swu handles its exceptional cases.
@@ -2262,7 +2263,7 @@ Operations:
 3. return (x, y)
 ~~~
 
-See {{hash2curve-repo}} or {{WB19}} Section 4.3 for details on implementing the isogeny map.
+See {{hash2curve-repo}} or Section 4.3 of {{WB19}} for details on implementing the isogeny map.
 
 ## Mappings for Montgomery Curves {#montgomery}
 
@@ -2287,7 +2288,7 @@ Constants:
 - Z, a non-square element of F.
   {{elligator-z-code}} gives a Sage script {{SAGE}} that outputs the RECOMMENDED Z.
 
-Sign of t: this mapping fixes the sign of t as specified in {{BHKL13}}.
+Sign of t: This mapping fixes the sign of t as specified in {{BHKL13}}.
 No additional adjustment is required.
 
 Exceptions: The exceptional case is Z * u^2 == -1, i.e., 1 + Z * u^2 == 0.
@@ -2374,7 +2375,7 @@ Helper functions:
 - rational\_map is a function that takes a point (s, t) on M and
   returns a point (v, w) on E, as defined in {{rational-map}}.
 
-Sign of t (and v): for this map, the sign is determined by map\_to\_curve\_elligator2.
+Sign of t (and v): For this map, the sign is determined by map\_to\_curve\_elligator2.
 No further sign adjustments are required.
 
 Exceptions: The exceptions for the Elligator 2 mapping are as given in
@@ -2419,7 +2420,7 @@ Examples of fast cofactor clearing methods include the following:
 
 - For certain pairing-friendly curves having subgroup G2 over an extension
   field, Scott et al.&nbsp;{{SBCDK09}} describe a method for fast cofactor clearing
-  that exploits an efficiently-computable endomorphism. Fuentes-Castaneda
+  that exploits an efficiently computable endomorphism. Fuentes-Castaneda
   et al.&nbsp;{{FKR11}} propose an alternative method that is sometimes more efficient.
   Budroni and Pintore {{BP17}} give concrete instantiations of these methods
   for Barreto-Lynn-Scott pairing-friendly curves {{BLS03}}.
@@ -2446,7 +2447,7 @@ When a curve admits a fast cofactor clearing method, clear\_cofactor
 MAY be evaluated either via that method or via scalar multiplication
 by the equivalent h\_eff; these two methods give the same result.
 Note that in this case scalar multiplication by the cofactor h does not
-generally give the same result as the fast method, and MUST NOT be used.
+generally give the same result as the fast method and MUST NOT be used.
 
 # Suites for Hashing {#suites}
 
@@ -2467,7 +2468,7 @@ is hash\_to\_curve; see {{roadmap}} and immediately below for more information.
 A hash-to-curve suite comprises the following parameters:
 
 - Suite ID, a short name used to refer to a given suite.
-  {{suiteIDformat}} discusses the naming conventions for suite IDs.
+  {{suiteIDformat}} discusses the naming conventions for Suite IDs.
 - encoding type, either uniform (hash\_to\_curve) or nonuniform (encode\_to\_curve).
   See {{roadmap}} for definitions of these encoding types.
 - E, the target elliptic curve over a field F.
@@ -2487,7 +2488,7 @@ In addition to the above parameters, the mapping f may require
 additional parameters Z, M, rational\_map, E', or iso\_map.
 When applicable, these MUST be specified.
 
-The below table lists suites RECOMMENDED for some elliptic curves.
+The table below lists suites RECOMMENDED for some elliptic curves.
 The corresponding parameters are given in the following subsections.
 Applications instantiating cryptographic protocols whose security analysis
 relies on a random oracle that outputs points with a uniform distribution MUST NOT use a
@@ -2642,8 +2643,8 @@ except for the following parameters:
   - a = -1
   - d = 0x52036cee2b6ffe738cc740797779e89800700a4d4141d8ab75eb4dca135978a3
 - f: Twisted Edwards Elligator 2 method ({{ell2edwards}})
-- M: curve25519 defined in {{!RFC7748, Section 4.1}}
-- rational\_map: the birational map defined in {{!RFC7748, Section 4.1}}
+- M: curve25519, defined in {{!RFC7748, Section 4.1}}
+- rational\_map: the birational maps defined in {{!RFC7748, Section 4.1}}
 
 curve25519\_XMD:SHA-512\_ELL2\_NU\_ is identical to curve25519\_XMD:SHA-512\_ELL2\_RO\_,
 except that the encoding type is encode\_to\_curve ({{roadmap}}).
@@ -2753,7 +2754,7 @@ BLS12381G1\_XMD:SHA-256\_SSWU\_NU\_ is identical to BLS12381G1\_XMD:SHA-256\_SSW
 except that the encoding type is encode\_to\_curve ({{roadmap}}).
 
 Note that the h\_eff values for these suites are chosen for compatibility
-with the fast cofactor clearing method described by Scott ({{WB19}} Section 5).
+with the fast cofactor clearing method described by Scott ({{WB19}}, Section 5).
 
 An optimized example implementation of the Simplified SWU mapping
 to the curve E' isogenous to BLS12-381 G1 is given in {{straightline-sswu}}.
@@ -2785,7 +2786,7 @@ except that the encoding type is encode\_to\_curve ({{roadmap}}).
 
 Note that the h\_eff values for these suites are chosen for compatibility
 with the fast cofactor clearing method described by
-Budroni and Pintore ({{BP17}}, Section 4.1), and summarized in {{clear-cofactor-bls12381-g2}}.
+Budroni and Pintore ({{BP17}}, Section 4.1) and are summarized in {{clear-cofactor-bls12381-g2}}.
 
 An optimized example implementation of the Simplified SWU mapping
 to the curve E' isogenous to BLS12-381 G2 is given in {{straightline-sswu}}.
@@ -2793,7 +2794,7 @@ to the curve E' isogenous to BLS12-381 G2 is given in {{straightline-sswu}}.
 ## Defining a New Hash-to-Curve Suite {#new-suite}
 
 For elliptic curves not listed elsewhere in {{suites}}, a new hash-to-curve
-suite can be defined by:
+suite can be defined by the following:
 
 1. E, F, p, and m are determined by the elliptic curve and its base field.
 
@@ -2826,7 +2827,7 @@ Suite IDs MUST be constructed as follows:
 
 The fields CURVE\_ID, HASH\_ID, MAP\_ID, and ENC\_VAR are
 ASCII-encoded strings of at most 64 characters each.
-Fields MUST contain only ASCII characters between 0x21 and 0x7E (inclusive)
+Fields MUST contain only ASCII characters between 0x21 and 0x7E (inclusive),
 except that underscore (i.e., 0x5f) is not allowed.
 
 As indicated above, each field (including the last) is followed by an underscore
@@ -2866,7 +2867,7 @@ Suite ID fields MUST be chosen as follows:
 - MAP\_ID: a human-readable representation of the map\_to\_curve function
   as defined in {{mappings}}. These are defined as follows:
 
-    - "SVDW" for or Shallue and van de Woestijne ({{svdw}}).
+    - "SVDW" for Shallue and van de Woestijne ({{svdw}}).
     - "SSWU" for Simplified SWU (Sections {{<simple-swu}} and {{<simple-swu-AB0}}).
     - "ELL2" for Elligator 2 (Sections {{<elligator2}} and {{<ell2edwards}}).
 
@@ -2924,7 +2925,7 @@ When the hash\_to\_curve function ({{roadmap}}) is instantiated with a
 hash\_to\_field function that is indifferentiable from a random oracle
 ({{hashtofield}}), the resulting function is indifferentiable from a random
 oracle ({{MRH04}} {{BCIMRT10}} {{FFSTV13}} {{LBB19}} {{H20}}).
-In many cases such a function can be safely used in cryptographic protocols
+In many cases, such a function can be safely used in cryptographic protocols
 whose security analysis assumes a random oracle that outputs uniformly random
 points on an elliptic curve.
 As Ristenpart et al.&nbsp;discuss in {{RSS11}}, however, not all security proofs
@@ -2983,7 +2984,7 @@ Specifically:
   (Sections {{<elligator2}} and {{<ell2edwards}}).
 
 Indifferentiability of encode\_to\_curve follows from an argument similar
-to the one given by Brier et al.&nbsp;{{BCIMRT10}}; we briefly sketch.
+to the one given by Brier et al.&nbsp;{{BCIMRT10}}; we briefly sketch this argument as follows.
 Consider an ideal random oracle Hc() that samples from the distribution induced
 by the map\_to\_curve function called by encode\_to\_curve, and assume for
 simplicity that the target elliptic curve has cofactor 1 (a similar argument
@@ -3007,7 +3008,7 @@ and induces the correct point P when passed through map\_to\_curve.
 
 ## hash\_to\_field Security {#security-considerations-hash-to-field}
 
-The hash\_to\_field function defined in {{hashtofield}} is indifferentiable
+The hash\_to\_field function, defined in {{hashtofield}}, is indifferentiable
 from a random oracle {{MRH04}} when expand\_message ({{hashtofield-expand}})
 is modeled as a random oracle.
 By composability of indifferentiability proofs, this also holds when
@@ -3028,7 +3029,7 @@ returned by I2OSP.
 
 ## expand\_message\_xmd Security {#security-considerations-expand-xmd}
 
-The expand\_message\_xmd function defined in {{hashtofield-expand-xmd}} is
+The expand\_message\_xmd function, defined in {{hashtofield-expand-xmd}}, is
 indifferentiable from a random oracle {{MRH04}} when one of the following holds:
 
 1. H is indifferentiable from a random oracle,
@@ -3040,18 +3041,18 @@ indifferentiable from a random oracle {{MRH04}} when one of the following holds:
 For cases (1) and (2), the indifferentiability of expand\_message\_xmd follows
 directly from the indifferentiability of H.
 
-For case (3), i.e., for H a Merkle-Damgaard hash function, indifferentiability
+For case (3), i.e., where H is a Merkle-Damgaard hash function, indifferentiability
 follows from {{CDMP05}}, Theorem 3.5.
 In particular, expand\_message\_xmd computes b\_0 by prefixing the message
 with one block of 0-bytes plus auxiliary information (length, counter, and DST).
 Then, each of the output blocks b\_i, i >= 1 in expand\_message\_xmd is the
 result of invoking H on a unique, prefix-free encoding of b\_0.
-This is true, first, because the length of the input to all such invocations
+This is true, first because the length of the input to all such invocations
 is equal and fixed by the choice of H and DST, and
-second, because each such input has a unique suffix (because of the inclusion
+second because each such input has a unique suffix (because of the inclusion
 of the counter byte I2OSP(i, 1)).
 
-The essential difference between the construction of {{CDMP05}} and
+The essential difference between the construction discussed in {{CDMP05}} and
 expand\_message\_xmd is that the latter hashes a counter appended to
 strxor(b\_0, b\_(i - 1)) (step 10) rather than to b\_0.
 This approach increases the Hamming distance between inputs to different
@@ -3080,7 +3081,7 @@ extendable-output function.
 but these should be analyzed on a case-by-case basis.)
 For security, applications that use the same function H outside of expand\_message
 should enforce domain separation between those uses of H and expand\_message,
-and should separate all of these from uses of H in other applications.
+and they should separate all of these from uses of H in other applications.
 
 This section suggests four methods for enforcing domain separation
 from expand\_message variants, explains how each method achieves domain
@@ -3199,17 +3200,17 @@ These methods can be used to instantiate multiple domain separated functions
     the salt input to HKDF-Extract to DST\_key, computed as above.
     This ensures domain separation for HKDF-Extract by the same argument
     as for HMAC-H using DST\_key.
-    Moreover, assuming that the IKM input to HKDF-Extract has sufficiently
+    Moreover, assuming that the input keying material (IKM) supplied to HKDF-Extract has sufficiently
     high entropy (say, commensurate with the security parameter), the
     HKDF-Expand step is domain separated by the same argument as for
-    HMAC-H with a high-entropy secret key (since PRK is exactly that).
+    HMAC-H with a high-entropy secret key (since a pseudorandom key is exactly that).
 
 ## Target Security Levels {#security-considerations-targets}
 
 Each ciphersuite specifies a target security level (in bits) for the underlying
 curve. This parameter ensures the corresponding hash\_to\_field instantiation is
 conservative and correct. We stress that this parameter is only an upper bound on
-the security level of the curve, and is neither a guarantee nor endorsement of its
+the security level of the curve and is neither a guarantee nor endorsement of its
 suitability for a given application. Mathematical and cryptographic advancements
 may reduce the effective security level for any curve.
 
@@ -3236,7 +3237,7 @@ Filippo Valsorda, and Mathy Vanhoef for helpful reviews and feedback.
 The problem of mapping arbitrary bit strings to elliptic curve points
 has been the subject of both practical and theoretical research.
 This section briefly describes the background and research results
-that underly the recommendations in this document.
+that underlie the recommendations in this document.
 This section is provided for informational purposes only.
 
 A naive but generally insecure method of mapping a string msg to
@@ -3276,12 +3277,12 @@ Ulas {{U07}} describes a simpler version of the Shallue-van de Woestijne map,
 and Brier et al.&nbsp;{{BCIMRT10}} give a further simplification, which the authors
 call the "simplified SWU" map.
 That simplified map applies only to fields of characteristic p = 3 (mod 4);
-Wahby and Boneh {{WB19}} generalize to fields of any characteristic, and
+Wahby and Boneh {{WB19}} generalize to fields of any characteristic and
 give further optimizations.
 
 Boneh and Franklin give a deterministic algorithm mapping to certain
 supersingular curves over fields of characteristic p = 2 (mod 3) {{BF01}}.
-Icart gives another deterministic algorithm which maps to any curve
+Icart gives another deterministic algorithm that maps to any curve
 over a field of characteristic p = 2 (mod 3) {{Icart09}}.
 Several extensions and generalizations follow this work, including
 {{FSV09}}, {{FT10}}, {{KLR10}}, {{F11}}, and {{CK11}}.
@@ -3316,7 +3317,7 @@ optimizations.
 Complementary to the problem of mapping from bit strings to elliptic curve
 points, Bernstein et al.&nbsp;{{BHKL13}} study the problem of mapping from elliptic
 curve points to uniformly random bit strings, giving solutions for a class of
-curves including Montgomery and twisted Edwards curves.
+curves that includes Montgomery and twisted Edwards curves.
 Tibouchi {{T14}} and Aranha et al.&nbsp;{{AFQTZ14}} generalize these results.
 This document does not deal with this complementary problem.
 
@@ -3548,7 +3549,7 @@ to the point (x, y) on the equivalent Weierstrass curve
     y^2 = x^3 + A * x + B
 ~~~
 
-is given by:
+is given by
 
 - A = (3 - J^2) / (3 * K^2)
 - B = (2 * J^3 - 9 * J) / (27 * K^3)
@@ -4035,8 +4036,7 @@ Steps:
 
 This section gives sample implementations optimized for some of the
 elliptic curves listed in {{suites}}.
-Sample Sage code {{SAGE}} for each algorithm can also be found in the
-draft repository {{hash2curve-repo}}.
+Sample Sage code {{SAGE}} for each algorithm can also be found in {{hash2curve-repo}}.
 
 ## Interface and Projective Coordinate Systems {#projective-coords}
 
@@ -4416,7 +4416,7 @@ Steps:
 ## Cofactor Clearing for BLS12-381 G2 {#clear-cofactor-bls12381-g2}
 
 The curve BLS12-381, whose parameters are defined in {{suites-bls12381-g2}},
-admits an efficiently-computable endomorphism psi that can be used to
+admits an efficiently computable endomorphism, psi, that can be used to
 speed up cofactor clearing for G2 {{SBCDK09}} {{FKR11}} {{BP17}} (see also
 {{cofactor-clearing}}).
 This section implements the endomorphism psi and a fast cofactor clearing
@@ -4735,7 +4735,7 @@ with basis (1, I) represented as described in {{bg-curves}}, i.e.,
 an element x = (x\_1, x\_2) = x\_1 + x\_2 * I.
 
 Other optimizations of this type are possible in other extension
-fields; see, e.g., {{AR13}} for more information.
+fields; see, for example, {{AR13}} for more information.
 
 ~~~ pseudocode
 is_square(x)
