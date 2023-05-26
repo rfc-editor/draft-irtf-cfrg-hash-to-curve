@@ -2925,7 +2925,7 @@ When the hash\_to\_curve function ({{roadmap}}) is instantiated with a
 hash\_to\_field function that is indifferentiable from a random oracle
 ({{hashtofield}}), the resulting function is indifferentiable from a random
 oracle ({{MRH04}} {{BCIMRT10}} {{FFSTV13}} {{LBB19}} {{H20}}).
-In many cases such a function can be safely used in cryptographic protocols
+In many cases, such a function can be safely used in cryptographic protocols
 whose security analysis assumes a random oracle that outputs uniformly random
 points on an elliptic curve.
 As Ristenpart et al. discuss in {{RSS11}}, however, not all security proofs
@@ -2980,11 +2980,11 @@ Specifically:
 - Fouque and Tibouchi {{FT10}} and Tibouchi {{T14}} derive bounds for the
   Simplified SWU mapping (Sections {{<simple-swu}} and {{<simple-swu-AB0}}).
 
-- Bernstein et al. {{BHKL13}} derive bounds for the Elligator 2 mapping
+- Bernstein et al.&nbsp;{{BHKL13}} derive bounds for the Elligator 2 mapping
   (Sections {{<elligator2}} and {{<ell2edwards}}).
 
 Indifferentiability of encode\_to\_curve follows from an argument similar
-to the one given by Brier et al. {{BCIMRT10}}; we briefly sketch.
+to the one given by Brier et al.&nbsp;{{BCIMRT10}}; we briefly sketch this argument as follows.
 Consider an ideal random oracle Hc() that samples from the distribution induced
 by the map\_to\_curve function called by encode\_to\_curve, and assume for
 simplicity that the target elliptic curve has cofactor 1 (a similar argument
@@ -3008,7 +3008,7 @@ and induces the correct point P when passed through map\_to\_curve.
 
 ## hash\_to\_field Security {#security-considerations-hash-to-field}
 
-The hash\_to\_field function defined in {{hashtofield}} is indifferentiable
+The hash\_to\_field function, defined in {{hashtofield}}, is indifferentiable
 from a random oracle {{MRH04}} when expand\_message ({{hashtofield-expand}})
 is modeled as a random oracle.
 By composability of indifferentiability proofs, this also holds when
@@ -3029,7 +3029,7 @@ returned by I2OSP.
 
 ## expand\_message\_xmd Security {#security-considerations-expand-xmd}
 
-The expand\_message\_xmd function defined in {{hashtofield-expand-xmd}} is
+The expand\_message\_xmd function, defined in {{hashtofield-expand-xmd}}, is
 indifferentiable from a random oracle {{MRH04}} when one of the following holds:
 
 1. H is indifferentiable from a random oracle,
@@ -3041,18 +3041,18 @@ indifferentiable from a random oracle {{MRH04}} when one of the following holds:
 For cases (1) and (2), the indifferentiability of expand\_message\_xmd follows
 directly from the indifferentiability of H.
 
-For case (3), i.e., for H a Merkle-Damgaard hash function, indifferentiability
+For case (3), i.e., where H is a Merkle-Damgaard hash function, indifferentiability
 follows from {{CDMP05}}, Theorem 3.5.
 In particular, expand\_message\_xmd computes b\_0 by prefixing the message
 with one block of 0-bytes plus auxiliary information (length, counter, and DST).
 Then, each of the output blocks b\_i, i >= 1 in expand\_message\_xmd is the
 result of invoking H on a unique, prefix-free encoding of b\_0.
-This is true, first, because the length of the input to all such invocations
+This is true, first because the length of the input to all such invocations
 is equal and fixed by the choice of H and DST, and
-second, because each such input has a unique suffix (because of the inclusion
+second because each such input has a unique suffix (because of the inclusion
 of the counter byte I2OSP(i, 1)).
 
-The essential difference between the construction of {{CDMP05}} and
+The essential difference between the construction discussed in {{CDMP05}} and
 expand\_message\_xmd is that the latter hashes a counter appended to
 strxor(b\_0, b\_(i - 1)) (step 10) rather than to b\_0.
 This approach increases the Hamming distance between inputs to different
@@ -3081,7 +3081,7 @@ extendable-output function.
 but these should be analyzed on a case-by-case basis.)
 For security, applications that use the same function H outside of expand\_message
 should enforce domain separation between those uses of H and expand\_message,
-and should separate all of these from uses of H in other applications.
+and they should separate all of these from uses of H in other applications.
 
 This section suggests four methods for enforcing domain separation
 from expand\_message variants, explains how each method achieves domain
@@ -3210,7 +3210,7 @@ These methods can be used to instantiate multiple domain separated functions
 Each ciphersuite specifies a target security level (in bits) for the underlying
 curve. This parameter ensures the corresponding hash\_to\_field instantiation is
 conservative and correct. We stress that this parameter is only an upper bound on
-the security level of the curve, and is neither a guarantee nor endorsement of its
+the security level of the curve and is neither a guarantee nor endorsement of its
 suitability for a given application. Mathematical and cryptographic advancements
 may reduce the effective security level for any curve.
 
