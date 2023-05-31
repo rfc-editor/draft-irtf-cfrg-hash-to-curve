@@ -818,7 +818,7 @@ informative:
     seriesinfo:
         publisher: Chapman and Hall / CRC, 2nd edition
         ISBN: 9781420071467
-    target: https://www.crcpress.com/9781420071467
+    target: http://www.math.umd.edu/~lcw/ellipticcurves.html
     date: 2008
     author:
       -
@@ -841,7 +841,7 @@ informative:
     seriesinfo:
         publisher: Chapman and Hall / CRC
         ISBN: 9781584885184
-    target: https://www.crcpress.com/9781584885184
+    target: https://www.hyperelliptic.org/HEHCC/
     date: 2005
     author:
       -
