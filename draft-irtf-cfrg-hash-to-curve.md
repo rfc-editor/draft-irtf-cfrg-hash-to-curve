@@ -3054,7 +3054,7 @@ of the counter byte I2OSP(i, 1)).
 
 The essential difference between the construction discussed in {{CDMP05}} and
 expand\_message\_xmd is that the latter hashes a counter appended to
-strxor(b\_0, b\_(i - 1)) (Section 5.3.1, step 10) rather than to b\_0.
+strxor(b\_0, b\_(i - 1)) ({#hashtofield-expand-xmd}, step 10) rather than to b\_0.
 This approach increases the Hamming distance between inputs to different
 invocations of H, which reduces the likelihood that nonidealities in H
 affect the distribution of the b\_i values.
