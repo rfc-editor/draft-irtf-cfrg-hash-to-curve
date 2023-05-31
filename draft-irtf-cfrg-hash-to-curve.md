@@ -3448,14 +3448,14 @@ as follows:
 - For Montgomery curves, first map to the Weierstrass curve, then convert
 to Montgomery coordinates via the mapping.
 
-- For twisted Edwards curves, compose the Weierstrass to Montgomery mapping
-with the Montgomery to twisted Edwards mapping
-({{appx-rational-map-edw}}) to obtain a Weierstrass curve and a mapping
-to the target twisted Edwards curve.
+- For twisted Edwards curves, compose the mapping from Weierstrass
+to Montgomery with the mapping from Montgomery to twisted Edwards
+({{appx-rational-map-edw}}) to obtain a Weierstrass curve and a
+mapping to the target twisted Edwards curve.
 Map to this Weierstrass curve, then convert to Edwards coordinates
 via the mapping.
 
-## Generic Montgomery to Twisted Edwards Map {#appx-rational-map-edw}
+## Generic Mapping from Montgomery to Twisted Edwards {#appx-rational-map-edw}
 
 This section gives a generic birational map between twisted Edwards
 and Montgomery curves.
@@ -3536,7 +3536,7 @@ When the goal is to map into the prime-order subgroup of the Montgomery
 curve, it suffices to return the identity point on the Montgomery curve
 in the exceptional cases.
 
-## Weierstrass to Montgomery Map {#appx-rational-map-mont}
+## Mapping from Weierstrass to Montgomery {#appx-rational-map-mont}
 
 The rational map from the point (s, t) on the Montgomery curve
 
