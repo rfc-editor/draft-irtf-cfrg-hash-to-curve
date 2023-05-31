@@ -2183,7 +2183,7 @@ Thus, we set sgn0(y) == sgn0(u).
 
 Exceptions: The exceptional cases are values of u such that
 Z^2 * u^4 + Z * u^2 == 0. This includes u == 0 and may include
-other values depending on Z. Implementations must detect
+other values that depend on Z. Implementations must detect
 this case and set x1 = B / (Z * A), which guarantees that g(x1)
 is square by the condition on Z given above.
 
