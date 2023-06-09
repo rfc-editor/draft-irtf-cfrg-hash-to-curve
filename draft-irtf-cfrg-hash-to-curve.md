@@ -3161,7 +3161,7 @@ These methods can be used to instantiate multiple domain separated functions
     This method is useful for domain separating invocations of H inside
     HMAC-H (i.e., HMAC {{?RFC2104}} instantiated with hash function H) from
     expand\_message\_xmd.
-    It also applies to HKDF-H {{?RFC5869}}, as discussed below.
+    It also applies to HKDF-H (i.e., HKDF {{?RFC5869}} instantiated with hash function H), as discussed below.
 
     Specifically, this method applies when HMAC-H is used with a non-secret
     key to instantiate a random oracle based on a hash function H
