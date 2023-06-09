@@ -1525,8 +1525,8 @@ is beyond the scope of this document; readers should consult standard reference
 material {{MOV96}} {{CFADLNV05}}.
 
 -   CMOV(a, b, c): If c is False, CMOV returns a; otherwise, it returns b.
-    For constant-time implementations, this operation must run in
-    time independent of the value of c.
+    For constant-time implementations, this operation must run in a
+    time that is independent of the value of c.
 
 -   AND, OR, NOT, and XOR are standard bitwise logical operators.
     For constant-time implementations, short-circuit operators MUST be avoided.
