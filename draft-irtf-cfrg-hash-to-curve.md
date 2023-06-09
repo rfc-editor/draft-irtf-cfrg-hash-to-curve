@@ -1980,7 +1980,7 @@ The variants defined in this document use a suffix-free encoding of DST
 to avoid this issue.
 
 - MUST use the domain separation tag DST to ensure that invocations of
-cryptographic primitives inside of expand\_message are domain separated
+cryptographic primitives inside of expand\_message are domain-separated
 from invocations outside of expand\_message.
 For example, if the expand\_message variant uses a hash function H, an encoding
 of DST MUST be added either as a prefix or a suffix of the input to each invocation
@@ -3092,17 +3092,17 @@ DST\_ext distinct from DST\_prime and augments calls to H with DST\_ext.
 Each method augments calls to H differently, and each may impose
 additional requirements on DST\_ext.
 
-These methods can be used to instantiate multiple domain separated functions
+These methods can be used to instantiate multiple domain-separated functions
 (e.g., H1 and H2) by selecting distinct DST\_ext values for each
 (e.g., DST\_ext1, DST\_ext2).
 
 1.  (Suffix-only domain separation.)
-    This method is useful when domain separating invocations of H
+    This method is useful when domain-separating invocations of H
     from expand\_message\_xmd or expand\_message\_xof.
-    It is not appropriate for domain separating expand\_message from HMAC-H
+    It is not appropriate for domain-separating expand\_message from HMAC-H
     {{?RFC2104}}; for that purpose, see method 4.
 
-    To instantiate a suffix-only domain separated function Hso, compute
+    To instantiate a suffix-only domain-separated function Hso, compute
 
         Hso(msg) = H(msg || DST_ext)
 
@@ -3116,7 +3116,7 @@ These methods can be used to instantiate multiple domain separated functions
 2.  (Prefix-suffix domain separation.)
     This method can be used in the same cases as the suffix-only method.
 
-    To instantiate a prefix-suffix domain separated function Hps, compute
+    To instantiate a prefix-suffix domain-separated function Hps, compute
 
         Hps(msg) = H(DST_ext || msg || I2OSP(0, 1))
 
@@ -3132,11 +3132,11 @@ These methods can be used to instantiate multiple domain separated functions
     DST\_prime is always appended to invocations of H inside expand\_message.
 
 3.  (Prefix-only domain separation.)
-    This method is only useful for domain separating invocations of H
+    This method is only useful for domain-separating invocations of H
     from expand\_message\_xmd.
     It does not give domain separation for expand\_message\_xof or HMAC-H.
 
-    To instantiate a prefix-only domain separated function Hpo, compute
+    To instantiate a prefix-only domain-separated function Hpo, compute
 
         Hpo(msg) = H(DST_ext || msg)
 
@@ -3159,7 +3159,7 @@ These methods can be used to instantiate multiple domain separated functions
     with high probability.
 
 4.  (XMD-HMAC domain separation.)
-    This method is useful for domain separating invocations of H inside
+    This method is useful for domain-separating invocations of H inside
     HMAC-H (i.e., HMAC {{?RFC2104}} instantiated with hash function H) from
     expand\_message\_xmd.
     It also applies to HKDF-H (i.e., HKDF {{?RFC5869}} instantiated with hash function H), as discussed below.
@@ -3203,7 +3203,7 @@ These methods can be used to instantiate multiple domain separated functions
     as for HMAC-H using DST\_key.
     Moreover, assuming that the input keying material (IKM) supplied to HKDF-Extract has sufficiently
     high entropy (say, commensurate with the security parameter), the
-    HKDF-Expand step is domain separated by the same argument as for
+    HKDF-Expand step is domain-separated by the same argument as for
     HMAC-H with a high-entropy secret key (since a pseudorandom key is exactly that).
 
 ## Target Security Levels {#security-considerations-targets}
