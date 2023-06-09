@@ -1276,11 +1276,12 @@ the set of inputs is larger than the set of outputs, so there must
 be distinct inputs that give the same output (i.e., there must be collisions).
 Thus, any encoding built from Hf is also not injective.
 
-Like mappings, encodings may be invertible, meaning that there is an efficient
-algorithm that, for any point P output by the encoding, outputs a string s
-such that applying the encoding to s outputs P.
-The instantiation of Hf used by all encodings specified in this document ({{hashtofield}})
-is not invertible. Thus, the encodings are also not invertible.
+Like mappings, encodings may be invertible, meaning that there is an
+efficient algorithm that, for any point P output by the encoding,
+outputs a string s such that applying the encoding to s outputs P.
+However, the instantiation of Hf used by all encodings specified in
+this document ({{hashtofield}}) is not invertible; thus, those encodings
+are also not invertible.
 
 In some applications of hashing to elliptic curves, it is important that
 encodings do not leak information through side channels.
