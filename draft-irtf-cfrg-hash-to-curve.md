@@ -3042,7 +3042,7 @@ For cases (1) and (2), the indifferentiability of expand\_message\_xmd follows
 directly from the indifferentiability of H.
 
 For case (3), i.e., where H is a Merkle-Damgaard hash function, indifferentiability
-follows from {{CDMP05}}, Theorem 3.5.
+follows from {{CDMP05}}, Theorem 5.
 In particular, expand\_message\_xmd computes b\_0 by prefixing the message
 with one block of 0-bytes plus auxiliary information (length, counter, and DST).
 Then, each of the output blocks b\_i, i >= 1 in expand\_message\_xmd is the
