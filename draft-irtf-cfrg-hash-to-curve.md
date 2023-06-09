@@ -595,7 +595,7 @@ informative:
     date: June 2022
   jubjub-fq:
     title: zkcrypto/jubjub - fq.rs
-    target: https://github.com/zkcrypto/jubjub/blob/master/src/fq.rs
+    target: https://github.com/zkcrypto/jubjub/pull/18
     date: 2019
   L13:
     title: Implementing Elligator for Curve25519
@@ -1067,7 +1067,7 @@ informative:
         org: Portland State University
   W19:
     title: An explicit, generic parameterization for the Shallue--van de Woestijne map
-    target: https://github.com/cfrg/draft-irtf-cfrg-hash-to-curve/raw/master/doc/svdw_params.pdf
+    target: https://github.com/cfrg/draft-irtf-cfrg-hash-to-curve/blob/draft-irtf-cfrg-hash-to-curve-14/doc/svdw_params.pdf
     date: 2019
     author:
       -
