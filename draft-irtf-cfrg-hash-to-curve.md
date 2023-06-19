@@ -1275,7 +1275,7 @@ encodings do not leak information through side channels.
 {{VR20}} is one example of this type of leakage leading to a security vulnerability.
 See {{security-considerations-constant}} for further discussion.
 
-### Random oracle encodings {#term-rom}
+### Random-oracle encodings {#term-rom}
 
 A random-oracle encoding satisfies a strong property: it can be proved
 indifferentiable from a random oracle {{MRH04}} under a suitable assumption.
@@ -1286,7 +1286,7 @@ The constructions differ in their output distributions: one gives a uniformly ra
 point on the curve, the other gives a point sampled from a nonuniform distribution.
 
 A random-oracle encoding with a uniform output distribution is suitable for use
-in many cryptographic protocols proven secure in the random oracle model.
+in many cryptographic protocols proven secure in the random-oracle model.
 See {{security-considerations-props}} for further discussion.
 
 ### Serialization {#term-serialization}
@@ -1304,12 +1304,12 @@ This document does not cover serialization or deserialization.
 
 ### Domain separation {#term-domain-separation}
 
-Cryptographic protocols proven secure in the random oracle model are often analyzed
+Cryptographic protocols proven secure in the random-oracle model are often analyzed
 under the assumption that the random oracle only answers queries associated
 with that protocol (including queries made by adversaries) {{BR93}}.
 In practice, this assumption does not hold if two protocols use the
 same function to instantiate the random oracle.
-Concretely, consider protocols P1 and P2 that query a random oracle RO:
+Concretely, consider protocols P1 and P2 that query a random-oracle RO:
 if P1 and P2 both query RO on the same value x, the security analysis of
 one or both protocols may be invalidated.
 
@@ -1350,11 +1350,11 @@ basic functions:
     ~~~ pseudocode
     hash_to_field(msg, count)
 
-    Inputs:
+    Input:
     - msg, a byte string containing the message to hash.
     - count, the number of elements of F to output.
 
-    Outputs:
+    Output:
     - (u_0, ..., u_(count - 1)), a list of field elements.
 
     Steps: defined in Section 5.
@@ -1734,7 +1734,7 @@ The following procedure implements hash\_to\_field.
 The expand\_message parameter to this function MUST conform to the requirements
 given in {{hashtofield-expand}}. {{domain-separation}} discusses the REQUIRED
 method for constructing DST, the domain separation tag. Note that hash\_to\_field
-may fail (abort) if expand\_message fails.
+may fail (ABORT) if expand\_message fails.
 
 ~~~ pseudocode
 hash_to_field(msg, count)
@@ -1750,11 +1750,11 @@ Parameters:
   domain separation tag into a uniformly random byte string
   (see Section 5.3).
 
-Inputs:
+Input:
 - msg, a byte string containing the message to hash.
 - count, the number of elements of F to output.
 
-Outputs:
+Output:
 - (u_0, ..., u_(count - 1)), a list of field elements.
 
 Steps:
@@ -2149,7 +2149,7 @@ mapping.
 
 The function map\_to\_curve\_simple\_swu(u) implements a simplification
 of the Shallue-van de Woestijne-Ulas mapping {{U07}} described by Brier et
-al. {{BCIMRT10}}, which they call the "simplified SWU" map. Wahby and Boneh
+al. {{BCIMRT10}}, which they call the "Simplified SWU" map. Wahby and Boneh
 {{WB19}} generalize and optimize this mapping.
 
 Preconditions: A Weierstrass curve y^2 = x^3 + A * x + B where A != 0 and B != 0.
@@ -2196,7 +2196,7 @@ this mapping. For more information on optimizing this mapping, see {{WB19}} Sect
 
 ### Simplified SWU for AB == 0 {#simple-swu-AB0}
 
-Wahby and Boneh {{WB19}} show how to adapt the simplified SWU mapping to
+Wahby and Boneh {{WB19}} show how to adapt the Simplified SWU mapping to
 Weierstrass curves having A == 0 or B == 0, which the mapping of
 {{simple-swu}} does not support.
 (The case A == B == 0 is excluded because y^2 = x^3 is not an elliptic curve.)
@@ -2216,7 +2216,7 @@ This isogeny defines a map iso\_map(x', y') given by a pair of rational function
 iso\_map takes as input a point on E' and produces as output a point on E.
 
 Once E' and iso\_map are identified, this mapping works as follows: on input
-u, first apply the simplified SWU mapping to get a point on E', then apply
+u, first apply the Simplified SWU mapping to get a point on E', then apply
 the isogeny map to that point to get a point on E.
 
 Note that iso\_map is a group homomorphism, meaning that point addition
@@ -3034,7 +3034,7 @@ directly from the indifferentiability of H.
 For case (3), i.e., for H a Merkle-Damgaard hash function, indifferentiability
 follows from {{CDMP05}}, Theorem 3.5.
 In particular, expand\_message\_xmd computes b\_0 by prefixing the message
-with one block of 0-bytes plus auxiliary information (length, counter, and DST).
+with one block of zero bytes plus auxiliary information (length, counter, and DST).
 Then, each of the output blocks b\_i, i >= 1 in expand\_message\_xmd is the
 result of invoking H on a unique, prefix-free encoding of b\_0.
 This is true, first, because the length of the input to all such invocations
@@ -3207,7 +3207,7 @@ may reduce the effective security level for any curve.
 # Acknowledgements
 
 The authors would like to thank Adam Langley for his detailed writeup of Elligator 2 with
-Curve25519 {{L13}};
+curve25519 {{L13}};
 Dan Boneh, Christopher Patton, Benjamin Lipp, and Leonid Reyzin for educational discussions; and
 David Benjamin, Daniel Bourdrez, Frank Denis, Sean Devlin, Justin Drake, Bjoern Haase, Mike Hamburg,
 Dan Harkins, Daira Hopwood, Thomas Icart, Andy Polyakov, Thomas Pornin, Mamy Ratsimbazafy, Michael Scott,
@@ -3265,7 +3265,7 @@ for Barreto-Naehrig pairing-friendly curves {{BN05}}.
 
 Ulas {{U07}} describes a simpler version of the Shallue-van de Woestijne map,
 and Brier et al. {{BCIMRT10}} give a further simplification, which the authors
-call the "simplified SWU" map.
+call the "Simplified SWU" map.
 That simplified map applies only to fields of characteristic p = 3 (mod 4);
 Wahby and Boneh {{WB19}} generalize to fields of any characteristic, and
 give further optimizations.
@@ -3282,7 +3282,7 @@ mapping to curves over fields of characteristic p = 3 (mod 4) having a number of
 divisible by 4.  Bernstein et al. {{BHKL13}} optimize this mapping and
 describe a related mapping that they call "Elligator 2," which applies to
 any curve over a field of odd characteristic having a point of order 2.
-This includes Curve25519 and Curve448, both of which are CFRG-recommended
+This includes curve25519 and curve448, both of which are CFRG-recommended
 curves {{!RFC7748}}. Bernstein et al. {{BLMP19}} extend the Elligator 2 map
 to a class of supersingular curves over fields of characteristic p = 3 (mod 4).
 
@@ -3314,7 +3314,7 @@ This document does not deal with this complementary problem.
 # Hashing to ristretto255 {#appx-ristretto255}
 
 ristretto255 {{I-D.irtf-cfrg-ristretto255-decaf448}} provides a prime-order
-group based on Curve25519 {{!RFC7748}}.
+group based on curve25519 {{!RFC7748}}.
 This section describes hash\_to\_ristretto255, which implements a random-oracle
 encoding to this group that has a uniform output distribution ({{term-rom}})
 and the same security properties and interface as the hash\_to\_curve function
@@ -3367,7 +3367,7 @@ REQUIRED identifier is:
 # Hashing to decaf448 {#appx-decaf448}
 
 Similar to ristretto255, decaf448 {{I-D.irtf-cfrg-ristretto255-decaf448}} provides
-a prime-order group based on Curve448 {{!RFC7748}}.
+a prime-order group based on curve448 {{!RFC7748}}.
 This section describes hash\_to\_decaf448, which implements a random-oracle
 encoding to this group that has a uniform output distribution ({{term-rom}})
 and the same security properties and interface as the hash\_to\_curve function
@@ -3731,7 +3731,7 @@ classes of curves and fields.
 
 ## Shallue-van de Woestijne method {#straightline-svdw}
 
-This section gives a straight-line implementation of the Shallue and van
+This section gives a straight-line implementation of the Shallue-van
 de Woestijne method for any Weierstrass curve of the form given in
 {{weierstrass}}.
 See {{svdw}} for information on the constants used in this mapping.
@@ -3793,7 +3793,7 @@ Steps:
 
 ## Simplified SWU method {#straightline-sswu}
 
-This section gives a straight-line implementation of the simplified
+This section gives a straight-line implementation of the Simplified
 SWU method for any Weierstrass curve of the form given in {{weierstrass}}.
 See {{simple-swu}} for information on the constants used in this mapping.
 
@@ -3842,7 +3842,7 @@ above procedure.
 The first variant can be used with any field; the others are optimized versions
 for specific fields.
 
-The routines given in this section depend on the constant Z from the simplified SWU map.
+The routines given in this section depend on the constant Z from the Simplified SWU map.
 For correctness, sqrt_ratio and map_to_curve_simple_swu MUST use the same value for Z.
 
 #### sqrt_ratio for any field
@@ -3852,7 +3852,7 @@ sqrt_ratio(u, v)
 
 Parameters:
 - F, a finite field of characteristic p and order q = p^m.
-- Z, the constant from the simplified SWU map.
+- Z, the constant from the Simplified SWU map.
 
 Input: u and v, elements of F, where v != 0.
 Output: (b, y), where
@@ -3906,7 +3906,7 @@ sqrt_ratio_3mod4(u, v)
 Parameters:
 - F, a finite field of characteristic p and order q = p^m,
   where q = 3 mod 4.
-- Z, the constant from the simplified SWU map.
+- Z, the constant from the Simplified SWU map.
 
 Input: u and v, elements of F, where v != 0.
 Output: (b, y), where
@@ -3939,7 +3939,7 @@ sqrt_ratio_5mod8(u, v)
 Parameters:
 - F, a finite field of characteristic p and order q = p^m,
   where q = 5 mod 8.
-- Z, the constant from the simplified SWU map.
+- Z, the constant from the Simplified SWU map.
 
 Input: u and v, elements of F, where v != 0.
 Output: (b, y), where
@@ -4049,7 +4049,7 @@ This is desirable, for example, when the resulting point will be
 immediately multiplied by a scalar, since most scalar multiplication
 algorithms operate on projective points.
 
-Projective coordinates are also useful when implementing random oracle
+Projective coordinates are also useful when implementing random-oracle
 encodings ({{roadmap}}).
 One reason is that, in general, point addition is faster using projective
 coordinates.
@@ -4514,7 +4514,7 @@ This section gives Sage {{SAGE}} scripts used to generate parameters for the map
 
 ## Finding Z for the Shallue-van de Woestijne map {#svdw-z-code}
 
-The below function outputs an appropriate Z for the Shallue and van de Woestijne map ({{svdw}}).
+The below function outputs an appropriate Z for the Shallue-van de Woestijne map ({{svdw}}).
 
 ~~~sage
 # Arguments:
