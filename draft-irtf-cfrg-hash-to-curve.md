@@ -2374,7 +2374,7 @@ Helper functions:
 
 - map\_to\_curve\_elligator2 is the mapping of {{elligator2}} to the curve M.
 - rational\_map is a function that takes a point (s, t) on M and
-  returns a point (v, w) on E, as defined in {{rational-map}}.
+  returns a point (v, w) on E. This rational map should be chosen as defined in {{rational-map}}.
 
 Sign of t (and v): For this map, the sign is determined by map\_to\_curve\_elligator2.
 No further sign adjustments are required.
