@@ -3012,7 +3012,7 @@ and induces the correct point P when passed through map\_to\_curve.
 The hash\_to\_field function, defined in {{hashtofield}}, is indifferentiable
 from a random oracle {{MRH04}} when expand\_message ({{hashtofield-expand}})
 is modeled as a random oracle.
-By composability of indifferentiability proofs, this also holds when
+Since indifferentiability proofs are composable, this also holds when
 expand\_message is proved indifferentiable from a random oracle relative
 to an underlying primitive that is modeled as a random oracle.
 When following the guidelines in {{hashtofield-expand}}, both variants
