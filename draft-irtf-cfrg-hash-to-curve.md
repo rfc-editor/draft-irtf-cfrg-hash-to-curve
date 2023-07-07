@@ -1,8 +1,9 @@
 ---
 title: Hashing to Elliptic Curves
 abbrev: hash-to-curve
-docname: draft-irtf-cfrg-hash-to-curve-latest
-date:
+docname: draft-irtf-cfrg-hash-to-curve-16
+submissionType: IRTF
+date: May 2023
 category: info
 workgroup: CFRG
 
@@ -10,6 +11,7 @@ ipr: trust200902
 keyword: Internet-Draft
 
 stand_alone: yes
+smart_quotes: false
 pi: [toc, sortrefs, symrefs]
 
 author:
@@ -19,6 +21,8 @@ author:
     org: Cloudflare, Inc.
     street: 101 Townsend St
     city: San Francisco
+    region: CA
+    code: 94107
     country: United States of America
     email: armfazh@cloudflare.com
  -
@@ -26,7 +30,9 @@ author:
     name: Sam Scott
     org: Cornell Tech
     street: 2 West Loop Rd
-    city: New York, New York 10044
+    city: New York
+    region: New York 
+    code: 10044
     country: United States of America
     email: sam.scott@cornell.edu
  -
@@ -48,18 +54,16 @@ author:
     org: Cloudflare, Inc.
     street: 101 Townsend St
     city: San Francisco
+    region: CA
+    code: 94107
     country: United States of America
     email: caw@heapingbits.net
 
 normative:
-  EID4730:
+  Err4730:
     target: https://www.rfc-editor.org/errata/eid4730
-    title: "RFC 7748, Errata ID 4730"
+    title: RFC Errata, Erratum ID 4730, RFC 7748
     date: July, 2016
-    author:
-      -
-        ins: A. Langley
-        name: Adam Langley
 
 informative:
   BLS12-381:
@@ -103,21 +107,27 @@ informative:
       -
         org: Standards for Efficient Cryptography Group (SECG)
   FIPS180-4:
-    title: "Secure Hash Standard (SHS)"
+    title: "FIPS Publication 180-4: Secure Hash Standard (SHS)"
+    seriesinfo:
+        DOI: 10.6028/NIST.FIPS.180-4
     target: https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf
     date: Aug, 2015
     author:
       -
         org: National Institute of Standards and Technology (NIST)
   FIPS186-4:
-    title: "FIPS Publication 186-4: Digital Signature Standard"
+    title: "FIPS Publication 186-4: Digital Signature Standard (DSS)"
+    seriesinfo:
+      DOI: 10.6028/NIST.FIPS.186-4
     target: https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf
     date: Jul, 2013
     author:
       -
         org: National Institute of Standards and Technology (NIST)
   FIPS202:
-    title: "SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions"
+    title: "FIPS Publication 202: SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions"
+    seriesinfo:
+      DOI: 10.6028/NIST.FIPS.202
     target: https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf
     date: Aug, 2015
     author:
@@ -130,10 +140,10 @@ informative:
         "pages": 181-197
         DOI: 10.1007/978-3-540-78967-3_11
     target: https://doi.org/10.1007/978-3-540-78967-3_11
-    date: 2008
+    date: April 2008
     author:
       -
-        ins: G. Bertoni,
+        ins: G. Bertoni
         name: Guido Bertoni
         org: STMicroelectronics
       -
@@ -155,7 +165,7 @@ informative:
         "pages": 430-448
         DOI: 10.1007/11535218_26
     target: https://doi.org/10.1007/11535218_26
-    date: 2005
+    date: August 2005
     author:
       -
         ins: J-S. Coron
@@ -197,20 +207,20 @@ informative:
         "pages": 303-316
         DOI: 10.1007/978-3-642-03356-8_18
     target: https://doi.org/10.1007/978-3-642-03356-8_18
-    date: 2009
+    date: August 2009
     author:
       -
         ins: T. Icart
         name: Thomas Icart
         org: Sagem Securite and Universite du Luxembourg
   BBJLP08:
-    title: Twisted Edwards curves
+    title: Twisted Edwards Curves
     seriesinfo:
         "In": AFRICACRYPT 2008
         "pages": 389-405
         DOI: 10.1007/978-3-540-68164-9_26
     target: https://doi.org/10.1007/978-3-540-68164-9_26
-    date: 2008
+    date: June 2008
     author:
       -
         ins: D. J. Bernstein
@@ -239,14 +249,14 @@ informative:
         "pages": 266-281
         DOI: 10.1016/j.jsc.2011.11.003
     target: https://doi.org/10.1016/j.jsc.2011.11.003
-    date: 2012
+    date: March 2012
     author:
       -
-        ins: J. Couveignes
+        ins: J-M. Couveignes
         name: Jean-Marc Couveignes
         org: Universite Bordeaux
       -
-        ins: J. Kammerer
+        ins: J-G. Kammerer
         name: Jean-Gabriel Kammerer
         org: Universite de Rennes
   VR20:
@@ -254,7 +264,7 @@ informative:
     seriesinfo:
         "In": IEEE Symposium on Security & Privacy (SP)
     target: https://eprint.iacr.org/2019/383
-    date: 2020
+    date: May 2020
     author:
       -
         ins: M. Vanhoef
@@ -265,13 +275,13 @@ informative:
         name: Eyal Ronen
         org: Tel Aviv University and KU Leuven
   F11:
-    title: Hashing into Hessian curves
+    title: Hashing into Hessian Curves
     seriesinfo:
         "In": AFRICACRYPT 2011
         "pages": 278-289
         DOI: 10.1007/978-3-642-21969-6_17
     target: https://doi.org/10.1007/978-3-642-21969-6_17
-    date: 2011
+    date: July 2011
     author:
       -
         ins: R. R. Farashahi
@@ -299,13 +309,13 @@ informative:
         name: J. Felipe Voloch
         org: University of Texas
   FT10:
-    title: Estimating the size of the image of deterministic hash functions to elliptic curves.
+    title: Estimating the Size of the Image of Deterministic Hash Functions to Elliptic Curves
     seriesinfo:
         "In": Progress in Cryptology - LATINCRYPT 2010
         "pages": 81-91
         DOI: 10.1007/978-3-642-14712-8_5
     target: https://doi.org/10.1007/978-3-642-14712-8_5
-    date: 2010
+    date: August 2010
     author:
       -
         ins: P-A. Fouque
@@ -319,10 +329,10 @@ informative:
     title: Indifferentiable Hashing to Barreto-Naehrig Curves
     seriesinfo:
         "In": Progress in Cryptology - LATINCRYPT 2012
-        "pages": 1-7
+        "pages": 1-17
         DOI: 10.1007/978-3-642-33481-8_1
     target: https://doi.org/10.1007/978-3-642-33481-8_1
-    date: 2012
+    date: October 2012
     author:
       -
         ins: P-A. Fouque
@@ -333,13 +343,13 @@ informative:
         name: Mehdi Tibouchi
         org: NTT Secure Platform Laboratories
   FJT13:
-    title: Injective encodings to elliptic curves
+    title: Injective Encodings to Elliptic Curves
     seriesinfo:
         "In": ACISP 2013
         "pages": 203-218
         DOI: 10.1007/978-3-642-39059-3_14
     target: https://doi.org/10.1007/978-3-642-39059-3_14
-    date: 2013
+    date: July 2013
     author:
       -
         ins: P-A. Fouque
@@ -354,16 +364,16 @@ informative:
         name: Mehdi Tibouchi
         org: NTT Secure Platform Laboratories
   KLR10:
-    title: Encoding points on hyperelliptic curves over finite fields in deterministic polynomial time
+    title: Encoding Points on Hyperelliptic Curves over Finite Fields in Deterministic Polynomial Time
     seriesinfo:
-        "In": PAIRING 2010
+        "In": Pairing-Based Cryptography - Pairing 2010
         "pages": 278-297
         DOI: 10.1007/978-3-642-17455-1_18
     target: https://doi.org/10.1007/978-3-642-17455-1_18
-    date: 2010
+    date: December 2010
     author:
       -
-        ins: J. Kammerer
+        ins: J-G. Kammerer
         name: Jean-Gabriel Kammerer
         org: Universite de Rennes
       -
@@ -388,8 +398,8 @@ informative:
         name: Gora Adj
         org: ISFA, Universite Claude Bernard Lyon 1, Villeurbanne, France
      -
-        ins: F. Rodriguez-Henriquez
-        name: Francisco Rodriguez-Henriquez
+        ins: F. Rodríguez-Henríquez
+        name: Francisco Rodríguez-Henríquez
         org: CINVESTAV-IPN, San Pedro Zacatenco, Mexico City, Mexico.
   BN05:
     title: Pairing-Friendly Elliptic Curves of Prime Order
@@ -401,7 +411,7 @@ informative:
     date: 2006
     author:
       -
-        ins: P. Barreto
+        ins: P.S.L.M. Barreto
         name: Paulo S. L. M. Barreto
         org: Escola Politecnica, Universidade de Sao Paulo, Sao Paulo, Brazil
       -
@@ -409,20 +419,20 @@ informative:
         name: Michael Naehrig
         org: Lehrstuhl fur Theoretische Informationstechnik, Rheinisch-Westfalische Technische Hochschule Aachen, Aachen, Germany
   AFQTZ14:
-    title: Binary Elligator squared
+    title: Binary Elligator Squared
     seriesinfo:
         "In": Selected Areas in Cryptography - SAC 2014
         "pages": 20-37
         DOI: 10.1007/978-3-319-13051-4_2
     target: https://doi.org/10.1007/978-3-319-13051-4_2
-    date: 2014
+    date: August 2014
     author:
       -
         ins: D. F. Aranha
         name: Diego F. Aranha
         org: Institute of Computing, University of Campinas
       -
-        ins: P. A. Fouque
+        ins: P-A. Fouque
         name: Pierre-Alain Fouque
         org: Universite de Rennes 1 and Institut Universitaire de France
       -
@@ -438,13 +448,13 @@ informative:
         name: Jean-Christophe Zapalowicz
         org: INRIA
   T14:
-    title: "Elligator squared: Uniform points on elliptic curves of prime order as uniform random strings"
+    title: "Elligator Squared: Uniform Points on Elliptic Curves of Prime Order as Uniform Random Strings"
     seriesinfo:
         "In": Financial Cryptography and Data Security - FC 2014
         "pages": 139-156
         DOI: 10.1007/978-3-662-45472-5_10
     target: https://doi.org/10.1007/978-3-662-45472-5_10
-    date: 2014
+    date: March 2014
     author:
       -
         ins: M. Tibouchi
@@ -457,7 +467,7 @@ informative:
         "pages": 161-177
         DOI: 10.1007/s10623-016-0288-2
     target: https://doi.org/10.1007/s10623-016-0288-2
-    date: 2017
+    date: January 2017
     author:
       -
         ins: M. Tibouchi
@@ -468,7 +478,7 @@ informative:
         name: Taechan Kim
         org: NTT Secure Platform Laboratories
   BF01:
-    title: Identity-based encryption from the Weil pairing
+    title: Identity-Based Encryption from the Weil Pairing
     seriesinfo:
         "In": Advances in Cryptology - CRYPTO 2001
         "pages": 213-229
@@ -485,7 +495,7 @@ informative:
         name: Matthew Franklin
         org: UC Davis
   BLS01:
-    title: Short signatures from the Weil pairing
+    title: Short Signatures from the Weil Pairing
     seriesinfo:
         "In": Journal of Cryptology, vol 17
         "pages": 297-319
@@ -512,10 +522,10 @@ informative:
         "pages": 257-267
         DOI: 10.1007/3-540-36413-7_19
     target: https://doi.org/10.1007/3-540-36413-7_19
-    date: 2003
+    date: September 2002
     author:
       -
-        ins: P. Barreto
+        ins: P.S.L.M. Barreto
         name: Paulo S. L. M. Barreto
         org: Universidade de Sao Paulo, Brazil
       -
@@ -533,7 +543,7 @@ informative:
         "pages": 72-84
         DOI: 10.1109/RISP.1992.213269
     target: https://doi.org/10.1109/RISP.1992.213269
-    date: 1992
+    date: May 1992
     author:
       -
         ins: S. M. Bellovin
@@ -544,7 +554,7 @@ informative:
         name: Michael Merritt
         org: AT&T Bell Laboratories
   BMP00:
-    title: Provably secure password-authenticated key exchange using Diffie-Hellman
+    title: Provably Secure Password-Authenticated Key Exchange Using Diffie-Hellman
     seriesinfo:
         "In": Advances in Cryptology - EUROCRYPT 2000
         "pages": 156-171
@@ -557,7 +567,7 @@ informative:
         name: Victor Boyko
         org: MIT Laboratory for Computer Science
       -
-        ins: P. D. MacKenzie
+        ins: P. MacKenzie
         name: Philip D. MacKenzie
         org: Bell Laboratories, Lucent Technologies
       -
@@ -571,24 +581,26 @@ informative:
         "pages": 5-26
         DOI: 10.1145/242896.242897
     target: https://doi.org/10.1145/242896.242897
-    date: 1996
+    date: October 1996
     author:
       -
         ins: D. P. Jablon
         name: David P. Jablon
         org: Integrity Sciences, Inc. Westboro, MA.
   hash2curve-repo:
-    title: Hashing to Elliptic Curves - GitHub repository
+    title: Hashing to Elliptic Curves
+    seriesinfo:
+      "commit": 664b135
     target: https://github.com/cfrg/draft-irtf-cfrg-hash-to-curve
-    date: 2019
+    date: June 2022
   jubjub-fq:
     title: zkcrypto/jubjub - fq.rs
-    target: https://github.com/zkcrypto/jubjub/blob/master/src/fq.rs
+    target: https://github.com/zkcrypto/jubjub/pull/18
     date: 2019
   L13:
     title: Implementing Elligator for Curve25519
     target: https://www.imperialviolet.org/2013/12/25/elligator.html
-    date: 2013
+    date: December 2013
     author:
       -
         ins: A. Langley
@@ -600,7 +612,7 @@ informative:
         "pages": 102-113
         DOI: 10.1007/978-3-642-03298-1_8
     target: https://doi.org/10.1007/978-3-642-03298-1_8
-    date: 2009
+    date: August 2009
     author:
       -
         ins: M. Scott
@@ -623,17 +635,17 @@ informative:
         name: Ezekiel J. Kachisa
         org: School of Computing Dublin City University, Ballymun. Dublin, Ireland.
   FKR11:
-    title: Fast Hashing to G2 on Pairing-Friendly Curves
+    title: Faster Hashing to G2
     seriesinfo:
         "In": Selected Areas in Cryptography
         "pages": 412-430
         DOI: 10.1007/978-3-642-28496-0_25
     target: https://doi.org/10.1007/978-3-642-28496-0_25
-    date: 2011
+    date: August 2011
     author:
       -
-       ins: L. Fuentes-Castaneda
-       name: Laura Fuentes-Castaneda
+       ins: L. Fuentes-Castañeda
+       name: Laura Fuentes-Castañeda
        org: Computer Science Department, CINVESTAV-IPN. Mexico
       -
         ins: E. Knapp
@@ -684,12 +696,13 @@ informative:
         name: Tanja Lange
         org: Department of Mathematics and Computer Science, Technische Universiteit Eindhoven, The Netherlands
   BLMP19:
-    title: "Quantum circuits for the CSIDH: optimizing quantum evaluation of isogenies"
+    title: "Quantum Circuits for the CSIDH: Optimizing Quantum Evaluation of Isogenies"
     seriesinfo:
         "In": Advances in Cryptology - EUROCRYPT 2019
+        "pages":  409-441
         DOI: 10.1007/978-3-030-17656-3
-    target: https://doi.org/10.1007/978-3-030-17656-3
-    date: 2019
+    target: https://doi.org/10.1007/978-3-030-17656-3_15
+    date: May 2019
     author:
       -
         ins: D. J. Bernstein
@@ -708,9 +721,9 @@ informative:
         name: Lorenz Panny
         org: Department of Mathematics and Computer Science, Technische Universiteit Eindhoven, The Netherlands
   SS04:
-    title: On equations y^2 = x^n + k in a finite field.
+    title: On equations y^2 = x^n + k in a finite field
     seriesinfo:
-        "In": Bulletin Polish Acad. Sci. Math. vol 52, no 3
+        "In": Bulletin Polish Acad. Sci. Math. vol 52 no 3
         "pages": 223-226
         DOI: 10.4064/ba52-3-1
     target: https://doi.org/10.4064/ba52-3-1
@@ -721,8 +734,8 @@ informative:
         name: Andrzej Schinzel
         org: Department of Mathemetics, University of Warsaw
       -
-        ins: M. Skalba
-        name: Mariusz Skalba
+        ins: M. Skałba
+        name: Mariusz Skałba
         org: Department of Mathematics, University of Warsaw
   S05:
     title: Points on elliptic curves over finite fields
@@ -734,34 +747,34 @@ informative:
     date: 2005
     author:
       -
-        ins: M. Skalba
-        name: Mariusz Skalba
+        ins: M. Skałba
+        name: Mariusz Skałba
         org: Department of Mathematics, University of Warsaw
   SW06:
-    title: Construction of rational points on elliptic curves over finite fields
+    title: Construction of Rational Points on Elliptic Curves over Finite Fields	
     seriesinfo:
-        "In": Algorithmic Number Theory. ANTS 2006.
+        "In": Algorithmic Number Theory - ANTS 2006
         "pages": 510-524
         DOI: 10.1007/11792086_36
     target: https://doi.org/10.1007/11792086_36
-    date: 2006
+    date: July 2006
     author:
       -
         ins: A. Shallue
         name: Andrew Shallue
         org: Mathematics Department, University of Wisconsin-Madison. Madison, USA.
       -
-        ins: C. van de Woestijne
+        ins: C.E. van de Woestijne
         name: Christiaan van de Woestijne
         org: Mathematisch Instituut, Universiteit Leiden. Leiden, The Netherlands.
   U07:
-    title: Rational points on certain hyperelliptic curves over finite fields
+    title: Rational Points on Certain Hyperelliptic Curves over Finite Fields
     seriesinfo:
-        "In": Bulletin Polish Acad. Sci. Math. vol 55, no 2
+        "In": Bulletin Polish Acad. Sci. Math. vol 55 no 2
         "pages": 97-104
         DOI: 10.4064/ba55-2-1
     target: https://doi.org/10.4064/ba55-2-1
-    date: 2007
+    date: July 2007
     author:
       -
         ins: M. Ulas
@@ -774,7 +787,7 @@ informative:
         "pages": 237-254
         DOI: 10.1007/978-3-642-14623-7_13
     target: https://doi.org/10.1007/978-3-642-14623-7_13
-    date: 2010
+    date: August 2010
     author:
       -
         ins: E. Brier
@@ -803,8 +816,7 @@ informative:
   W08:
     title: "Elliptic curves: Number theory and cryptography"
     seriesinfo:
-        edition: 2nd
-        publisher: Chapman and Hall / CRC
+        publisher: Chapman and Hall / CRC, 2nd edition
         ISBN: 9781420071467
     target: https://www.crcpress.com/9781420071467
     date: 2008
@@ -817,6 +829,7 @@ informative:
     seriesinfo:
         publisher: Springer-Verlag
         ISBN: 9783642081422
+        DOI: 10.1007/978-3-662-02945-9
     target: https://doi.org/10.1007/978-3-662-02945-9
     date: 1993
     author:
@@ -858,7 +871,7 @@ informative:
         publisher: CRC Press
         ISBN: 9780849385230
     target: http://cacr.uwaterloo.ca/hac/
-    date: 1996
+    date: October 1996
     author:
       -
         ins: A. J. Menezes
@@ -872,9 +885,7 @@ informative:
   WB19:
     title: Fast and simple constant-time hashing to the BLS12-381 elliptic curve
     seriesinfo:
-        "In": IACR Trans. CHES
-        "volume": 2019
-        "issue": 4
+        "In": IACR Transactions on Cryptographic Hardware and Embedded Systems, vol 2019 issue 4
         DOI: 10.13154/tches.v2019.i4.154-179
         "ePrint": 2019/403
     target: https://eprint.iacr.org/2019/403
@@ -902,7 +913,7 @@ informative:
         name: Reza R. Farashahi
         org: Macquarie Universit
       -
-        ins: P. A. Fouque
+        ins: P-A. Fouque
         name: Pierre-Alain Fouque
         org: Ecole normale superieure
       -
@@ -918,7 +929,7 @@ informative:
         name: J. Felipe Voloch
         org: University of Texas
   MRH04:
-    title: "Indifferentiability, impossibility results on reductions, and applications to the random oracle methodology"
+    title: "Indifferentiability, Impossibility Results on Reductions, and Applications to the Random Oracle Methodology"
     seriesinfo:
       "In": "TCC 2004: Theory of Cryptography"
       "pages": 21-39
@@ -941,7 +952,7 @@ informative:
   MRV99:
     title: Verifiable Random Functions
     seriesinfo:
-      "In": Symposium on the Foundations of Computer Science
+      "In": Symposium on Foundations of Computer Science
       DOI:  10.1109/SFFCS.1999.814584
     target: https://doi.org/10.1109/SFFCS.1999.814584
     date: October, 1999
@@ -961,7 +972,7 @@ informative:
   NR97:
     title: "Number-theoretic constructions of efficient pseudo-random functions"
     seriesinfo:
-      "In": Symposium on the Foundations of Computer Science
+      "In": Symposium on Foundations of Computer Science
       DOI: 10.1109/SFCS.1997.646134
     target: https://doi.org/10.1109/SFCS.1997.646134
     date: October, 1997
@@ -994,7 +1005,7 @@ informative:
     target: https://www.sagemath.org
     date: 2019
   LBB19:
-    title: A Mechanised Proof of the WireGuard Virtual Private Network Protocol
+    title: A Mechanised Cryptographic Proof of the WireGuard Virtual Private Network Protocol
     seriesinfo:
         "In": INRIA Research Report No. 9269
     target: https://hal.inria.fr/hal-02100345/
@@ -1013,7 +1024,7 @@ informative:
         name: Karthikeyan Bhargavan
         org: INRIA Paris
   RCB16:
-    title: "Complete addition formulas for prime order elliptic curves"
+    title: "Complete Addition Formulas for Prime Order Elliptic Curves"
     seriesinfo:
       "In": Advances in Cryptology - EUROCRYPT 2016
       "pages": 403-428
@@ -1056,7 +1067,7 @@ informative:
         org: Portland State University
   W19:
     title: An explicit, generic parameterization for the Shallue--van de Woestijne map
-    target: https://github.com/cfrg/draft-irtf-cfrg-hash-to-curve/raw/master/doc/svdw_params.pdf
+    target: https://github.com/cfrg/draft-irtf-cfrg-hash-to-curve/blob/draft-irtf-cfrg-hash-to-curve-14/doc/svdw_params.pdf
     date: 2019
     author:
       -
@@ -1080,7 +1091,7 @@ informative:
   MT98:
     title: "Mersenne twister: A 623-dimensionally equidistributed uniform pseudo-random number generator"
     seriesinfo:
-      "In": ACM Transactions on Modeling and Computer Simulation (TOMACS), Volume 8, Issue 1
+      "In": ACM Transactions on Modeling and Computer Simulation (TOMACS), vol 8 issue 1
       "pages": 3-30
       DOI: 10.1145/272991.272995
     date: January, 1998
@@ -1146,23 +1157,24 @@ should consult {{suites}}, which lists recommended hash-to-curve suites
 and describes both how to implement an existing suite and how to specify
 a new one.
 
-This document does not cover rejection sampling methods, sometimes referred to
-as "try-and-increment" or "hunt-and-peck," because the goal is to describe
-algorithms that can plausibly be computed in constant time. Use of these rejection
-methods is NOT RECOMMENDED, because they have been a perennial cause of
-side-channel vulnerabilities. See Dragonblood {{VR20}} as one example of this
-problem in practice, and see {{related}} for a further description of
-rejection sampling methods.
+This document does not specify probabilistic rejection sampling methods, sometimes
+referred to as "try-and-increment" or "hunt-and-peck," because the
+goal is to specify algorithms that can plausibly be computed in
+constant time. Use of these probabilistic rejection methods is NOT
+RECOMMENDED, because they have been a perennial cause of side-channel
+vulnerabilities. See Dragonblood {{VR20}} as one example of this
+problem in practice, and see {{related}} for an informal description of rejection
+sampling methods and the timing side-channels they introduce.
 
 This document represents the consensus of the Crypto Forum Research Group (CFRG).
 
 ## Requirements Notation
 
-{::boilerplate bcp14}
+{::boilerplate bcp14-tagged}
 
 # Background {#background}
 
-## Elliptic curves {#bg-curves}
+## Elliptic Curves {#bg-curves}
 
 The following is a brief definition of elliptic curves, with an emphasis on
 important parameters and their relation to hashing to curves.
@@ -1170,7 +1182,7 @@ For further reference on elliptic curves, consult {{CFADLNV05}} or {{W08}}.
 
 Let F be the finite field GF(q) of prime characteristic p > 3.
 (This document does not consider elliptic curves over fields of characteristic 2 or 3.)
-In most cases F is a prime field, so q = p.
+In most cases, F is a prime field, so q = p.
 Otherwise, F is an extension field, so q = p^m for an integer m > 1.
 This document writes elements of extension fields
 in a primitive element or polynomial basis, i.e., as a vector
@@ -1198,7 +1210,7 @@ point, which acts as the identity element for the group operation.
 On certain curves (including Weierstrass and Montgomery curves), the identity
 point cannot be represented as an (x, y) coordinate pair.
 
-For security reasons, cryptographic uses of elliptic curves generally require
+For security reasons, cryptographic applications of elliptic curves generally require
 using a (sub)group of prime order.
 Let G be such a subgroup of the curve of prime order r, where n = h * r.
 In this equation, h is an integer called the cofactor.
@@ -1217,10 +1229,10 @@ The table below summarizes quantities relevant to hashing to curves:
 | F,q,p | A finite field F of characteristic p and #F = q = p^m. | For prime fields, q = p; otherwise, q = p^m and m>1. |
 | E | Elliptic curve. | E is specified by an equation and a field F. |
 | n | Number of points on the elliptic curve E. | n = h * r, for h and r defined below. |
-| G | A prime-order subgroup of the points on E. | Destination group to which byte strings are encoded. |
+| G | A prime-order subgroup of the points on E. | G is a destination group to which byte strings are encoded. |
 | r | Order of G. | r is a prime factor of n (usually, the largest such factor). |
-| h | Cofactor, h >= 1. | An integer satisfying n = h * r. |
-{: #definition-table title="Summary of symbols and their definitions."}
+| h | Cofactor, h >= 1. | h is an integer satisfying n = h * r. |
+{: #definition-table title="Summary of Symbols and Their Definitions"}
 
 ## Terminology
 
@@ -1238,7 +1250,7 @@ In addition, a mapping may output the same point for two or more distinct inputs
 (i.e., the mapping may not be injective).
 For example, consider a mapping from F to an elliptic curve having n points:
 if the number of elements of F is not equal to n,
-then this mapping cannot be bijective (i.e., both injective and surjective)
+then this mapping cannot be bijective (i.e., both injective and surjective),
 since the mapping is defined to be deterministic.
 
 Mappings may also be invertible, meaning that there is an efficient algorithm
@@ -1264,18 +1276,19 @@ the set of inputs is larger than the set of outputs, so there must
 be distinct inputs that give the same output (i.e., there must be collisions).
 Thus, any encoding built from Hf is also not injective.
 
-Like mappings, encodings may be invertible, meaning that there is an efficient
-algorithm that, for any point P output by the encoding, outputs a string s
-such that applying the encoding to s outputs P.
-The instantiation of Hf used by all encodings specified in this document ({{hashtofield}})
-is not invertible. Thus, the encodings are also not invertible.
+Like mappings, encodings may be invertible, meaning that there is an
+efficient algorithm that, for any point P output by the encoding,
+outputs a string s such that applying the encoding to s outputs P.
+However, the instantiation of Hf used by all encodings specified in
+this document ({{hashtofield}}) is not invertible; thus, those encodings
+are also not invertible.
 
 In some applications of hashing to elliptic curves, it is important that
 encodings do not leak information through side channels.
 {{VR20}} is one example of this type of leakage leading to a security vulnerability.
 See {{security-considerations-constant}} for further discussion.
 
-### Random-oracle encodings {#term-rom}
+### Random Oracle Encodings {#term-rom}
 
 A random-oracle encoding satisfies a strong property: it can be proved
 indifferentiable from a random oracle {{MRH04}} under a suitable assumption.
@@ -1292,7 +1305,7 @@ See {{security-considerations-props}} for further discussion.
 ### Serialization {#term-serialization}
 
 A procedure related to encoding is the conversion of an elliptic curve point to a bit string.
-This is called serialization, and is typically used for compactly storing or transmitting points.
+This is called serialization, and it is typically used for compactly storing or transmitting points.
 The inverse operation, deserialization, converts a bit string to an elliptic curve point.
 For example, {{SEC1}} and {{p1363a}} give standard methods for serialization and deserialization.
 
@@ -1302,7 +1315,7 @@ In contrast, this document is concerned with encodings from arbitrary strings
 to elliptic curve points.
 This document does not cover serialization or deserialization.
 
-### Domain separation {#term-domain-separation}
+### Domain Separation {#term-domain-separation}
 
 Cryptographic protocols proven secure in the random-oracle model are often analyzed
 under the assumption that the random oracle only answers queries associated
@@ -1324,7 +1337,7 @@ one might define
     RO2(x) := RO("RO2" || x)
 
 where \|\| is the concatenation operator.
-In this example, "RO1" and "RO2" are called domain separation tags;
+In this example, "RO1" and "RO2" are called domain separation tags (DSTs);
 they ensure that queries to RO1 and RO2 cannot result in identical
 queries to RO, meaning that it is safe to treat RO1 and RO2 as
 independent oracles.
@@ -1334,10 +1347,10 @@ encoding for each oracle being simulated.
 In the above example, "RO1" and "RO2" have the same length and thus
 satisfy this requirement when used as prefixes.
 The algorithms specified in this document take a different approach to ensuring
-injectivity; see {{hashtofield-expand}} and {{security-considerations-domain-separation-expmsg-var}}
+injectivity; see Sections {{<hashtofield-expand}} and {{<security-considerations-domain-separation-expmsg-var}}
 for more details.
 
-# Encoding byte strings to elliptic curves {#roadmap}
+# Encoding Byte Strings to Elliptic Curves {#roadmap}
 
 This section presents a general framework and interface for encoding byte strings
 to points on an elliptic curve. The constructions in this section rely on three
@@ -1434,9 +1447,9 @@ different distributions:
   ~~~
 
 Each hash-to-curve suite in {{suites}} instantiates one of these encoding
-functions for a specifc elliptic curve.
+functions for a specific elliptic curve.
 
-## Domain separation requirements {#domain-separation}
+## Domain Separation Requirements {#domain-separation}
 
 All uses of the encoding functions defined in this document MUST include
 domain separation ({{term-domain-separation}}) to avoid interfering with
@@ -1445,8 +1458,8 @@ other uses of similar functionality.
 Applications that instantiate multiple, independent instances of either
 hash\_to\_curve or encode\_to\_curve MUST enforce domain separation
 between those instances.
-This requirement applies both in the case of multiple instances targeting
-the same curve and in the case of multiple instances targeting different curves.
+This requirement applies in both the case of multiple instances targeting
+the same curve and the case of multiple instances targeting different curves.
 (This is because the internal hash\_to\_field primitive ({{hashtofield}})
 requires domain separation to guarantee independent outputs.)
 
@@ -1469,8 +1482,8 @@ which is a byte string constructed according to the following requirements:
    tag MUST be different. For this purpose, it is RECOMMENDED to
    include a ciphersuite identifier in each tag.
 
-6. For applications that use multiple encodings, either to the same curve
-   or to different curves, each encoding MUST use a different tag.
+6. For applications that use multiple encodings, to either the same curve
+   or different curves, each encoding MUST use a different tag.
    For this purpose, it is RECOMMENDED to include the encoding's
    Suite ID ({{suites}}) in the domain separation tag.
    For independent encodings based on the same suite, each tag SHOULD
@@ -1494,7 +1507,7 @@ without null termination, which is the RECOMMENDED format. Other encodings
 can be used, but in all cases the encoding as a sequence of bytes MUST be
 specified unambiguously.
 
-# Utility functions {#utility}
+# Utility Functions {#utility}
 
 Algorithms in this document use the utility functions described below,
 plus standard arithmetic operations (addition, multiplication, modular
@@ -1512,9 +1525,9 @@ Guidance on implementing low-level operations (in constant time or otherwise)
 is beyond the scope of this document; readers should consult standard reference
 material {{MOV96}} {{CFADLNV05}}.
 
--   CMOV(a, b, c): If c is False, CMOV returns a, otherwise it returns b.
-    For constant-time implementations, this operation must run in
-    time independent of the value of c.
+-   CMOV(a, b, c): If c is False, CMOV returns a; otherwise, it returns b.
+    For constant-time implementations, this operation must run in a
+    time that is independent of the value of c.
 
 -   AND, OR, NOT, and XOR are standard bitwise logical operators.
     For constant-time implementations, short-circuit operators MUST be avoided.
@@ -1568,21 +1581,21 @@ material {{MOV96}} {{CFADLNV05}}.
 -   a \|\| b: denotes the concatenation of byte strings a and b. For example,
     "ABC" \|\| "DEF" == "ABCDEF".
 
--   substr(str, sbegin, slen): for a byte string str, this function returns
+-   substr(str, sbegin, slen): For a byte string str, this function returns
     the slen-byte substring starting at position sbegin; positions are zero
     indexed.
     For example, substr("ABCDEFG", 2, 3) == "CDE".
 
--   len(str): for a byte string str, this function returns the length of str
+-   len(str): For a byte string str, this function returns the length of str
     in bytes. For example, len("ABC") == 3.
 
--   strxor(str1, str2): for byte strings str1 and str2, strxor(str1, str2)
+-   strxor(str1, str2): For byte strings str1 and str2, strxor(str1, str2)
     returns the bitwise XOR of the two strings.
     For example, strxor("abc", "XYZ") == "9;9" (the strings in this example
     are ASCII literals, but strxor is defined for arbitrary byte strings).
     In this document, strxor is only applied to inputs of equal length.
 
-## The sgn0 function {#sgn0-function}
+## The sgn0 Function {#sgn0-function}
 
 This section defines a generic sgn0 implementation that applies to any field F = GF(p^m).
 It also gives simplified implementations for the cases F = GF(p) and F = GF(p^2).
@@ -1645,7 +1658,7 @@ Steps:
 5. return s
 ~~~
 
-# Hashing to a finite field {#hashtofield}
+# Hashing to a Finite Field {#hashtofield}
 
 The hash\_to\_field function hashes a byte string msg of arbitrary length into
 one or more elements of a field F.
@@ -1658,7 +1671,7 @@ This document defines two variants of expand\_message: one appropriate
 for hash functions like SHA-2 {{FIPS180-4}} or SHA-3 {{FIPS202}}, and another
 appropriate for extendable-output functions such as SHAKE128 {{FIPS202}}.
 Security considerations for each expand\_message variant are discussed
-below ({{hashtofield-expand-xmd}}, {{hashtofield-expand-xof}}).
+below (Sections {{<hashtofield-expand-xmd}} and {{<hashtofield-expand-xof}}).
 
 Implementors MUST NOT use rejection sampling to generate a uniformly random
 element of F, to ensure that the hash\_to\_field function is amenable to
@@ -1702,10 +1715,10 @@ L = ceil((255 + 128) / 8) = 48 bytes.
 
 Note that k is an upper bound on the security level for the
 corresponding curve.
-See {{security-considerations-targets}} for more details, and
+See {{security-considerations-targets}} for more details and
 {{new-suite}} for guidelines on choosing k for a given curve.
 
-## Efficiency considerations in extension fields {#hashtofield-exteff}
+## Efficiency Considerations in Extension Fields {#hashtofield-exteff}
 
 The hash\_to\_field function described in this section is inefficient for certain
 extension fields. Specifically, when hashing to an element of the extension
@@ -1717,17 +1730,17 @@ generate an element of GF(p^m) with bias at most 2^-k. In such cases,
 applications MAY use an alternative hash\_to\_field function, provided it
 meets the following security requirements:
 
-- The function MUST output field element(s) that are uniformly random except with bias at most 2^-k.
+- The function MUST output one or more field elements that are uniformly random except with bias at most 2^-k.
 
 - The function MUST NOT use rejection sampling.
 
-- The function SHOULD be amenable to straight line implementations.
+- The function SHOULD be amenable to straight-line implementations.
 
 For example, Pornin {{P20}} describes a method for hashing to GF(9767^19) that meets
 these requirements while using fewer output bits from expand\_message than
 hash\_to\_field would for that field.
 
-## hash\_to\_field implementation {#hashtofield-impl}
+## hash\_to\_field Implementation {#hashtofield-impl}
 
 The following procedure implements hash\_to\_field.
 
@@ -1785,7 +1798,7 @@ with a wide range of hash functions, including SHA-2 {{FIPS180-4}}, SHA-3
 {{FIPS202}}, BLAKE2 {{?RFC7693}}, and others.
 
 - expand\_message\_xof ({{hashtofield-expand-xof}}) is appropriate for use
-with extendable-output functions (XOFs) including functions in the SHAKE
+with extendable-output functions (XOFs), including functions in the SHAKE 
 {{FIPS202}} or BLAKE2X {{BLAKE2X}} families.
 
 These variants should suffice for the vast majority of use cases, but other
@@ -1797,7 +1810,7 @@ The expand\_message\_xmd function produces a uniformly random byte string using
 a cryptographic hash function H that outputs b bits. For security, H MUST meet
 the following requirements:
 
-- The number of bits output by H MUST be b >= 2 * k, for k the target
+- The number of bits output by H MUST be b >= 2 * k, where k is the target
 security level in bits, and b MUST be divisible by 8.
 The first requirement ensures k-bit collision resistance; the second
 ensures uniformity of expand\_message\_xmd's output.
@@ -1865,7 +1878,7 @@ This is necessary for security when H is a Merkle-Damgaard hash, e.g., SHA-2
 (see {{security-considerations-expand-xmd}}).
 Hashing this additional data means that the cost of computing b\_0 is higher
 than the cost of simply computing H(msg).
-In most settings this overhead is negligible, because the cost of evaluating
+In most settings, this overhead is negligible, because the cost of evaluating
 H is much less than the other costs involved in hashing to a curve.
 
 It is possible, however, to entirely avoid this overhead by taking advantage
@@ -1873,7 +1886,7 @@ of the fact that Z\_pad depends only on H, and not on the arguments to
 expand\_message\_xmd.
 To do so, first precompute and save the internal state of H after ingesting
 Z\_pad. Then, when computing b\_0, initialize H using the saved state.
-Further details are implementation dependent, and beyond the scope of this document.
+Further details are implementation dependent and are beyond the scope of this document.
 
 ### expand\_message\_xof {#hashtofield-expand-xof}
 
@@ -1886,7 +1899,7 @@ For security, H MUST meet the following criteria:
 - H MUST be an XOF that has been proved indifferentiable from a random oracle
 under a reasonable cryptographic assumption.
 
-The SHAKE {{FIPS202}} XOF family is a typical and RECOMMENDED choice.
+The SHAKE XOF family {{FIPS202}} is a typical and RECOMMENDED choice.
 As an example, for 128-bit security, SHAKE128 would be an appropriate choice.
 
 The following procedure implements expand\_message\_xof.
@@ -1896,7 +1909,7 @@ expand_message_xof(msg, DST, len_in_bytes)
 
 Parameters:
 - H(m, d), an extendable-output function that processes
-           input message m and returns d bytes.
+  input message m and returns d bytes.
 
 Input:
 - msg, a byte string.
@@ -1915,7 +1928,7 @@ Steps:
 5. return uniform_bytes
 ~~~
 
-### Using DSTs longer than 255 bytes {#hashtofield-expand-dst}
+### Using DSTs Longer Than 255 Bytes {#hashtofield-expand-dst}
 
 The expand\_message variants defined in this section accept domain separation
 tags of at most 255 bytes.
@@ -1939,7 +1952,7 @@ Here, a\_very\_long\_DST is the DST whose length is greater than 255 bytes,
 "H2C-OVERSIZE-DST-" is a 17-byte ASCII string literal, and
 k is the target security level in bits.
 
-### Defining other expand\_message variants {#hashtofield-expand-other}
+### Defining Other expand\_message Variants {#hashtofield-expand-other}
 
 When defining a new expand\_message variant, the most important consideration
 is that hash\_to\_field models expand\_message as a random oracle.
@@ -1967,7 +1980,7 @@ The variants defined in this document use a suffix-free encoding of DST
 to avoid this issue.
 
 - MUST use the domain separation tag DST to ensure that invocations of
-cryptographic primitives inside of expand\_message are domain separated
+cryptographic primitives inside of expand\_message are domain-separated
 from invocations outside of expand\_message.
 For example, if the expand\_message variant uses a hash function H, an encoding
 of DST MUST be added either as a prefix or a suffix of the input to each invocation
@@ -1978,7 +1991,7 @@ of H. Adding DST as a suffix is the RECOMMENDED approach.
 In addition, each expand\_message variant MUST specify a unique EXP\_TAG
 that identifies that variant in a Suite ID. See {{suiteIDformat}} for more information.
 
-# Deterministic mappings {#mappings}
+# Deterministic Mappings {#mappings}
 
 The mappings in this section are suitable for implementing either nonuniform
 or uniform encodings using the constructions in {{roadmap}}.
@@ -1989,7 +2002,7 @@ Note that mappings in this section are not interchangeable: different mappings
 will almost certainly output different points when evaluated on the same input.
 
 
-## Choosing a mapping function {#choosing-mapping}
+## Choosing a Mapping Function {#choosing-mapping}
 
 This section gives brief guidelines on choosing a mapping function
 for a given elliptic curve.
@@ -2002,7 +2015,7 @@ Similarly, if the target elliptic curve is a twisted Edwards curve ({{twisted-ed
 the twisted Edwards Elligator 2 method ({{ell2edwards}}) is recommended.
 
 The remaining cases are Weierstrass curves.
-For curves supported by the Simplified SWU method ({{simple-swu}}),
+For curves supported by the Simplified Shallue-van de Woestijne-Ulas (SWU) method ({{simple-swu}}),
 that mapping is the recommended one.
 Otherwise, the Simplified SWU method for AB == 0 ({{simple-swu-AB0}})
 is recommended if the goal is best performance, while
@@ -2012,7 +2025,7 @@ if the goal is simplicity of implementation.
 requires implementing an isogeny map in addition to the mapping function, while
 the Shallue-van de Woestijne method does not.)
 
-The Shallue-van de Woestijne method ({{svdw}}) works with any curve,
+The Shallue-van de Woestijne method ({{svdw}}) works with any curve
 and may be used in cases where a generic mapping is required.
 Note, however, that this mapping is almost always more computationally
 expensive than the curve-specific recommendations above.
@@ -2048,7 +2061,7 @@ As a rough guide, the following conventions are used in pseudocode:
 - c1, c2, ...: constant values, which can be computed in advance.
 
 
-## Sign of the resulting point {#point-sign}
+## Sign of the Resulting Point {#point-sign}
 
 In general, elliptic curves have equations of the form y^2 = g(x).
 The mappings in this section first identify an x such that
@@ -2063,7 +2076,7 @@ Two main reasons support this approach: first, this covers elliptic curves
 over any field in a uniform way, and second, it gives implementors leeway
 in optimizing square-root implementations.
 
-## Exceptional cases {#map-exceptions}
+## Exceptional Cases {#map-exceptions}
 
 Mappings may have exceptional cases, i.e., inputs u
 on which the mapping is undefined. These cases must be handled
@@ -2074,7 +2087,7 @@ how to handle them in constant time. Note that all implementations SHOULD use
 inv0 ({{utility}}) to compute multiplicative inverses, to avoid exceptional
 cases that result from attempting to compute the inverse of 0.
 
-## Mappings for Weierstrass curves {#weierstrass}
+## Mappings for Weierstrass Curves {#weierstrass}
 
 The mappings in this section apply to a target curve E defined by the equation
 
@@ -2084,7 +2097,7 @@ The mappings in this section apply to a target curve E defined by the equation
 
 where 4 * A^3 + 27 * B^2 != 0.
 
-### Shallue-van de Woestijne method {#svdw}
+### Shallue-van de Woestijne Method {#svdw}
 
 Shallue and van de Woestijne {{SW06}} describe a mapping that applies to
 essentially any elliptic curve.
@@ -2093,10 +2106,10 @@ the other mappings in this document.)
 
 The parameterization given below is for Weierstrass curves;
 its derivation is detailed in {{W19}}.
-This parameterization also works for Montgomery ({{montgomery}}) and
-twisted Edwards ({{twisted-edwards}}) curves via the rational maps
+This parameterization also works for Montgomery curves ({{montgomery}}) and
+twisted Edwards curves ({{twisted-edwards}}) via the rational maps
 given in {{appx-rational-map}}:
-first evaluate the Shallue-van de Woestijne mapping to an equivalent Weierstrass
+first, evaluate the Shallue-van de Woestijne mapping to an equivalent Weierstrass
 curve, then map that point to the target Montgomery or twisted Edwards curve
 using the corresponding rational map.
 
@@ -2107,7 +2120,7 @@ Constants:
 - A and B, the parameter of the Weierstrass curve.
 
 - Z, a non-zero element of F meeting the below criteria.
-  {{svdw-z-code}} gives a Sage {{SAGE}} script that outputs the RECOMMENDED Z.
+  {{svdw-z-code}} gives a Sage script {{SAGE}} that outputs the RECOMMENDED Z.
   1. g(Z) != 0 in F.
   2. -(3 * Z^2 + 4 * A) / (4 * g(Z)) != 0 in F.
   3. -(3 * Z^2 + 4 * A) / (4 * g(Z)) is square in F.
@@ -2145,11 +2158,11 @@ Operations:
 {{straightline-svdw}} gives an example straight-line implementation of this
 mapping.
 
-### Simplified Shallue-van de Woestijne-Ulas method {#simple-swu}
+### Simplified Shallue-van de Woestijne-Ulas Method {#simple-swu}
 
 The function map\_to\_curve\_simple\_swu(u) implements a simplification
 of the Shallue-van de Woestijne-Ulas mapping {{U07}} described by Brier et
-al. {{BCIMRT10}}, which they call the "Simplified SWU" map. Wahby and Boneh
+al.&nbsp;{{BCIMRT10}}, which they call the "simplified SWU" map. Wahby and Boneh
 {{WB19}} generalize and optimize this mapping.
 
 Preconditions: A Weierstrass curve y^2 = x^3 + A * x + B where A != 0 and B != 0.
@@ -2159,8 +2172,8 @@ Constants:
 - A and B, the parameters of the Weierstrass curve.
 
 - Z, an element of F meeting the below criteria.
-  {{sswu-z-code}} gives a Sage {{SAGE}} script that outputs the RECOMMENDED Z.
-  The criteria are:
+  {{sswu-z-code}} gives a Sage script {{SAGE}} that outputs the RECOMMENDED Z.
+  The criteria are as follows:
   1. Z is non-square in F,
   2. Z != -1 in F,
   3. the polynomial g(x) - Z is irreducible over F, and
@@ -2170,8 +2183,8 @@ Sign of y: Inputs u and -u give the same x-coordinate.
 Thus, we set sgn0(y) == sgn0(u).
 
 Exceptions: The exceptional cases are values of u such that
-Z^2 * u^4 + Z * u^2 == 0. This includes u == 0, and may include
-other values depending on Z. Implementations must detect
+Z^2 * u^4 + Z * u^2 == 0. This includes u == 0 and may include
+other values that depend on Z. Implementations must detect
 this case and set x1 = B / (Z * A), which guarantees that g(x1)
 is square by the condition on Z given above.
 
@@ -2191,8 +2204,8 @@ Operations:
 ~~~
 
 {{straightline-sswu}} gives a general and optimized straight-line implementation of
-this mapping. For more information on optimizing this mapping, see {{WB19}} Section
-4 or the example code found at {{hash2curve-repo}}.
+this mapping. For more information on optimizing this mapping, see Section 4 of {{WB19}}
+or the example code found at {{hash2curve-repo}}.
 
 ### Simplified SWU for AB == 0 {#simple-swu-AB0}
 
@@ -2202,7 +2215,7 @@ Weierstrass curves having A == 0 or B == 0, which the mapping of
 (The case A == B == 0 is excluded because y^2 = x^3 is not an elliptic curve.)
 
 This method applies to curves like secp256k1 {{SEC2}} and to pairing-friendly
-curves in the Barreto-Lynn-Scott {{BLS03}}, Barreto-Naehrig {{BN05}}, and other families.
+curves in the Barreto-Lynn-Scott family {{BLS03}}, Barreto-Naehrig family {{BN05}}, and other families.
 
 This method requires finding another elliptic curve E' given by the equation
 
@@ -2221,7 +2234,7 @@ the isogeny map to that point to get a point on E.
 
 Note that iso\_map is a group homomorphism, meaning that point addition
 commutes with iso\_map.
-Thus, when using this mapping in the hash\_to\_curve construction of {{roadmap}},
+Thus, when using this mapping in the hash\_to\_curve construction discussed in {{roadmap}},
 one can effect a small optimization by first mapping u0 and u1 to E', adding
 the resulting points on E', and then applying iso\_map to the sum.
 This gives the same result while requiring only one evaluation of iso\_map.
@@ -2235,7 +2248,7 @@ Helper functions:
 - map\_to\_curve\_simple\_swu is the mapping of {{simple-swu}} to E'
 - iso\_map is the isogeny map from E' to E
 
-Sign of y: for this map, the sign is determined by map\_to\_curve\_simple\_swu.
+Sign of y: For this map, the sign is determined by map\_to\_curve\_simple\_swu.
 No further sign adjustments are necessary.
 
 Exceptions: map\_to\_curve\_simple\_swu handles its exceptional cases.
@@ -2251,9 +2264,9 @@ Operations:
 3. return (x, y)
 ~~~
 
-See {{hash2curve-repo}} or {{WB19}} Section 4.3 for details on implementing the isogeny map.
+See {{hash2curve-repo}} or Section 4.3 of {{WB19}} for details on implementing the isogeny map.
 
-## Mappings for Montgomery curves {#montgomery}
+## Mappings for Montgomery Curves {#montgomery}
 
 The mapping defined in this section applies to a target curve M defined by the equation
 
@@ -2261,7 +2274,7 @@ The mapping defined in this section applies to a target curve M defined by the e
     K * t^2 = s^3 + J * s^2 + s
 ~~~
 
-### Elligator 2 method {#elligator2}
+### Elligator 2 Method {#elligator2}
 
 Bernstein, Hamburg, Krasnova, and Lange give a mapping that applies to any
 curve with a point of order 2 {{BHKL13}}, which they call Elligator 2.
@@ -2274,9 +2287,9 @@ Constants:
 - J and K, the parameters of the elliptic curve.
 
 - Z, a non-square element of F.
-  {{elligator-z-code}} gives a Sage {{SAGE}} script that outputs the RECOMMENDED Z.
+  {{elligator-z-code}} gives a Sage script {{SAGE}} that outputs the RECOMMENDED Z.
 
-Sign of t: this mapping fixes the sign of t as specified in {{BHKL13}}.
+Sign of t: This mapping fixes the sign of t as specified in {{BHKL13}}.
 No additional adjustment is required.
 
 Exceptions: The exceptional case is Z * u^2 == -1, i.e., 1 + Z * u^2 == 0.
@@ -2303,7 +2316,7 @@ mapping.
 {{ell2-opt}} gives optimized straight-line procedures that apply to specific
 classes of curves and base fields.
 
-## Mappings for twisted Edwards curves {#twisted-edwards}
+## Mappings for Twisted Edwards Curves {#twisted-edwards}
 
 Twisted Edwards curves (a class of curves that includes Edwards curves)
 are given by the equation
@@ -2324,7 +2337,7 @@ This method of hashing to a twisted Edwards curve thus requires identifying a
 corresponding Montgomery curve and rational map.
 We describe how to identify such a curve and map immediately below.
 
-### Rational maps from Montgomery to twisted Edwards curves {#rational-map}
+### Rational Maps from Montgomery to Twisted Edwards Curves {#rational-map}
 
 There are two ways to select a Montgomery curve and rational map
 for use when hashing to a given twisted Edwards curve.
@@ -2342,7 +2355,7 @@ with existing software.
     In this case, the sign MUST be fixed such that applying the rational map
     to the twisted Edwards curve's base point yields the Montgomery curve's
     base point with correct sign.
-    (For edwards25519, see {{!RFC7748}} and {{EID4730}}.)
+    (For edwards25519, see {{!RFC7748}} and {{Err4730}}.)
 
     When defining new twisted Edwards curves, a Montgomery equivalent and rational
     map SHOULD also be specified, and the sign of the rational map SHOULD be stated
@@ -2352,7 +2365,7 @@ with existing software.
 Montgomery form or rational map, the map given in {{appx-rational-map}}
 SHOULD be used.
 
-### Elligator 2 method {#ell2edwards}
+### Elligator 2 Method {#ell2edwards}
 
 Preconditions: A twisted Edwards curve E and an equivalent Montgomery
 curve M meeting the requirements in {{rational-map}}.
@@ -2361,9 +2374,9 @@ Helper functions:
 
 - map\_to\_curve\_elligator2 is the mapping of {{elligator2}} to the curve M.
 - rational\_map is a function that takes a point (s, t) on M and
-  returns a point (v, w) on E, as defined in {{rational-map}}.
+  returns a point (v, w) on E. This rational map should be chosen as defined in {{rational-map}}.
 
-Sign of t (and v): for this map, the sign is determined by map\_to\_curve\_elligator2.
+Sign of t (and v): For this map, the sign is determined by map\_to\_curve\_elligator2.
 No further sign adjustments are required.
 
 Exceptions: The exceptions for the Elligator 2 mapping are as given in
@@ -2387,7 +2400,7 @@ Output: (v, w), a point on E.
 3. return (v, w)
 ~~~
 
-# Clearing the cofactor {#cofactor-clearing}
+# Clearing the Cofactor {#cofactor-clearing}
 
 The mappings of {{mappings}} always output a point on the elliptic curve,
 i.e., a point in a group of order h * r ({{bg-curves}}). Obtaining a point in G
@@ -2407,9 +2420,9 @@ some scalar h\_eff whose value is determined by the method and the curve.
 Examples of fast cofactor clearing methods include the following:
 
 - For certain pairing-friendly curves having subgroup G2 over an extension
-  field, Scott et al. {{SBCDK09}} describe a method for fast cofactor clearing
-  that exploits an efficiently-computable endomorphism. Fuentes-Castaneda
-  et al. {{FKR11}} propose an alternative method that is sometimes more efficient.
+  field, Scott et al.&nbsp;{{SBCDK09}} describe a method for fast cofactor clearing
+  that exploits an efficiently computable endomorphism. Fuentes-Castaneda
+  et al.&nbsp;{{FKR11}} propose an alternative method that is sometimes more efficient.
   Budroni and Pintore {{BP17}} give concrete instantiations of these methods
   for Barreto-Lynn-Scott pairing-friendly curves {{BLS03}}.
   This method is described for the specific case of BLS12-381 in
@@ -2435,9 +2448,9 @@ When a curve admits a fast cofactor clearing method, clear\_cofactor
 MAY be evaluated either via that method or via scalar multiplication
 by the equivalent h\_eff; these two methods give the same result.
 Note that in this case scalar multiplication by the cofactor h does not
-generally give the same result as the fast method, and MUST NOT be used.
+generally give the same result as the fast method and MUST NOT be used.
 
-# Suites for hashing {#suites}
+# Suites for Hashing {#suites}
 
 This section lists recommended suites for hashing to standard elliptic curves.
 
@@ -2456,7 +2469,7 @@ is hash\_to\_curve; see {{roadmap}} and immediately below for more information.
 A hash-to-curve suite comprises the following parameters:
 
 - Suite ID, a short name used to refer to a given suite.
-  {{suiteIDformat}} discusses the naming conventions for suite IDs.
+  {{suiteIDformat}} discusses the naming conventions for Suite IDs.
 - encoding type, either uniform (hash\_to\_curve) or nonuniform (encode\_to\_curve).
   See {{roadmap}} for definitions of these encoding types.
 - E, the target elliptic curve over a field F.
@@ -2476,7 +2489,7 @@ In addition to the above parameters, the mapping f may require
 additional parameters Z, M, rational\_map, E', or iso\_map.
 When applicable, these MUST be specified.
 
-The below table lists suites RECOMMENDED for some elliptic curves.
+The table below lists suites RECOMMENDED for some elliptic curves.
 The corresponding parameters are given in the following subsections.
 Applications instantiating cryptographic protocols whose security analysis
 relies on a random oracle that outputs points with a uniform distribution MUST NOT use a
@@ -2489,19 +2502,19 @@ uniform encoding for security.
 
 | E            | Suites | Section |
 |--------------|--------|---------|
-| NIST P-256   | P256\_XMD:SHA-256\_SSWU\_RO\_ P256\_XMD:SHA-256\_SSWU\_NU\_ | {{suites-p256}} |
-| NIST P-384   | P384\_XMD:SHA-384\_SSWU\_RO\_ P384\_XMD:SHA-384\_SSWU\_NU\_ | {{suites-p384}} |
-| NIST P-521   | P521\_XMD:SHA-512\_SSWU\_RO\_ P521\_XMD:SHA-512\_SSWU\_NU\_ | {{suites-p521}} |
-| curve25519   | curve25519\_XMD:SHA-512\_ELL2\_RO\_ curve25519\_XMD:SHA-512\_ELL2\_NU\_ | {{suites-25519}} |
-| edwards25519 | edwards25519\_XMD:SHA-512\_ELL2\_RO\_ edwards25519\_XMD:SHA-512\_ELL2\_NU\_ | {{suites-25519}} |
-| curve448     | curve448\_XOF:SHAKE256\_ELL2\_RO\_ curve448\_XOF:SHAKE256\_ELL2\_NU\_ | {{suites-448}} |
-| edwards448   | edwards448\_XOF:SHAKE256\_ELL2\_RO\_ edwards448\_XOF:SHAKE256\_ELL2\_NU\_ | {{suites-448}} |
-| secp256k1    | secp256k1\_XMD:SHA-256\_SSWU\_RO\_ secp256k1\_XMD:SHA-256\_SSWU\_NU\_ | {{suites-secp256k1}} |
-| BLS12-381 G1 | BLS12381G1\_XMD:SHA-256\_SSWU\_RO\_ BLS12381G1\_XMD:SHA-256\_SSWU\_NU\_ | {{suites-bls12381}} |
-| BLS12-381 G2 | BLS12381G2\_XMD:SHA-256\_SSWU\_RO\_ BLS12381G2\_XMD:SHA-256\_SSWU\_NU\_ | {{suites-bls12381}} |
+| NIST P-256   | P256\_XMD:SHA-256\_SSWU\_RO\_ P256\_XMD:SHA-256\_SSWU\_NU\_ | {{<suites-p256}} |
+| NIST P-384   | P384\_XMD:SHA-384\_SSWU\_RO\_ P384\_XMD:SHA-384\_SSWU\_NU\_ | {{<suites-p384}} |
+| NIST P-521   | P521\_XMD:SHA-512\_SSWU\_RO\_ P521\_XMD:SHA-512\_SSWU\_NU\_ | {{<suites-p521}} |
+| curve25519   | curve25519\_XMD:SHA-512\_ELL2\_RO\_ curve25519\_XMD:SHA-512\_ELL2\_NU\_ | {{<suites-25519}} |
+| edwards25519 | edwards25519\_XMD:SHA-512\_ELL2\_RO\_ edwards25519\_XMD:SHA-512\_ELL2\_NU\_ | {{<suites-25519}} |
+| curve448     | curve448\_XOF:SHAKE256\_ELL2\_RO\_ curve448\_XOF:SHAKE256\_ELL2\_NU\_ | {{<suites-448}} |
+| edwards448   | edwards448\_XOF:SHAKE256\_ELL2\_RO\_ edwards448\_XOF:SHAKE256\_ELL2\_NU\_ | {{<suites-448}} |
+| secp256k1    | secp256k1\_XMD:SHA-256\_SSWU\_RO\_ secp256k1\_XMD:SHA-256\_SSWU\_NU\_ | {{<suites-secp256k1}} |
+| BLS12-381 G1 | BLS12381G1\_XMD:SHA-256\_SSWU\_RO\_ BLS12381G1\_XMD:SHA-256\_SSWU\_NU\_ | {{<suites-bls12381}} |
+| BLS12-381 G2 | BLS12381G2\_XMD:SHA-256\_SSWU\_RO\_ BLS12381G2\_XMD:SHA-256\_SSWU\_NU\_ | {{<suites-bls12381}} |
 {: #suite-table title="Suites for hashing to elliptic curves."}
 
-## Implementing a hash-to-curve suite {#suites-howto}
+## Implementing a Hash-to-Curve Suite {#suites-howto}
 
 A hash-to-curve suite requires the following functions.
 Note that some of these require utility functions from {{utility}}.
@@ -2631,8 +2644,8 @@ except for the following parameters:
   - a = -1
   - d = 0x52036cee2b6ffe738cc740797779e89800700a4d4141d8ab75eb4dca135978a3
 - f: Twisted Edwards Elligator 2 method ({{ell2edwards}})
-- M: curve25519 defined in {{!RFC7748}}, Section 4.1
-- rational\_map: the birational map defined in {{!RFC7748}}, Section 4.1
+- M: curve25519, defined in {{!RFC7748, Section 4.1}}
+- rational\_map: the birational maps defined in {{!RFC7748, Section 4.1}}
 
 curve25519\_XMD:SHA-512\_ELL2\_NU\_ is identical to curve25519\_XMD:SHA-512\_ELL2\_RO\_,
 except that the encoding type is encode\_to\_curve ({{roadmap}}).
@@ -2673,8 +2686,8 @@ except for the following parameters:
   - a = 1
   - d = -39081
 - f: Twisted Edwards Elligator 2 method ({{ell2edwards}})
-- M: curve448, defined in {{!RFC7748}}, Section 4.2
-- rational\_map: the 4-isogeny map defined in {{!RFC7748}}, Section 4.2
+- M: curve448, defined in {{!RFC7748, Section 4.2}}
+- rational\_map: the 4-isogeny map defined in {{!RFC7748, Section 4.2}}
 
 curve448\_XOF:SHAKE256\_ELL2\_NU\_ is identical to curve448\_XOF:SHAKE256\_ELL2\_RO\_,
 except that the encoding type is encode\_to\_curve ({{roadmap}}).
@@ -2717,8 +2730,6 @@ to the curve E' isogenous to secp256k1 is given in {{straightline-sswu}}.
 
 This section defines ciphersuites for groups G1 and G2 of
 the BLS12-381 elliptic curve {{BLS12-381}}.
-The curve parameters in this section match the ones listed in
-{{!I-D.irtf-cfrg-pairing-friendly-curves}}, Appendix C.
 
 ### BLS12-381 G1 {#suites-bls12381-g1}
 
@@ -2744,7 +2755,7 @@ BLS12381G1\_XMD:SHA-256\_SSWU\_NU\_ is identical to BLS12381G1\_XMD:SHA-256\_SSW
 except that the encoding type is encode\_to\_curve ({{roadmap}}).
 
 Note that the h\_eff values for these suites are chosen for compatibility
-with the fast cofactor clearing method described by Scott ({{WB19}} Section 5).
+with the fast cofactor clearing method described by Scott ({{WB19}}, Section 5).
 
 An optimized example implementation of the Simplified SWU mapping
 to the curve E' isogenous to BLS12-381 G1 is given in {{straightline-sswu}}.
@@ -2776,15 +2787,15 @@ except that the encoding type is encode\_to\_curve ({{roadmap}}).
 
 Note that the h\_eff values for these suites are chosen for compatibility
 with the fast cofactor clearing method described by
-Budroni and Pintore ({{BP17}}, Section 4.1), and summarized in {{clear-cofactor-bls12381-g2}}.
+Budroni and Pintore ({{BP17}}, Section 4.1) and are summarized in {{clear-cofactor-bls12381-g2}}.
 
 An optimized example implementation of the Simplified SWU mapping
 to the curve E' isogenous to BLS12-381 G2 is given in {{straightline-sswu}}.
 
-## Defining a new hash-to-curve suite {#new-suite}
+## Defining a New Hash-to-Curve Suite {#new-suite}
 
 For elliptic curves not listed elsewhere in {{suites}}, a new hash-to-curve
-suite can be defined by:
+suite can be defined by the following:
 
 1. E, F, p, and m are determined by the elliptic curve and its base field.
 
@@ -2809,7 +2820,7 @@ suite can be defined by:
 
 8. Construct a Suite ID following the guidelines in {{suiteIDformat}}.
 
-## Suite ID naming conventions {#suiteIDformat}
+## Suite ID Naming Conventions {#suiteIDformat}
 
 Suite IDs MUST be constructed as follows:
 
@@ -2817,11 +2828,11 @@ Suite IDs MUST be constructed as follows:
 
 The fields CURVE\_ID, HASH\_ID, MAP\_ID, and ENC\_VAR are
 ASCII-encoded strings of at most 64 characters each.
-Fields MUST contain only ASCII characters between 0x21 and 0x7E (inclusive)
-except that underscore (i.e., 0x5f) is not allowed.
+Fields MUST contain only ASCII characters between 0x21 and 0x7E (inclusive),
+except that underscore (i.e., 0x5F) is not allowed.
 
 As indicated above, each field (including the last) is followed by an underscore
-("\_", ASCII 0x5f).
+("\_", ASCII 0x5F).
 This helps to ensure that Suite IDs are prefix free.
 Suite IDs MUST include the final underscore and MUST NOT include any characters
 after the final underscore.
@@ -2857,9 +2868,9 @@ Suite ID fields MUST be chosen as follows:
 - MAP\_ID: a human-readable representation of the map\_to\_curve function
   as defined in {{mappings}}. These are defined as follows:
 
-    - "SVDW" for or Shallue and van de Woestijne ({{svdw}}).
-    - "SSWU" for Simplified SWU ({{simple-swu}}, {{simple-swu-AB0}}).
-    - "ELL2" for Elligator 2 ({{elligator2}}, {{ell2edwards}}).
+    - "SVDW" for Shallue and van de Woestijne ({{svdw}}).
+    - "SSWU" for Simplified SWU (Sections {{<simple-swu}} and {{<simple-swu-AB0}}).
+    - "ELL2" for Elligator 2 (Sections {{<elligator2}} and {{<ell2edwards}}).
 
 - ENC\_VAR: a string indicating the encoding type and other information.
   The first two characters of this string indicate whether the suite
@@ -2878,16 +2889,16 @@ Suite ID fields MUST be chosen as follows:
     version of a uniform encoding suite, while "RO:V02:FOO01:BAR17" might be
     used to indicate a variant of that suite.
 
-# IANA considerations
+# IANA Considerations
 
 This document has no IANA actions.
 
-# Security considerations {#security-considerations}
+# Security Considerations {#security-considerations}
 
 This section contains additional security considerations about the hash-to-curve mechanisms
 described in this document.
 
-## Properties of encodings {#security-considerations-props}
+## Properties of Encodings {#security-considerations-props}
 
 Each encoding type ({{roadmap}}) accepts an arbitrary byte string and maps
 it to a point on the curve sampled from a distribution that depends on the
@@ -2914,29 +2925,29 @@ to detect and "fix" the identity element.
 When the hash\_to\_curve function ({{roadmap}}) is instantiated with a
 hash\_to\_field function that is indifferentiable from a random oracle
 ({{hashtofield}}), the resulting function is indifferentiable from a random
-oracle ({{MRH04}}, {{BCIMRT10}}, {{FFSTV13}}, {{LBB19}}, {{H20}}).
-In many cases such a function can be safely used in cryptographic protocols
+oracle ({{MRH04}} {{BCIMRT10}} {{FFSTV13}} {{LBB19}} {{H20}}).
+In many cases, such a function can be safely used in cryptographic protocols
 whose security analysis assumes a random oracle that outputs uniformly random
 points on an elliptic curve.
-As Ristenpart et al. discuss in {{RSS11}}, however, not all security proofs
+As Ristenpart et al.&nbsp;discuss in {{RSS11}}, however, not all security proofs
 that rely on random oracles continue to hold when those oracles are replaced
 by indifferentiable functionalities.
 This limitation should be considered when analyzing the security of protocols
 relying on the hash\_to\_curve function.
 
-## Hashing passwords {#security-considerations-passwords}
+## Hashing Passwords {#security-considerations-passwords}
 
 When hashing passwords using any function described in this document, an adversary
 who learns the output of the hash function (or potentially any intermediate value,
 e.g., the output of hash\_to\_field) may be able to carry out a dictionary attack.
 To mitigate such attacks, it is recommended to first execute a more costly key
-derivation function (e.g., PBKDF2 {{?RFC2898}}, scrypt {{?RFC7914}}, or Argon2
-{{?I-D.irtf-cfrg-argon2}}) on the password, then hash the output of that
+derivation function (e.g., PBKDF2 {{?RFC8018}}, scrypt {{?RFC7914}}, or Argon2
+{{?RFC9106}}) on the password, then hash the output of that
 function to the target elliptic curve.
 For collision resistance, the hash underlying the key derivation function
 should be chosen according to the guidelines listed in {{hashtofield-expand-xmd}}.
 
-## Constant-time requirements {#security-considerations-constant}
+## Constant-Time Requirements {#security-considerations-constant}
 
 Constant-time implementations of all functions in this document are STRONGLY
 RECOMMENDED for all uses, to avoid leaking information via side channels.
@@ -2951,7 +2962,7 @@ channels (e.g., power or electromagnetic side channels) may be pertinent.
 Defending against such leakage is outside the scope of this document, because
 the nature of the leakage and the appropriate defense depend on the application.
 
-## encode\_to\_curve: output distribution and indifferentiability {#security-considerations-encode}
+## encode\_to\_curve: Output Distribution and Indifferentiability {#security-considerations-encode}
 
 The encode\_to\_curve function ({{roadmap}}) returns points sampled from a
 distribution that is statistically far from uniform.
@@ -2968,13 +2979,13 @@ Specifically:
   derive bounds on the Shallue-van de Woestijne mapping ({{svdw}}).
 
 - Fouque and Tibouchi {{FT10}} and Tibouchi {{T14}} derive bounds for the
-  Simplified SWU mapping ({{simple-swu}}, {{simple-swu-AB0}}).
+  Simplified SWU mapping (Sections {{<simple-swu}} and {{<simple-swu-AB0}}).
 
-- Bernstein et al. {{BHKL13}} derive bounds for the Elligator 2 mapping
-  ({{elligator2}}, {{ell2edwards}}).
+- Bernstein et al.&nbsp;{{BHKL13}} derive bounds for the Elligator 2 mapping
+  (Sections {{<elligator2}} and {{<ell2edwards}}).
 
 Indifferentiability of encode\_to\_curve follows from an argument similar
-to the one given by Brier et al. {{BCIMRT10}}; we briefly sketch.
+to the one given by Brier et al.&nbsp;{{BCIMRT10}}; we briefly sketch this argument as follows.
 Consider an ideal random oracle Hc() that samples from the distribution induced
 by the map\_to\_curve function called by encode\_to\_curve, and assume for
 simplicity that the target elliptic curve has cofactor 1 (a similar argument
@@ -2988,7 +2999,7 @@ the simulator just returns the value it gave in response to that query).
 The simulator then computes the possible preimages of P under map\_to\_curve,
 i.e., elements u of F such that map\_to\_curve(u) == P
 (Tibouchi {{T14}} shows that this can be done efficiently for the Shallue-van
-de Woestijne and Simplified SWU maps, and Bernstein et al. show the same for
+de Woestijne and Simplified SWU maps, and Bernstein et al.&nbsp;show the same for
 Elligator 2).
 The simulator selects one such preimage at random and returns this value
 as the simulated output of the "inner" random oracle.
@@ -2996,12 +3007,12 @@ By hypothesis, Hc() samples from the distribution induced by map\_to\_curve
 on a uniformly random input element of F, so this value is uniformly random
 and induces the correct point P when passed through map\_to\_curve.
 
-## hash\_to\_field security {#security-considerations-hash-to-field}
+## hash\_to\_field Security {#security-considerations-hash-to-field}
 
-The hash\_to\_field function defined in {{hashtofield}} is indifferentiable
+The hash\_to\_field function, defined in {{hashtofield}}, is indifferentiable
 from a random oracle {{MRH04}} when expand\_message ({{hashtofield-expand}})
 is modeled as a random oracle.
-By composability of indifferentiability proofs, this also holds when
+Since indifferentiability proofs are composable, this also holds when
 expand\_message is proved indifferentiable from a random oracle relative
 to an underlying primitive that is modeled as a random oracle.
 When following the guidelines in {{hashtofield-expand}}, both variants
@@ -3017,9 +3028,9 @@ one member of this equivalence class at random and outputs the byte string
 returned by I2OSP.
 (Notice that this is essentially the inverse of the hash\_to\_field procedure.)
 
-## expand\_message\_xmd security {#security-considerations-expand-xmd}
+## expand\_message\_xmd Security {#security-considerations-expand-xmd}
 
-The expand\_message\_xmd function defined in {{hashtofield-expand-xmd}} is
+The expand\_message\_xmd function, defined in {{hashtofield-expand-xmd}}, is
 indifferentiable from a random oracle {{MRH04}} when one of the following holds:
 
 1. H is indifferentiable from a random oracle,
@@ -3031,20 +3042,20 @@ indifferentiable from a random oracle {{MRH04}} when one of the following holds:
 For cases (1) and (2), the indifferentiability of expand\_message\_xmd follows
 directly from the indifferentiability of H.
 
-For case (3), i.e., for H a Merkle-Damgaard hash function, indifferentiability
-follows from {{CDMP05}}, Theorem 3.5.
+For case (3), i.e., where H is a Merkle-Damgaard hash function, indifferentiability
+follows from {{CDMP05}}, Theorem 5.
 In particular, expand\_message\_xmd computes b\_0 by prefixing the message
 with one block of zeros plus auxiliary information (length, counter, and DST).
 Then, each of the output blocks b\_i, i >= 1 in expand\_message\_xmd is the
 result of invoking H on a unique, prefix-free encoding of b\_0.
-This is true, first, because the length of the input to all such invocations
+This is true, first because the length of the input to all such invocations
 is equal and fixed by the choice of H and DST, and
-second, because each such input has a unique suffix (because of the inclusion
+second because each such input has a unique suffix (because of the inclusion
 of the counter byte I2OSP(i, 1)).
 
-The essential difference between the construction of {{CDMP05}} and
+The essential difference between the construction discussed in {{CDMP05}} and
 expand\_message\_xmd is that the latter hashes a counter appended to
-strxor(b\_0, b\_(i - 1)) (step 10) rather than to b\_0.
+strxor(b\_0, b\_(i - 1)) ({#hashtofield-expand-xmd}, step 10) rather than to b\_0.
 This approach increases the Hamming distance between inputs to different
 invocations of H, which reduces the likelihood that nonidealities in H
 affect the distribution of the b\_i values.
@@ -3055,7 +3066,7 @@ function meeting one of the above criteria.
 Applications that use expand\_message\_xmd outside of hash\_to\_field should
 ensure domain separation by picking a distinct value for DST.
 
-## Domain separation for expand\_message variants {#security-considerations-domain-separation-expmsg-var}
+## Domain Separation for expand\_message Variants {#security-considerations-domain-separation-expmsg-var}
 
 As discussed in {{term-domain-separation}}, the purpose of domain separation
 is to ensure that security analyses of cryptographic protocols that query
@@ -3071,7 +3082,7 @@ extendable-output function.
 but these should be analyzed on a case-by-case basis.)
 For security, applications that use the same function H outside of expand\_message
 should enforce domain separation between those uses of H and expand\_message,
-and should separate all of these from uses of H in other applications.
+and they should separate all of these from uses of H in other applications.
 
 This section suggests four methods for enforcing domain separation
 from expand\_message variants, explains how each method achieves domain
@@ -3081,17 +3092,17 @@ DST\_ext distinct from DST\_prime and augments calls to H with DST\_ext.
 Each method augments calls to H differently, and each may impose
 additional requirements on DST\_ext.
 
-These methods can be used to instantiate multiple domain separated functions
+These methods can be used to instantiate multiple domain-separated functions
 (e.g., H1 and H2) by selecting distinct DST\_ext values for each
 (e.g., DST\_ext1, DST\_ext2).
 
 1.  (Suffix-only domain separation.)
-    This method is useful when domain separating invocations of H
+    This method is useful when domain-separating invocations of H
     from expand\_message\_xmd or expand\_message\_xof.
-    It is not appropriate for domain separating expand\_message from HMAC-H
+    It is not appropriate for domain-separating expand\_message from HMAC-H
     {{?RFC2104}}; for that purpose, see method 4.
 
-    To instantiate a suffix-only domain separated function Hso, compute
+    To instantiate a suffix-only domain-separated function Hso, compute
 
         Hso(msg) = H(msg || DST_ext)
 
@@ -3105,7 +3116,7 @@ These methods can be used to instantiate multiple domain separated functions
 2.  (Prefix-suffix domain separation.)
     This method can be used in the same cases as the suffix-only method.
 
-    To instantiate a prefix-suffix domain separated function Hps, compute
+    To instantiate a prefix-suffix domain-separated function Hps, compute
 
         Hps(msg) = H(DST_ext || msg || I2OSP(0, 1))
 
@@ -3121,11 +3132,11 @@ These methods can be used to instantiate multiple domain separated functions
     DST\_prime is always appended to invocations of H inside expand\_message.
 
 3.  (Prefix-only domain separation.)
-    This method is only useful for domain separating invocations of H
+    This method is only useful for domain-separating invocations of H
     from expand\_message\_xmd.
     It does not give domain separation for expand\_message\_xof or HMAC-H.
 
-    To instantiate a prefix-only domain separated function Hpo, compute
+    To instantiate a prefix-only domain-separated function Hpo, compute
 
         Hpo(msg) = H(DST_ext || msg)
 
@@ -3148,10 +3159,10 @@ These methods can be used to instantiate multiple domain separated functions
     with high probability.
 
 4.  (XMD-HMAC domain separation.)
-    This method is useful for domain separating invocations of H inside
+    This method is useful for domain-separating invocations of H inside
     HMAC-H (i.e., HMAC {{?RFC2104}} instantiated with hash function H) from
     expand\_message\_xmd.
-    It also applies to HKDF-H {{?RFC5869}}, as discussed below.
+    It also applies to HKDF-H (i.e., HKDF {{?RFC5869}} instantiated with hash function H), as discussed below.
 
     Specifically, this method applies when HMAC-H is used with a non-secret
     key to instantiate a random oracle based on a hash function H
@@ -3190,25 +3201,25 @@ These methods can be used to instantiate multiple domain separated functions
     the salt input to HKDF-Extract to DST\_key, computed as above.
     This ensures domain separation for HKDF-Extract by the same argument
     as for HMAC-H using DST\_key.
-    Moreover, assuming that the IKM input to HKDF-Extract has sufficiently
+    Moreover, assuming that the input keying material (IKM) supplied to HKDF-Extract has sufficiently
     high entropy (say, commensurate with the security parameter), the
-    HKDF-Expand step is domain separated by the same argument as for
-    HMAC-H with a high-entropy secret key (since PRK is exactly that).
+    HKDF-Expand step is domain-separated by the same argument as for
+    HMAC-H with a high-entropy secret key (since a pseudorandom key is exactly that).
 
-## Target security levels {#security-considerations-targets}
+## Target Security Levels {#security-considerations-targets}
 
 Each ciphersuite specifies a target security level (in bits) for the underlying
 curve. This parameter ensures the corresponding hash\_to\_field instantiation is
 conservative and correct. We stress that this parameter is only an upper bound on
-the security level of the curve, and is neither a guarantee nor endorsement of its
+the security level of the curve and is neither a guarantee nor endorsement of its
 suitability for a given application. Mathematical and cryptographic advancements
 may reduce the effective security level for any curve.
 
 # Acknowledgements
 
 The authors would like to thank Adam Langley for his detailed writeup of Elligator 2 with
-curve25519 {{L13}};
-Dan Boneh, Christopher Patton, Benjamin Lipp, and Leonid Reyzin for educational discussions; and
+Curve25519 {{L13}};
+Dan Boneh, Benjamin Lipp, Christopher Patton, and Leonid Reyzin for educational discussions; and
 David Benjamin, Daniel Bourdrez, Frank Denis, Sean Devlin, Justin Drake, Bjoern Haase, Mike Hamburg,
 Dan Harkins, Daira Hopwood, Thomas Icart, Andy Polyakov, Thomas Pornin, Mamy Ratsimbazafy, Michael Scott,
 Filippo Valsorda, and Mathy Vanhoef for helpful reviews and feedback.
@@ -3222,12 +3233,12 @@ Filippo Valsorda, and Mathy Vanhoef for helpful reviews and feedback.
 --- back
 
 
-# Related work {#related}
+# Related Work {#related}
 
 The problem of mapping arbitrary bit strings to elliptic curve points
 has been the subject of both practical and theoretical research.
 This section briefly describes the background and research results
-that underly the recommendations in this document.
+that underlie the recommendations in this document.
 This section is provided for informational purposes only.
 
 A naive but generally insecure method of mapping a string msg to
@@ -3239,7 +3250,7 @@ that the resulting point has a known discrete log relationship to P.
 Thus, except in cases where this method is specified by the protocol,
 it must not be used; doing so risks catastrophic security failures.
 
-Boneh et al. {{BLS01}} describe an encoding method they call MapToGroup,
+Boneh et al.&nbsp;{{BLS01}} describe an encoding method they call MapToGroup,
 which works roughly as follows: first, use the input string to initialize a
 pseudorandom number generator, then use the generator to produce a
 value x in F.
@@ -3264,26 +3275,26 @@ Fouque and Tibouchi {{FT12}} give a parameterization of this mapping
 for Barreto-Naehrig pairing-friendly curves {{BN05}}.
 
 Ulas {{U07}} describes a simpler version of the Shallue-van de Woestijne map,
-and Brier et al. {{BCIMRT10}} give a further simplification, which the authors
+and Brier et al.&nbsp;{{BCIMRT10}} give a further simplification, which the authors
 call the "Simplified SWU" map.
 That simplified map applies only to fields of characteristic p = 3 (mod 4);
-Wahby and Boneh {{WB19}} generalize to fields of any characteristic, and
+Wahby and Boneh {{WB19}} generalize to fields of any characteristic and
 give further optimizations.
 
 Boneh and Franklin give a deterministic algorithm mapping to certain
 supersingular curves over fields of characteristic p = 2 (mod 3) {{BF01}}.
-Icart gives another deterministic algorithm which maps to any curve
+Icart gives another deterministic algorithm that maps to any curve
 over a field of characteristic p = 2 (mod 3) {{Icart09}}.
 Several extensions and generalizations follow this work, including
 {{FSV09}}, {{FT10}}, {{KLR10}}, {{F11}}, and {{CK11}}.
 
-Following the work of Farashahi {{F11}}, Fouque et al. {{FJT13}} describe a
+Following the work of Farashahi {{F11}}, Fouque et al.&nbsp;{{FJT13}} describe a
 mapping to curves over fields of characteristic p = 3 (mod 4) having a number of points
-divisible by 4.  Bernstein et al. {{BHKL13}} optimize this mapping and
+divisible by 4.  Bernstein et al.&nbsp;{{BHKL13}} optimize this mapping and
 describe a related mapping that they call "Elligator 2," which applies to
 any curve over a field of odd characteristic having a point of order 2.
-This includes curve25519 and curve448, both of which are CFRG-recommended
-curves {{!RFC7748}}. Bernstein et al. {{BLMP19}} extend the Elligator 2 map
+This includes Curve25519 and Curve448, both of which are CFRG-recommended
+curves {{!RFC7748}}. Bernstein et al.&nbsp;{{BLMP19}} extend the Elligator 2 map
 to a class of supersingular curves over fields of characteristic p = 3 (mod 4).
 
 An important caveat regarding all of the above deterministic mapping
@@ -3291,24 +3302,25 @@ functions is that none of them map to the entire curve, but rather to some
 fraction of the points. This means that they cannot be used directly to
 construct a random oracle that outputs points on the curve.
 
-Brier et al. {{BCIMRT10}} give two solutions to this problem.
-The first, which Brier et al. prove applies to Icart's method,
+Brier et al.&nbsp;{{BCIMRT10}} give two solutions to this problem.
+The first, which Brier et al.&nbsp;prove applies to Icart's method,
 computes f(H0(msg)) + f(H1(msg)) for two distinct hash functions
 H0 and H1 from bit strings to F and a mapping f from F to the elliptic curve E.
 The second, which applies to essentially all deterministic mappings but
-is more costly, computes f(H0(msg)) + H2(msg) * P, for P a generator of the
-elliptic curve group and H2 a hash from bit strings to integers modulo r,
-the order of the elliptic curve group.
-Farashahi et al. {{FFSTV13}} improve the analysis of the first method,
+is more costly, computes f(H0(msg)) + H2(msg) * P, where P is a generator of the
+elliptic curve group, H2 is a hash from bit strings to integers modulo r,
+and r is the order of the elliptic curve group.
+
+Farashahi et al.&nbsp;{{FFSTV13}} improve the analysis of the first method,
 showing that it applies to essentially all deterministic mappings.
 Tibouchi and Kim {{TK17}} further refine the analysis and describe additional
 optimizations.
 
 Complementary to the problem of mapping from bit strings to elliptic curve
-points, Bernstein et al. {{BHKL13}} study the problem of mapping from elliptic
+points, Bernstein et al.&nbsp;{{BHKL13}} study the problem of mapping from elliptic
 curve points to uniformly random bit strings, giving solutions for a class of
-curves including Montgomery and twisted Edwards curves.
-Tibouchi {{T14}} and Aranha et al. {{AFQTZ14}} generalize these results.
+curves that includes Montgomery and twisted Edwards curves.
+Tibouchi {{T14}} and Aranha et al.&nbsp;{{AFQTZ14}} generalize these results.
 This document does not deal with this complementary problem.
 
 # Hashing to ristretto255 {#appx-ristretto255}
@@ -3320,8 +3332,8 @@ encoding to this group that has a uniform output distribution ({{term-rom}})
 and the same security properties and interface as the hash\_to\_curve function
 ({{roadmap}}).
 
-The ristretto255 API defines a one-way map ({{I-D.irtf-cfrg-ristretto255-decaf448}},
-Section 4.3.4); this section refers to that map as ristretto255\_map.
+The ristretto255 API defines a one-way map ({{I-D.irtf-cfrg-ristretto255-decaf448,
+Section 4.3.4}}); this section refers to that map as ristretto255\_map.
 
 The hash\_to\_ristretto255 function MUST be instantiated with an expand\_message
 function that conforms to the requirements given in {{hashtofield-expand}}.
@@ -3373,8 +3385,8 @@ encoding to this group that has a uniform output distribution ({{term-rom}})
 and the same security properties and interface as the hash\_to\_curve function
 ({{roadmap}}).
 
-The decaf448 API defines a one-way map ({{I-D.irtf-cfrg-ristretto255-decaf448}},
-Section 5.3.4); this section refers to that map as decaf448\_map.
+The decaf448 API defines a one-way map ({{I-D.irtf-cfrg-ristretto255-decaf448,
+Section 5.3.4}}); this section refers to that map as decaf448\_map.
 
 The hash\_to\_decaf448 function MUST be instantiated with an expand\_message
 function that conforms to the requirements given in {{hashtofield-expand}}.
@@ -3416,7 +3428,7 @@ REQUIRED identifier is:
 
     decaf448_XOF:SHAKE256_D448MAP_RO_
 
-# Rational maps {#appx-rational-map}
+# Rational Maps {#appx-rational-map}
 
 This section gives rational maps that can be used when hashing to
 twisted Edwards or Montgomery curves.
@@ -3431,20 +3443,20 @@ Given a Montgomery curve, {{appx-rational-map-mont}} shows
 how to derive a corresponding Weierstrass curve and how to map from that
 curve to the Montgomery curve.
 This mapping can be used to hash to Montgomery or twisted Edwards curves
-via the Shallue-van de Woestijne ({{svdw}}) or Simplified SWU ({{simple-swu}})
-method, as follows:
+via the Shallue-van de Woestijne method ({{svdw}}) or Simplified SWU method ({{simple-swu}}),
+as follows:
 
 - For Montgomery curves, first map to the Weierstrass curve, then convert
 to Montgomery coordinates via the mapping.
 
-- For twisted Edwards curves, compose the Weierstrass to Montgomery mapping
-with the Montgomery to twisted Edwards mapping
-({{appx-rational-map-edw}}) to obtain a Weierstrass curve and a mapping
-to the target twisted Edwards curve.
+- For twisted Edwards curves, compose the mapping from Weierstrass
+to Montgomery with the mapping from Montgomery to twisted Edwards
+({{appx-rational-map-edw}}) to obtain a Weierstrass curve and a
+mapping to the target twisted Edwards curve.
 Map to this Weierstrass curve, then convert to Edwards coordinates
 via the mapping.
 
-## Generic Montgomery to twisted Edwards map {#appx-rational-map-edw}
+## Generic Mapping from Montgomery to Twisted Edwards {#appx-rational-map-edw}
 
 This section gives a generic birational map between twisted Edwards
 and Montgomery curves.
@@ -3525,7 +3537,7 @@ When the goal is to map into the prime-order subgroup of the Montgomery
 curve, it suffices to return the identity point on the Montgomery curve
 in the exceptional cases.
 
-## Weierstrass to Montgomery map {#appx-rational-map-mont}
+## Mapping from Weierstrass to Montgomery {#appx-rational-map-mont}
 
 The rational map from the point (s, t) on the Montgomery curve
 
@@ -3539,7 +3551,7 @@ to the point (x, y) on the equivalent Weierstrass curve
     y^2 = x^3 + A * x + B
 ~~~
 
-is given by:
+is given by
 
 - A = (3 - J^2) / (3 * K^2)
 - B = (2 * J^3 - 9 * J) / (27 * K^3)
@@ -3552,10 +3564,10 @@ The inverse map, from the point (x, y) to the point (s, t), is given by
 - t = y * K
 
 This mapping can be used to apply the Shallue-van de Woestijne
-({{svdw}}) or Simplified SWU ({{simple-swu}}) method to
+method ({{svdw}}) or Simplified SWU method ({{simple-swu}}) to
 Montgomery curves.
 
-# Isogeny maps for suites {#appx-iso}
+# Isogeny Maps for Suites {#appx-iso}
 
 This section specifies the isogeny maps for the secp256k1 and BLS12-381
 suites listed in {{suites}}.
@@ -3565,10 +3577,10 @@ Wahby and Boneh ({{WB19}}, Section 4.3) show how to evaluate these maps
 in a projective coordinate system ({{projective-coords}}), which avoids
 modular inversions.
 
-Refer to the draft repository {{hash2curve-repo}} for a Sage {{SAGE}} script
+Refer to {{hash2curve-repo}} for a Sage {{SAGE}} script
 that constructs these isogenies.
 
-## 3-isogeny map for secp256k1 {#appx-iso-secp256k1}
+## 3-Isogeny Map for secp256k1 {#appx-iso-secp256k1}
 
 This section specifies the isogeny map for the secp256k1 suite listed in {{suites-secp256k1}}.
 
@@ -3607,7 +3619,7 @@ The constants used to compute y\_den are as follows:
 - k\_(4,1) = 0x7a06534bb8bdb49fd5e9e6632722c2989467c1bfc8e8d978dfb425d2685c2573
 - k\_(4,2) = 0x6484aa716545ca2cf3a70c3fa8fe337e0a3d21162f0d6299a7bf8192bfd2a76f
 
-## 11-isogeny map for BLS12-381 G1 {#appx-iso-bls12381-g1}
+## 11-Isogeny Map for BLS12-381 G1 {#appx-iso-bls12381-g1}
 
 The 11-isogeny map from (x', y') on E' to (x, y) on E is given by the following rational functions:
 
@@ -3684,7 +3696,7 @@ The constants used to compute y\_den are as follows:
 - k\_(4,13) = 0x2660400eb2e4f3b628bdd0d53cd76f2bf565b94e72927c1cb748df27942480e420517bd8714cc80d1fadc1326ed06f7
 - k\_(4,14) = 0xe0fa1d816ddc03e6b24255e0d7819c171c40f65e273b853324efcd6356caa205ca2f570f13497804415473a1d634b8f
 
-## 3-isogeny map for BLS12-381 G2 {#appx-iso-bls12381-g2}
+## 3-Isogeny Map for BLS12-381 G2 {#appx-iso-bls12381-g2}
 
 The 3-isogeny map from (x', y') on E' to (x, y) on E is given by the following rational functions:
 
@@ -3722,14 +3734,14 @@ The constants used to compute y\_den are as follows:
 - k\_(4,2) = 0x12 + 0x1a0111ea397fe69a4b1ba7b6434bacd764774b84f38512bf6730d2a0f6b0f6241eabfffeb153ffffb9feffffffffaa99 * I
 
 
-# Straight-line implementations of deterministic mappings {#straightline}
+# Straight-Line Implementations of Deterministic Mappings {#straightline}
 
 This section gives straight-line implementations of the mappings of {{mappings}}.
 These implementations are generic, i.e., they are defined for any curve and field.
 {{samplecode}} gives further implementations that are optimized for specific
 classes of curves and fields.
 
-## Shallue-van de Woestijne method {#straightline-svdw}
+## Shallue-van de Woestijne Method {#straightline-svdw}
 
 This section gives a straight-line implementation of the Shallue-van
 de Woestijne method for any Weierstrass curve of the form given in
@@ -3791,7 +3803,7 @@ Steps:
 36. return (x, y)
 ~~~
 
-## Simplified SWU method {#straightline-sswu}
+## Simplified SWU Method {#straightline-sswu}
 
 This section gives a straight-line implementation of the Simplified
 SWU method for any Weierstrass curve of the form given in {{weierstrass}}.
@@ -3835,7 +3847,7 @@ Steps:
 26. return (x, y)
 ~~~
 
-### sqrt_ratio subroutines {#straightline-sswu-sqrt-ratio}
+### sqrt_ratio Subroutine {#straightline-sswu-sqrt-ratio}
 
 This section defines three variants of the sqrt_ratio subroutine used by the
 above procedure.
@@ -3845,7 +3857,7 @@ for specific fields.
 The routines given in this section depend on the constant Z from the Simplified SWU map.
 For correctness, sqrt_ratio and map_to_curve_simple_swu MUST use the same value for Z.
 
-#### sqrt_ratio for any field
+#### sqrt_ratio for Any Field
 
 ~~~ pseudocode
 sqrt_ratio(u, v)
@@ -3898,7 +3910,7 @@ Procedure:
 27. return (isQR, tv3)
 ~~~
 
-#### optimized sqrt_ratio for q = 3 mod 4
+#### Optimized sqrt_ratio for q = 3 mod 4
 
 ~~~ pseudocode
 sqrt_ratio_3mod4(u, v)
@@ -3931,7 +3943,7 @@ Procedure:
 11. return (isQR, y)
 ~~~
 
-#### optimized sqrt_ratio for q = 5 mod 8
+#### Optimized sqrt_ratio for q = 5 mod 8
 
 ~~~ pseudocode
 sqrt_ratio_5mod8(u, v)
@@ -3978,7 +3990,7 @@ Steps:
 24. return (isQR, y)
 ~~~
 
-## Elligator 2 method {#straightline-ell2}
+## Elligator 2 Method {#straightline-ell2}
 
 This section gives a straight-line implementation of the Elligator 2
 method for any Montgomery curve of the form given in {{montgomery}}.
@@ -4022,14 +4034,13 @@ Steps:
 22. return (s, t)
 ~~~
 
-# Curve-specific optimized sample code {#samplecode}
+# Curve-Specific Optimized Sample Code {#samplecode}
 
 This section gives sample implementations optimized for some of the
 elliptic curves listed in {{suites}}.
-Sample Sage {{SAGE}} code for each algorithm can also be found in the
-draft repository {{hash2curve-repo}}.
+Sample Sage code {{SAGE}} for each algorithm can also be found in {{hash2curve-repo}}.
 
-## Interface and projective coordinate systems {#projective-coords}
+## Interface and Projective Coordinate Systems {#projective-coords}
 
 The sample code in this section uses a different interface than
 the mappings of {{mappings}}.
@@ -4148,7 +4159,7 @@ is defined in {{map-to-curve25519}}.
 
 Note that the sign of the constant c1 below is chosen as specified
 in {{rational-map}}, i.e., applying the rational map to the edwards25519
-base point yields the curve25519 base point (see erratum {{EID4730}}).
+base point yields the curve25519 base point (see erratum {{Err4730}}).
 
 ~~~ pseudocode
 map_to_curve_elligator2_edwards25519(u)
@@ -4279,7 +4290,7 @@ Steps:
 38. return (xEn, xEd, yEn, yEd)
 ~~~
 
-### Montgomery curves with q = 3 (mod 4) {#ell2-map-to-3mod4}
+### Montgomery Curves with q = 3 (mod 4) {#ell2-map-to-3mod4}
 
 The following is a straight-line implementation of Elligator 2
 that applies to any Montgomery curve defined over GF(q) where q = 3 (mod 4).
@@ -4334,7 +4345,7 @@ Steps:
 33. return (xn, xd, y, 1)
 ~~~
 
-###  Montgomery curves with q = 5 (mod 8) {#ell2-map-to-5mod8}
+###  Montgomery Curves with q = 5 (mod 8) {#ell2-map-to-5mod8}
 
 The following is a straight-line implementation of Elligator 2
 that applies to any Montgomery curve defined over GF(q) where q = 5 (mod 8).
@@ -4404,10 +4415,10 @@ Steps:
 45. return (xn, xd, y, 1)
 ~~~
 
-## Cofactor clearing for BLS12-381 G2 {#clear-cofactor-bls12381-g2}
+## Cofactor Clearing for BLS12-381 G2 {#clear-cofactor-bls12381-g2}
 
 The curve BLS12-381, whose parameters are defined in {{suites-bls12381-g2}},
-admits an efficiently-computable endomorphism psi that can be used to
+admits an efficiently computable endomorphism, psi, that can be used to
 speed up cofactor clearing for G2 {{SBCDK09}} {{FKR11}} {{BP17}} (see also
 {{cofactor-clearing}}).
 This section implements the endomorphism psi and a fast cofactor clearing
@@ -4508,11 +4519,11 @@ Steps:
 11. return Q
 ~~~
 
-# Scripts for parameter generation {#paramgen}
+# Scripts for Parameter Generation {#paramgen}
 
-This section gives Sage {{SAGE}} scripts used to generate parameters for the mappings of {{mappings}}.
+This section gives Sage scripts {{SAGE}} used to generate parameters for the mappings of {{mappings}}.
 
-## Finding Z for the Shallue-van de Woestijne map {#svdw-z-code}
+## Finding Z for the Shallue-van de Woestijne Map {#svdw-z-code}
 
 The below function outputs an appropriate Z for the Shallue-van de Woestijne map ({{svdw}}).
 
@@ -4593,7 +4604,7 @@ def find_z_ell2(F):
         ctr += 1
 ~~~
 
-# sqrt and is\_square functions {#appx-sqrt}
+# sqrt and is\_square Functions {#appx-sqrt}
 
 This section defines special-purpose sqrt functions for the three most common cases,
 q = 3 (mod 4), q = 5 (mod 8), and q = 9 (mod 16),
@@ -4673,7 +4684,7 @@ Procedure:
 11. return z
 ~~~
 
-## Constant-time Tonelli-Shanks algorithm {#sqrt-ts}
+## Constant-Time Tonelli-Shanks Algorithm {#sqrt-ts}
 
 This algorithm is a constant-time version of the classic Tonelli-Shanks algorithm
 ({{C93}}, Algorithm 1.5.1) due to Sean Bowe, Jack Grigg, and Eirik Ogilvie-Wigley {{jubjub-fq}},
@@ -4726,7 +4737,7 @@ with basis (1, I) represented as described in {{bg-curves}}, i.e.,
 an element x = (x\_1, x\_2) = x\_1 + x\_2 * I.
 
 Other optimizations of this type are possible in other extension
-fields; see, e.g., {{AR13}} for more information.
+fields; see, for example, {{AR13}} for more information.
 
 ~~~ pseudocode
 is_square(x)
@@ -4752,7 +4763,7 @@ Procedure:
 ~~~
 
 
-# Suite test vectors {#testvectors}
+# Suite Test Vectors {#testvectors}
 
 This section gives test vectors for each suite defined in {{suites}}.
 The test vectors in this section were generated using code that is
@@ -6971,7 +6982,7 @@ Q.y     = 1260d6e0987eae96af9ebe551e08de22b37791d53f4db9e0d59da7
 ~~~
 
 
-# Expand test vectors {#expand-testvectors}
+# Expand Test Vectors {#expand-testvectors}
 
 This section gives test vectors for expand_message variants specified in {{hashtofield-expand}}.
 The test vectors in this section were generated using code that is
@@ -7195,7 +7206,7 @@ uniform_bytes = 546aff5444b5b79aa6148bd81728704c32decb73a3ba76e9
 
 ~~~
 
-## expand_message_xmd(SHA-256) (long DST)
+## expand_message_xmd(SHA-256) (Long DST)
 
 ~~~
 
@@ -7831,7 +7842,7 @@ uniform_bytes = 9d763a5ce58f65c91531b4100c7266d479a5d9777ba76169
 
 ~~~
 
-## expand_message_xof(SHAKE128) (long DST)
+## expand_message_xof(SHAKE128) (Long DST)
 
 ~~~
 
